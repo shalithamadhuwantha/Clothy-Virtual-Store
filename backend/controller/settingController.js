@@ -164,7 +164,7 @@ const getStoreCustomizationSetting = async (req, res) => {
 };
 
 const getStoreSeoSetting = async (req, res) => {
-  // console.log("getStoreSeoSetting");
+  console.log("getStoreSeoSetting");
   try {
     const storeCustomizationSetting = await Setting.findOne(
       {
@@ -172,7 +172,7 @@ const getStoreSeoSetting = async (req, res) => {
       },
       { "setting.seo": 1, _id: 0 }
     );
-    // console.log("storeCustomizationSetting", storeCustomizationSetting);
+    console.log("storeCustomizationSetting", storeCustomizationSetting);
     res.send(storeCustomizationSetting?.setting);
   } catch (err) {
     res.status(500).send({
