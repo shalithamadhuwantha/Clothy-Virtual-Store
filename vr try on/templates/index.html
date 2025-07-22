@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Virtual Try-On with Shopping Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg { 
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%); 
+        }
+        .glass-effect { 
+            backdrop-filter: blur(10px); 
+            background: rgba(0, 0, 0, 0.05); 
+            border: 1px solid rgba(0, 0, 0, 0.1); 
+        }
+        .video-container { 
+            position: relative; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2); 
+            border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+        .video-feed { 
+            transition: all 0.3s ease; 
+            border-radius: 20px; 
+        }
+        .control-button { 
+            transition: all 0.3s ease; 
+            backdrop-filter: blur(10px); 
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        .control-button:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.9);
+        }
+        .inventory-item { 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .inventory-item:hover { 
+            transform: scale(1.02); 
+            box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.08);
+        }
+        .inventory-item.active { 
+            border: 2px solid black; 
+            background: rgba(0, 0, 0, 0.1); 
+        }
+        .cart-item { 
+            background: rgba(0, 0, 0, 0.05); 
+            border: 1px solid rgba(0, 0, 0, 0.1); 
+        }
+        .floating-panel { 
+            animation: float 3s ease-in-out infinite; 
+        }
+        @keyframes float { 
+            0%, 100% { transform: translateY(0px); } 
+            50% { transform: translateY(-3px); } 
+        }
+        .scroll-area { 
+            max-height: 400px; 
+            overflow-y: auto; 
+        }
+        .scroll-area::-webkit-scrollbar { 
+            width: 4px; 
+        }
+        .scroll-area::-webkit-scrollbar-track { 
+            background: rgba(0, 0, 0, 0.1); 
+            border-radius: 2px; 
+        }
+        .scroll-area::-webkit-scrollbar-thumb { 
+            background: rgba(0, 0, 0, 0.3); 
+            border-radius: 2px; 
+        }
+        .btn-primary {
+            background: black;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .btn-secondary {
+            background: white;
+            color: black;
+            border: 1px solid black;
+        }
+        .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg">
+    <!-- Navigation Header -->
+    <nav class="glass-effect p-4 mb-6">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center">
+                    <i class="fas fa-tshirt text-white text-xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-black">Virtual Try-On Store</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2 text-black">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="bg-black text-white text-xs rounded-full px-2 py-1 font-semibold">{{ cart_count }}</span>
+                </div>
+                <button onclick="toggleOverlay()" class="text-black hover:text-gray-600 transition-colors border border-black px-3 py-1 rounded">
+                    <i id="overlay-icon" class="fas fa-eye"></i> <span id="overlay-text">Overlay On</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-4 gap-6">
+            <!-- Left Sidebar - Inventory & Cart -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Shirt Inventory -->
+                <div class="glass-effect rounded-2xl p-4 floating-panel">
+                    <h3 class="text-lg font-semibold text-black mb-4 flex items-center">
+                        <i class="fas fa-store mr-2"></i>
+                        Inventory
+                    </h3>
+                    <div id="inventory-grid" class="scroll-area space-y-3">
+                        <!-- Inventory items will be loaded here -->
+                    </div>
+                </div>
+
+
+
+                <!-- Gesture Guide -->
+                <div class="glass-effect rounded-2xl p-4">
+                    <h3 class="text-sm font-semibold text-black mb-3 flex items-center">
+                        <i class="fas fa-hand-paper mr-2"></i>
+                        Hand Gestures
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center text-black text-xs">
+                            <div class="w-6 h-6 bg-black bg-opacity-20 rounded-full flex items-center justify-center mr-2 border border-black border-opacity-30">
+                                <i class="fas fa-thumbs-up text-xs text-black"></i>
+                            </div>
+                            <span>Thumbs up = Add to cart</span>
+                        </div>
+                        <div class="flex items-center text-black text-xs">
+                            <div class="w-6 h-6 bg-black bg-opacity-20 rounded-full flex items-center justify-center mr-2 border border-black border-opacity-30">
+                                <i class="fas fa-hand-point-right text-xs text-black"></i>
+                            </div>
+                            <span>Point right = Next shirt</span>
+                        </div>
+                        <div class="flex items-center text-black text-xs">
+                            <div class="w-6 h-6 bg-black bg-opacity-20 rounded-full flex items-center justify-center mr-2 border border-black border-opacity-30">
+                                <i class="fas fa-hand-point-left text-xs text-black"></i>
+                            </div>
+                            <span>Point left = Previous</span>
+                        </div>
+                        <div class="flex items-center text-black text-xs">
+                            <div class="w-6 h-6 bg-black bg-opacity-20 rounded-full flex items-center justify-center mr-2 border border-black border-opacity-30">
+                                <i class="fas fa-hand-paper text-xs text-black"></i>
+                            </div>
+                            <span>Open hand = Remove from cart</span>
+                        </div>
+                    </div>
+                    <div id="gesture-status" class="mt-3 text-center text-black font-semibold text-sm border border-black border-opacity-30 rounded py-1"></div>
+                </div>
+            </div>
+
+            <!-- Center - Video Feed -->
+            <div class="lg:col-span-2">
+                <div class="video-container bg-black relative">
+                    <img src="{{ url_for('video_feed') }}" 
+                         class="video-feed w-full h-auto max-w-full" 
+                         alt="Virtual Try-On Camera Feed" />
+                    
+                    <!-- Overlay Controls -->
+                    <div class="absolute top-4 right-4 flex flex-col space-y-2">
+                        <button onclick="capturePhoto()" class="control-button w-10 h-10 rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-camera text-sm"></i>
+                        </button>
+                        <button onclick="toggleFullscreen()" class="control-button w-10 h-10 rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-expand text-sm"></i>
+                        </button>
+                    </div>
+
+                    <!-- Status Indicator -->
+                    <div class="absolute bottom-4 left-4">
+                        <div class="flex items-center space-x-2">
+                            <div id="camera-status" class="w-3 h-3 bg-black rounded-full animate-pulse"></div>
+                            <span class="text-white text-sm glass-effect px-3 py-1 rounded-full border border-white border-opacity-30" style="background: rgba(0,0,0,0.7);">
+                                <span id="status-text">Camera Active</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex justify-center mt-4 space-x-3">
+                    <button onclick="previousShirt()" class="control-button btn-secondary text-black px-4 py-2 rounded-full font-semibold flex items-center space-x-2">
+                        <i class="fas fa-chevron-left"></i>
+                        <span>Previous</span>
+                    </button>
+                    <button onclick="addCurrentToCart()" class="btn-primary text-white px-6 py-2 rounded-full font-semibold flex items-center space-x-2">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Add to Cart</span>
+                    </button>
+                    <button onclick="nextShirt()" class="control-button btn-secondary text-black px-4 py-2 rounded-full font-semibold flex items-center space-x-2">
+                        <span>Next</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Sidebar - Metrics -->
+            <div class="lg:col-span-1 space-y-6">
+                <div class="glass-effect rounded-2xl p-4">
+                    <h3 class="text-lg font-semibold text-black mb-4 flex items-center">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Fit Metrics
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-black bg-opacity-10 rounded-lg p-3 border border-black border-opacity-20">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-black text-sm">Fit Detection</span>
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <div class="w-full bg-white bg-opacity-50 rounded-full h-2 border border-black border-opacity-30">
+                                <div id="fit-bar" class="bg-black h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                            <span id="fit-percentage" class="text-black text-xs">0%</span>
+                        </div>
+                        
+                        <div class="bg-black bg-opacity-10 rounded-lg p-3 border border-black border-opacity-20">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-black text-sm">Tracking Quality</span>
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <div class="w-full bg-white bg-opacity-50 rounded-full h-2 border border-black border-opacity-30">
+                                <div id="tracking-bar" class="bg-black h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                            <span id="tracking-percentage" class="text-black text-xs">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Shirt Info -->
+                <div class="glass-effect rounded-2xl p-4">
+                    <h3 class="text-lg font-semibold text-black mb-4 flex items-center">
+                        <i class="fas fa-tshirt mr-2"></i>
+                        Current Shirt
+                    </h3>
+                    <div id="current-shirt-info" class="text-black text-sm space-y-2">
+                        <div>No shirt selected</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentShirt = {{ current_shirt }};
+        let inventory = [];
+        let cartItems = [];
+        let cartTotal = 0;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            loadInventory();
+            updateStatus();
+            setInterval(updateStatus, 2000);
+        });
+
+        // Load inventory from backend
+        async function loadInventory() {
+            try {
+                const response = await fetch('/api/inventory');
+                inventory = await response.json();
+                renderInventory();
+                updateCurrentShirtInfo();
+            } catch (error) {
+                console.error('Error loading inventory:', error);
+            }
+        }
+
+        // Render inventory grid
+        function renderInventory() {
+            const grid = document.getElementById('inventory-grid');
+            grid.innerHTML = '';
+            
+            inventory.forEach((shirt, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `inventory-item ${index === currentShirt ? 'active' : ''} rounded-lg p-3 cursor-pointer`;
+                itemDiv.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-black bg-opacity-20 rounded-lg flex items-center justify-center border border-black border-opacity-30">
+                            <i class="fas fa-tshirt text-black"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="text-black font-semibold text-sm truncate">${shirt.name}</div>
+                            <div class="text-black text-xs opacity-70">${shirt.brand}</div>
+                            <div class="text-black font-semibold text-sm">$${shirt.price.toFixed(2)}</div>
+                        </div>
+                        <button onclick="addToCart(${shirt.id})" class="bg-black text-white hover:bg-gray-700 text-xs px-2 py-1 rounded font-semibold">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                `;
+                itemDiv.onclick = () => selectShirt(index);
+                grid.appendChild(itemDiv);
+            });
+        }
+
+        // Update current shirt info panel
+        function updateCurrentShirtInfo() {
+            const infoDiv = document.getElementById('current-shirt-info');
+            if (inventory.length > 0 && currentShirt < inventory.length) {
+                const shirt = inventory[currentShirt];
+                infoDiv.innerHTML = `
+                    <div><strong>Name:</strong> ${shirt.name}</div>
+                    <div><strong>Brand:</strong> ${shirt.brand}</div>
+                    <div><strong>Price:</strong> <span class="text-black font-semibold">$${shirt.price.toFixed(2)}</span></div>
+                    <div><strong>Material:</strong> ${shirt.material}</div>
+                    <div><strong>Size:</strong> ${shirt.size}</div>
+                `;
+            } else {
+                infoDiv.innerHTML = '<div>No shirt selected</div>';
+            }
+        }
+
+        // Select a shirt
+        async function selectShirt(shirtId) {
+            try {
+                const response = await fetch('/api/select_shirt', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ shirt_id: shirtId })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    currentShirt = result.current_shirt;
+                    renderInventory();
+                    updateCurrentShirtInfo();
+                }
+            } catch (error) {
+                console.error('Error selecting shirt:', error);
+            }
+        }
+
+        // Navigation functions
+        async function nextShirt() {
+            if (inventory.length > 0) {
+                await selectShirt((currentShirt + 1) % inventory.length);
+            }
+        }
+
+        async function previousShirt() {
+            if (inventory.length > 0) {
+                await selectShirt((currentShirt - 1 + inventory.length) % inventory.length);
+            }
+        }
+
+        // FIXED PHOTO CAPTURE FUNCTION
+        async function capturePhoto() {
+            try {
+                showNotification('📸 Capturing photo...', 'info');
+                
+                // First, trigger the capture
+                const captureResponse = await fetch('/api/capture_photo', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (captureResponse.ok) {
+                    const result = await captureResponse.json();
+                    if (result.success) {
+                        showNotification('📸 Photo captured! Starting download...', 'success');
+                        
+                        // Wait a moment, then download
+                        setTimeout(() => {
+                            const link = document.createElement('a');
+                            link.href = '/api/download_photo?' + Date.now(); // Cache buster
+                            link.download = `virtual_tryout_${Date.now()}.jpg`;
+                            link.style.display = 'none';
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            
+                            showNotification('📥 Photo downloaded!', 'success');
+                        }, 1000);
+                    } else {
+                        showNotification('❌ Failed to capture photo', 'error');
+                    }
+                } else {
+                    showNotification('❌ Capture request failed', 'error');
+                }
+            } catch (error) {
+                console.error('Photo capture error:', error);
+                showNotification('❌ An error occurred: ' + error.message, 'error');
+            }
+        }
+
+        // Cart functions
+        async function addToCart(shirtId) {
+            try {
+                const response = await fetch('/api/cart/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ shirt_id: shirtId })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    updateCart();
+                    showNotification('Added to cart!', 'success');
+                } else {
+                    showNotification(result.error, 'error');
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+            }
+        }
+
+        async function addCurrentToCart() {
+            await addToCart(currentShirt);
+        }
+
+        async function removeFromCart(itemId) {
+            try {
+                const response = await fetch('/api/cart/remove', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ item_id: itemId })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    updateCart();
+                    showNotification('Removed from cart', 'info');
+                }
+            } catch (error) {
+                console.error('Error removing from cart:', error);
+            }
+        }
+
+        async function clearCart() {
+            try {
+                const response = await fetch('/api/cart/clear', { method: 'POST' });
+                const result = await response.json();
+                if (result.success) {
+                    updateCart();
+                    showNotification('Cart cleared', 'info');
+                }
+            } catch (error) {
+                console.error('Error clearing cart:', error);
+            }
+        }
+
+        async function updateCart() {
+            try {
+                const response = await fetch('/api/cart');
+                const cartData = await response.json();
+                cartItems = cartData.items;
+                cartTotal = cartData.total;
+                
+                document.getElementById('cart-count').textContent = cartData.count;
+                document.getElementById('cart-total').textContent = `$${cartTotal.toFixed(2)}`;
+                
+                renderCart();
+            } catch (error) {
+                console.error('Error updating cart:', error);
+            }
+        }
+
+        function renderCart() {
+            const cartDiv = document.getElementById('cart-items');
+            
+            if (cartItems.length === 0) {
+                cartDiv.innerHTML = '<div class="text-black text-sm opacity-50 text-center py-4">Cart is empty</div>';
+                return;
+            }
+            
+            cartDiv.innerHTML = '';
+            cartItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item rounded-lg p-3';
+                itemDiv.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1 min-w-0">
+                            <div class="text-black font-semibold text-sm truncate">${item.name}</div>
+                            <div class="text-black text-xs opacity-70">${item.brand}</div>
+                            <div class="text-black font-semibold text-sm">$${item.price.toFixed(2)}</div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-black hover:text-gray-600 ml-2 border border-black px-2 py-1 rounded">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+                cartDiv.appendChild(itemDiv);
+            });
+        }
+
+        // Update status and metrics
+        async function updateStatus() {
+            try {
+                const response = await fetch('/api/status');
+                const status = await response.json();
+                
+                // Update metrics
+                document.getElementById('fit-bar').style.width = status.fit_detection + '%';
+                document.getElementById('fit-percentage').textContent = Math.round(status.fit_detection) + '%';
+                
+                document.getElementById('tracking-bar').style.width = status.tracking_quality + '%';
+                document.getElementById('tracking-percentage').textContent = Math.round(status.tracking_quality) + '%';
+                
+                // Update cart count
+                document.getElementById('cart-count').textContent = status.cart_count;
+                
+                // Show gesture detection
+                if (status.last_gesture && status.last_gesture !== 'None') {
+                    document.getElementById('gesture-status').textContent = `Detected: ${status.last_gesture.replace('_', ' ')}`;
+                    setTimeout(() => {
+                        document.getElementById('gesture-status').textContent = '';
+                    }, 2000);
+                }
+                
+                // Update current shirt if changed by gesture
+                if (status.current_shirt !== currentShirt) {
+                    currentShirt = status.current_shirt;
+                    renderInventory();
+                    updateCurrentShirtInfo();
+                }
+                
+                // Update overlay status
+                const overlayIcon = document.getElementById('overlay-icon');
+                const overlayText = document.getElementById('overlay-text');
+                if (status.shirt_overlay_active) {
+                    overlayIcon.className = 'fas fa-eye';
+                    overlayText.textContent = 'Overlay On';
+                } else {
+                    overlayIcon.className = 'fas fa-eye-slash';
+                    overlayText.textContent = 'Overlay Off';
+                }
+                
+            } catch (error) {
+                console.error('Error updating status:', error);
+            }
+        }
+
+        // Utility functions
+        async function toggleOverlay() {
+            try {
+                const response = await fetch('/api/toggle_overlay', { method: 'POST' });
+                const result = await response.json();
+                showNotification(`Overlay ${result.overlay_active ? 'enabled' : 'disabled'}`, 'info');
+            } catch (error) {
+                console.error('Error toggling overlay:', error);
+            }
+        }
+
+        function toggleFullscreen() {
+            const videoContainer = document.querySelector('.video-container');
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                videoContainer.requestFullscreen();
+            }
+        }
+
+        function checkout() {
+            if (cartItems.length === 0) {
+                showNotification('Cart is empty', 'error');
+                return;
+            }
+            showNotification('Redirecting to checkout...', 'info');
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg border ${
+                type === 'success' ? 'bg-black text-white border-black' :
+                type === 'error' ? 'bg-white text-black border-black' : 
+                'bg-black text-white border-black'
+            } glass-effect`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Load cart on page load
+        updateCart();
+    </script>
+</body>
+</html>
