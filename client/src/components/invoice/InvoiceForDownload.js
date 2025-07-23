@@ -288,7 +288,7 @@ const InvoiceForDownload = ({
                 }}
               >
                 <Image
-                  src="https://res.cloudinary.com/ahossain/image/upload/v1681454665/logo/logo-color_qw1trc.png"
+                  src="https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png"
                   alt="Invoice"
                   style={{ width: 80, textAlign: "right" }}
                 />

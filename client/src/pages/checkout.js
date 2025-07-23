@@ -98,7 +98,7 @@ const Checkout = () => {
                           )}
                           name="firstName"
                           type="text"
-                          placeholder="John"
+                          placeholder="First Name"
                         />
                         <Error errorName={errors.firstName} />
                       </div>
@@ -111,7 +111,7 @@ const Checkout = () => {
                           )}
                           name="lastName"
                           type="text"
-                          placeholder="Doe"
+                          placeholder="Last Name"
                           required={false}
                         />
                         <Error errorName={errors.lastName} />
@@ -139,7 +139,7 @@ const Checkout = () => {
                           )}
                           name="contact"
                           type="tel"
-                          placeholder="+062-6532956"
+                          placeholder="+94 77 123 4567"
                         />
 
                         <Error errorName={errors.contact} />
@@ -164,7 +164,7 @@ const Checkout = () => {
                           )}
                           name="address"
                           type="text"
-                          placeholder="123 Boulevard Rd, Beverley Hills"
+                          placeholder="Rajarata University Of Sri Lanka, Mihintale, Sri Lanka"
                         />
                         <Error errorName={errors.address} />
                       </div>
@@ -177,7 +177,7 @@ const Checkout = () => {
                           )}
                           name="city"
                           type="text"
-                          placeholder="Los Angeles"
+                          placeholder="mihintale"
                         />
                         <Error errorName={errors.city} />
                       </div>
@@ -190,7 +190,8 @@ const Checkout = () => {
                           )}
                           name="country"
                           type="text"
-                          placeholder="United States"
+                          placeholder="Sri Lanka"
+                          value="Sri Lanka"
                         />
                         <Error errorName={errors.country} />
                       </div>

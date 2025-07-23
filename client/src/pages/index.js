@@ -40,24 +40,16 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* Hero Section with Modern Design */}
             <div className="bg-white shadow-sm">
               <div className="mx-auto py-8 max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-                <div className="flex w-full gap-6">
+                <div className="flex justify-center">
                   <div className="flex-shrink-0 w-full lg:w-3/5">
                     <div className="rounded-2xl overflow-hidden shadow-lg">
                       <MainCarousel />
                     </div>
                   </div>
-                  <div className="w-full hidden lg:flex">
-                    <div className="rounded-2xl overflow-hidden shadow-lg">
-                      <OfferCard />
-                    </div>
-                  </div>
                 </div>
-                
-                {/* Modern Promotion Banner */}
-               
               </div>
             </div>
- <FeatureCategory />
+            <FeatureCategory />
             {/* Ultra-Modern Feature Categories Section */}
             {storeCustomizationSetting?.home?.featured_status && (
               <div className="py-20 lg:py-28 relative overflow-hidden">
@@ -112,7 +104,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
 
                     {/* Floating Action Button */}
                     <div className="flex justify-center mt-12">
-                      <button className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                      <button className="group bg-gradient-to-r from-green-600 to-emerald-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                         <span className="flex items-center">
                           View All Categories
                           <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

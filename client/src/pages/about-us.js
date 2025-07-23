@@ -20,14 +20,13 @@ const AboutUs = () => {
           storeCustomizationSetting?.about_us?.title
         )}
       />
-
       <div className="bg-white">
         <div className="max-w-screen-2xl mx-auto lg:py-20 py-10 px-4 sm:px-10">
           <div className="grid grid-flow-row lg:grid-cols-2 gap-4 lg:gap-16 items-center">
             <div className="">
               <h3 className="text-xl lg:text-3xl mb-2 font-serif font-semibold">
                 {/* {t("common:about-section-title")} */}
-
+                
                 <CMSkeleton
                   count={1}
                   height={50}
@@ -148,8 +147,7 @@ const AboutUs = () => {
               width={1920}
               height={570}
               src={
-                storeCustomizationSetting?.about_us?.content_middle_Img ||
-                "/about-banner.jpg"
+                storeCustomizationSetting?.about_us?.content_middle_Img
               }
               alt="logo"
               className="block rounded-lg"
@@ -186,8 +184,7 @@ const AboutUs = () => {
                   width={420}
                   height={420}
                   src={
-                    storeCustomizationSetting?.about_us?.founder_one_img ||
-                    "/team/team-1.jpg"
+                    storeCustomizationSetting?.about_us?.founder_one_img 
                   }
                   alt="team-1"
                   className="block rounded-lg"
@@ -210,8 +207,7 @@ const AboutUs = () => {
                   width={420}
                   height={420}
                   src={
-                    storeCustomizationSetting?.about_us?.founder_two_img ||
-                    "/team/team-2.jpg"
+                    storeCustomizationSetting?.about_us?.founder_two_img 
                   }
                   alt="team-2"
                   className="block rounded-lg"
@@ -234,8 +230,7 @@ const AboutUs = () => {
                   width={420}
                   height={420}
                   src={
-                    storeCustomizationSetting?.about_us?.founder_three_img ||
-                    "/team/team-3.jpg"
+                    storeCustomizationSetting?.about_us?.founder_three_img 
                   }
                   alt="team-3"
                   className="block rounded-lg"
@@ -258,8 +253,7 @@ const AboutUs = () => {
                   width={420}
                   height={420}
                   src={
-                    storeCustomizationSetting?.about_us?.founder_four_img ||
-                    "/team/team-4.jpg"
+                    storeCustomizationSetting?.about_us?.founder_four_img 
                   }
                   alt="team-4"
                   className="block rounded-lg"
@@ -282,8 +276,7 @@ const AboutUs = () => {
                   width={420}
                   height={420}
                   src={
-                    storeCustomizationSetting?.about_us?.founder_five_img ||
-                    "/team/team-5.jpg"
+                    storeCustomizationSetting?.about_us?.founder_five_img 
                   }
                   alt="team-5"
                   className="block rounded-lg"
@@ -306,8 +299,7 @@ const AboutUs = () => {
                   width={420}
                   height={420}
                   src={
-                    storeCustomizationSetting?.about_us?.founder_six_img ||
-                    "/team/team-6.jpg"
+                    storeCustomizationSetting?.about_us?.founder_six_img 
                   }
                   alt="team-6"
                   className="block rounded-lg"

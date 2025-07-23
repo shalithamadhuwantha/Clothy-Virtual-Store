@@ -372,7 +372,7 @@ const ProductModal = ({
                 <p className="text-xs sm:text-sm text-gray-600">
                   Call Us To Order By Mobile Number :{" "}
                   <span className="text-emerald-700 font-semibold">
-                    +0044235234
+                    +9477 123 4567
                   </span>{" "}
                 </p>
               </div>

@@ -60,7 +60,7 @@ export const storeCustomization = {
       de: "Kasse",
     },
     phone: "+965 505 631288",
-    logo: "https://res.cloudinary.com/ahossain/image/upload/v1697687802/settings/logo-light_hls14v.svg",
+    logo: "/v1697687802/settings/logo-light_hls14v.svg",
   },
   home: {
     coupon_status: true,
@@ -127,7 +127,7 @@ export const storeCustomization = {
     },
     quick_delivery_link: "#",
     quick_delivery_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688032/settings/delivery-boy_rluuoq.webp",
+      "/v1697688032/settings/delivery-boy_rluuoq.webp",
     latest_discount_title: {
       en: "Latest Discounted Products",
       de: "Neueste reduzierte Produkte",
@@ -149,13 +149,13 @@ export const storeCustomization = {
     daily_need_google_link:
       "https://play.google.com/store/games?utm_source=apac_med&utm_medium=hasem&utm_content=Jun0122&utm_campaign=Evergreen&pcampaignid=MKT-EDR-apac-lk-1003227-med-hasem-py-Evergreen-Jun0122-Text_Search_BKWS-BKWS%7CONSEM_kwid_43700071429441653_creativeid_600975795576_device_c&gclid=CjwKCAjwwo-WBhAMEiwAV4dybdy60tnQqCSnQ-cXShNnEcxmaBx2I6iwwc_WEqoA5sN9YSLJEXh9fBoC3u4QAvD_BwE&gclsrc=aw.ds",
     daily_need_img_left:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688091/settings/app-download-img-left_s5n2zf.webp",
+      "https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png",
     daily_need_img_right:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688091/settings/app-download-img_c7xqg4.webp",
+      "https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png",
     button1_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688165/settings/app-store_cyyc0f.svg",
+      "https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png",
     button2_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688167/settings/play-store_cavwua.svg",
+      "/v1697688167/settings/play-store_cavwua.svg",
   },
   about_us: {
     header_status: true,
@@ -164,23 +164,23 @@ export const storeCustomization = {
     content_middle_status: true,
     founder_status: true,
     header_bg:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
+      "https://res.cloudinary.com/dxsdop6od/image/upload/v1753283243/undefined/clothsslide1.png",
     content_right_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439245/settings/v7g6gowiju0wanpwx70f.jpg",
+      "/v1697439245/settings/v7g6gowiju0wanpwx70f.jpg",
     content_middle_Img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439195/settings/sl8vzvzm54jgzq6sphn2.jpg",
+      "/v1697439195/settings/sl8vzvzm54jgzq6sphn2.jpg",
     founder_one_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439688/settings/team-1_acjmv7.webp",
+      "/v1697439688/settings/team-1_acjmv7.webp",
     founder_two_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439689/settings/team-2_dw7zs1.webp",
+      "/v1697439689/settings/team-2_dw7zs1.webp",
     founder_three_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439689/settings/team-3_ld3323.webp",
+      "/v1697439689/settings/team-3_ld3323.webp",
     founder_four_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439689/settings/team-4_i7jvx7.webp",
+      "/v1697439689/settings/team-4_i7jvx7.webp",
     founder_five_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439689/settings/team-5_ylyklw.webp",
+      "/v1697439689/settings/team-5_ylyklw.webp",
     founder_six_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439689/settings/team-6_gmlts4.webp",
+      "/v1697439689/settings/team-6_gmlts4.webp",
     title: {
       en: "About Us",
       de: "Über uns",
@@ -290,9 +290,9 @@ export const storeCustomization = {
     left_col_status: true,
     form_status: true,
     header_bg:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
+      "/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
     left_col_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697472924/settings/contact-us_zvwn2n.png",
+      "/v1697472924/settings/contact-us_zvwn2n.png",
     title: {
       en: "Contact Us",
       de: "Kontaktiere uns",
@@ -349,7 +349,7 @@ export const storeCustomization = {
   offers: {
     header_status: true,
     header_bg:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
+      "/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
     title: {
       en: "Mega Offer",
       de: "Mega Angebot",
@@ -359,7 +359,7 @@ export const storeCustomization = {
   privacy_policy: {
     status: true,
     header_bg:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
+      "/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
     title: {
       en: "Privacy Policy",
       de: "Datenschutz-Bestimmungen",
@@ -371,7 +371,7 @@ export const storeCustomization = {
   term_and_condition: {
     status: true,
     header_bg:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
+      "/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
     title: {
       en: "Terms & Conditions",
       de: "Terms & Bedingungen",
@@ -385,9 +385,9 @@ export const storeCustomization = {
     leftcol_status: true,
     rightcol_status: true,
     header_bg:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
+      "/v1697439245/settings/yw3cd2xupqwqpqcbxv9l.jpg",
     left_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697687955/settings/faq_qr1y1h.svg",
+      "/v1697687955/settings/faq_qr1y1h.svg",
     title: {
       en: "FAQs",
       de: "Häufig gestellte Fragen",
@@ -462,7 +462,7 @@ export const storeCustomization = {
     bottom_dots: true,
     both_slider: false,
     first_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688491/settings/slider-1_rl8qdc.jpg",
+      "/v1697688491/settings/slider-1_rl8qdc.jpg",
     first_title: {
       en: "The Best Quality Products Guaranteed!",
       de: "Die besten Qualitätsprodukte garantiert!",
@@ -477,7 +477,7 @@ export const storeCustomization = {
     },
     first_link: "/search?category=milk-dairy",
     second_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688491/settings/slider-2_o6aezc.jpg",
+      "/v1697688491/settings/slider-2_o6aezc.jpg",
     second_title: {
       en: "Best Different Type of Grocery Store",
       de: "Bestes anderes Lebensmittelgeschäft",
@@ -492,7 +492,7 @@ export const storeCustomization = {
     },
     second_link: "/search?category=fish-meat",
     third_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688492/settings/slider-3_iw4nnf.jpg",
+      "/v1697688492/settings/slider-3_iw4nnf.jpg",
     third_title: {
       en: "Quality Freshness Guaranteed!",
       de: "Qualitätsfrische garantiert!",
@@ -521,7 +521,7 @@ export const storeCustomization = {
     },
     four_link: "/search?category=fruits-vegetable",
     five_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688491/settings/slider-2_o6aezc.jpg",
+      "/v1697688491/settings/slider-2_o6aezc.jpg",
     five_title: {
       en: "Best Different Type of Grocery Store",
       de: "Bestes anderes Lebensmittelgeschäft",
@@ -812,7 +812,7 @@ export const storeCustomization = {
     },
     block3_sub_link4: "/user/update-profile",
     block4_logo:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688576/settings/logo-color_el4zmy.svg",
+      "/v1697688576/settings/logo-color_el4zmy.svg",
     block4_address: {
       en: "Rajarata Univeristy Of Sri Lanka, Mihintale, Sri Lanka",
       de: "Rajarata Univeristy Of Sri Lanka, Mihintale, Sri Lanka",
@@ -825,7 +825,7 @@ export const storeCustomization = {
     social_linkedin: "https://www.linkedin.com/",
     social_whatsapp: "https://web.whatsapp.com/",
     payment_method_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688607/settings/payment-logo_qhslgz.webp",
+      "/v1697688607/settings/payment-logo_qhslgz.webp",
     bottom_contact: "+6599887766",
   },
   slug: {
@@ -861,10 +861,10 @@ export const storeCustomization = {
   },
   seo: {
     favicon:
-      "https://res.cloudinary.com/ahossain/image/upload/v1700903173/undefined/favicon.png",
+      "https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png",
     meta_description: "React Grocery & Organic Food Store e-commerce Template",
     meta_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1636729752/facebook-page_j7alju.png",
+      "https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png",
     meta_keywords: "e-commerce, online store",
     meta_title:
       "ClothyVS - React Grocery & Organic Food Store e-commerce Template",

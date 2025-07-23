@@ -114,27 +114,27 @@ const sliderData = [
 ];
 
 const ctaCardData = [
-  {
-    id: 1,
-    title: "Taste of",
-    subTitle: "Fresh & Natural",
-    image: "/cta/cta-bg-1.jpg",
-    url: "/search?category=fresh-vegetable",
-  },
-  {
-    id: 2,
-    title: "Taste of",
-    subTitle: "Fish & Meat",
-    image: "/cta/cta-bg-2.jpg",
-    url: "/search?Category=fish--meat",
-  },
-  {
-    id: 3,
-    title: "Taste of",
-    subTitle: "Bread & Bakery",
-    image: "/cta/cta-bg-3.jpg",
-    url: "/search?Category=biscuits--cakes",
-  },
+  // {
+  //   id: 1,
+  //   title: "Taste of",
+  //   subTitle: "Fresh & Natural",
+  //   image: "/cta/cta-bg-1.jpg",
+  //   url: "/search?category=fresh-vegetable",
+  // },
+  // {
+  //   id: 2,
+  //   title: "Taste of",
+  //   subTitle: "Fish & Meat",
+  //   image: "/cta/cta-bg-2.jpg",
+  //   url: "/search?Category=fish--meat",
+  // },
+  // {
+  //   id: 3,
+  //   title: "Taste of",
+  //   subTitle: "Bread & Bakery",
+  //   image: "/cta/cta-bg-3.jpg",
+  //   url: "/search?Category=biscuits--cakes",
+  // },
 ];
 
 const featurePromo = [

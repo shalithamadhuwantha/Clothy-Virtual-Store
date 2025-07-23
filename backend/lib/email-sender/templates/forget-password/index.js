@@ -105,7 +105,7 @@ const forgetPasswordEmailBody = (option) => {
                                           <img
                                             alt
                                             height="auto"
-                                            src="https://res.cloudinary.com/ahossain/image/upload/v1676296566/Kachabazar%20files/cc_v8jite.png"
+                                            src="https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png"
                                             style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:80px;font-size:13px;padding-bottom:30px;"
                                             width="80"
                                             height="80"

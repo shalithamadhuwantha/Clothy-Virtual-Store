@@ -69,7 +69,7 @@ const Navbar = () => {
                   priority
                   src={
                    
-                    "/logo/logo-light.svg"
+                    "/logo/logo2.png" 
                   }
                   alt="logo"
                 />
@@ -102,12 +102,6 @@ const Navbar = () => {
               </div>
             </div>
             <div className="hidden md:hidden md:items-center lg:flex xl:block absolute inset-y-0 right-0 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <button
-                className="pr-5 text-white text-2xl font-bold"
-                aria-label="Alert"
-              >
-                <FiBell className="w-6 h-6 drop-shadow-xl" />
-              </button>
               <button
                 aria-label="Total"
                 onClick={toggleCartDrawer}

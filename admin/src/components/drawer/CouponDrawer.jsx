@@ -76,6 +76,7 @@ const CouponDrawer = ({ id }) => {
                   label="Coupon title"
                   name="title"
                   type="text"
+                  value="text"
                   placeholder={t("CampaignName")}
                 />
                 <Error errorName={errors.title} />
