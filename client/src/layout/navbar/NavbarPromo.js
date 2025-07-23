@@ -335,34 +335,7 @@ const NavbarPromo = () => {
           </div>
           <div className="flex">
             {/* flag */}
-            <div className="dropdown">
-              <div
-                className={`flot-l flag ${currentLang?.flag?.toLowerCase()}`}
-              ></div>
-              <button className="dropbtn">
-                {currentLang?.name}
-                &nbsp;<i className="fas fa-angle-down"></i>
-              </button>
-              <div className="dropdown-content">
-                {languages?.map((language, i) => {
-                  return (
-                    <Link
-                      onClick={() => {
-                        handleLanguage(language);
-                      }}
-                      key={i + 1}
-                      href="/"
-                      locale={`${language.iso_code}`}
-                    >
-                      <div
-                        className={`flot-l flag ${language?.flag?.toLowerCase()}`}
-                      ></div>
-                      {language?.name}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
+
 
             {storeCustomizationSetting?.navbar?.privacy_policy_status && (
               <Link

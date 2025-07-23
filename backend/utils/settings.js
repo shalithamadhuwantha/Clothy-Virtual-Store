@@ -10,7 +10,7 @@ const setting = [
       contact: "019579034",
       email: "kachabazar@gmail.com",
       website: "kachabazar-admin.vercel.app",
-      default_currency: "€",
+      default_currency: "LKR",
       default_time_zone: "Europe/London",
       default_date_format: "MMM D, YYYY",
       receipt_size: "57-mm",

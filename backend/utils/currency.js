@@ -11,7 +11,7 @@ const currency = [
   },
   {
     name: "Pound",
-    symbol: "£",
+    symbol: "LKR",
     status: "show",
   },
 ];

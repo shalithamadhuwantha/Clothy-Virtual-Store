@@ -18,7 +18,7 @@
   },
   "status": "show",
   "name": "Pound",
-  "symbol": "£",
+  "symbol": "LKR",
   "__v": 0,
   "createdAt": {
     "$date": "2023-04-14T15:27:02.394Z"
