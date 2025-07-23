@@ -144,7 +144,7 @@ const NavbarPromo = () => {
                     )}
 
                     <Popover className="relative font-serif">
-                      <Popover.Button className="group inline-flex items-center py-2 text-sm font-medium hover:text-emerald-600 focus:outline-none">
+                      {/* <Popover.Button className="group inline-flex items-center py-2 text-sm font-medium hover:text-emerald-600 focus:outline-none">
                         <span>
                           {showingTranslateValue(
                             storeCustomizationSetting?.navbar?.pages
@@ -154,7 +154,7 @@ const NavbarPromo = () => {
                           className="ml-1 h-3 w-3 group-hover:text-emerald-600"
                           aria-hidden="true"
                         />
-                      </Popover.Button>
+                      </Popover.Button> */}
                       <Transition
                         as={Fragment}
                         enter="transition ease-out duration-200"
@@ -343,9 +343,9 @@ const NavbarPromo = () => {
                 href="/privacy-policy"
                 className="font-serif mx-4 py-2 text-sm font-medium hover:text-emerald-600"
               >
-                {showingTranslateValue(
+                {/* {showingTranslateValue(
                   storeCustomizationSetting?.navbar?.privacy_policy
-                )}
+                )} */}
               </Link>
             )}
             {storeCustomizationSetting?.navbar?.term_and_condition_status && (
@@ -354,9 +354,9 @@ const NavbarPromo = () => {
                 href="/terms-and-conditions"
                 className="font-serif mx-4 py-2 text-sm font-medium hover:text-emerald-600"
               >
-                {showingTranslateValue(
+                {/* {showingTranslateValue(
                   storeCustomizationSetting?.navbar?.term_and_condition
-                )}
+                )} */}
               </Link>
             )}
           </div>
