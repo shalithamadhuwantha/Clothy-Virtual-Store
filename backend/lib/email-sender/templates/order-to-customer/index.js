@@ -6,7 +6,7 @@ const customerInvoiceEmailBody = (option) => {
 >
 
   <head>
-    <title>Kachabazar</title>
+    <title>ClothyVS</title>
     <!--[if !mso]><!-->
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <!--<![endif]-->
@@ -548,7 +548,7 @@ const customerInvoiceEmailBody = (option) => {
                                                         You are receiving this
                                                         email because you
                                                         registered with
-                                                        Kachabazar and agreed
+                                                        ClothyVS and agreed
                                                         to receive emails from
                                                         us regarding new
                                                         features, events and
@@ -556,7 +556,7 @@ const customerInvoiceEmailBody = (option) => {
                                                         <p
                                                           style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;font-weight:400;line-height:16px;text-align:center;color:#303030;"
                                                         >
-                                                          &copy; Kachabazar,
+                                                          &copy; ClothyVS,
                                                           All Rights Reserved.</p></div>
                                                     </td>
                                                   </tr>

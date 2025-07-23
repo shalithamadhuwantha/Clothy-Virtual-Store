@@ -1,8 +1,8 @@
 {
-  "name": "kachabazar-store",
+  "name": "Clothy Virtual Store",
   "version": "0.1.0",
-  "description": "this is kachabazar-store built with next.js and tailwindcss",
-  "homepage": "https://kachabazar-store.vercel.app/",
+  "description": "Clothy Virtual Store",
+  "homepage": "/",
   "private": true,
   "scripts": {
     "dev": "next dev",

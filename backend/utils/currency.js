@@ -1,19 +1,10 @@
 const currency = [
+
   {
-    name: "Euro",
-    symbol: "€",
+    name: "Sri Lanka Rupee",
+    symbol: "Rs. ",
     status: "show",
-  },
-  {
-    name: "Dollar",
-    symbol: "$",
-    status: "show",
-  },
-  {
-    name: "Pound",
-    symbol: "LKR",
-    status: "show",
-  },
+  }
 ];
 
 module.exports = currency;

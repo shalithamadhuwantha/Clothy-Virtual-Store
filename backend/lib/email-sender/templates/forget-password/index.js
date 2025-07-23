@@ -7,7 +7,7 @@ const forgetPasswordEmailBody = (option) => {
 >
 
   <head>
-    <title>Kachabazar</title>
+    <title>ClothyVS</title>
     <!--[if !mso]><!-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--<![endif]-->
@@ -206,7 +206,7 @@ const forgetPasswordEmailBody = (option) => {
                             <h2>Hello ${option.email}</h2>
                             <p>A request has been received to change the
                               password for your
-                              <strong>Kachabazar</strong>
+                              <strong>ClothyVS</strong>
                               account.
                             </p>
 
@@ -223,14 +223,14 @@ const forgetPasswordEmailBody = (option) => {
 
                             <p style="margin-top: 50px;">If you did not initiate
                               this request, please contact us immediately at
-                              support@kachabazar.com</p>
+                              support@ClothyVS.com</p>
 
                             <p
                               style="margin:0px auto; padding-bottom:0px; text-align:center;"
                             >Thank you
                               <h4
                                 style="margin:1px; text-align:center;padding-bottom:0px;"
-                              >Kachabazar Team</h4></p>
+                              >ClothyVS Team</h4></p>
 
                             <!--end email_template -->
                           </div>
@@ -354,7 +354,7 @@ const forgetPasswordEmailBody = (option) => {
                                                       >
                                                         You are receiving this
                                                         email because you
-                                                        registered with Kachabazar
+                                                        registered with ClothyVS
                                                         and agreed to receive
                                                         emails from us regarding
                                                         new features, events and
@@ -362,7 +362,7 @@ const forgetPasswordEmailBody = (option) => {
                                                         <p
                                                           style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;font-weight:400;line-height:16px;text-align:center;color:#303030;"
                                                         >
-                                                          &copy; Kachabazar, All
+                                                          &copy; ClothyVS, All
                                                           Rights Reserved.</p></div>
                                                     </td>
                                                   </tr>

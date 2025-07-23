@@ -68,7 +68,7 @@ const Navbar = () => {
                   className="w-full h-auto"
                   priority
                   src={
-                    storeCustomizationSetting?.navbar?.logo ||
+                   
                     "/logo/logo-light.svg"
                   }
                   alt="logo"

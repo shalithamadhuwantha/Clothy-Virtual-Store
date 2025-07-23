@@ -1,2 +1,1 @@
-KachaBazar Frontend Documentation
-
+Clothy Virtual Store

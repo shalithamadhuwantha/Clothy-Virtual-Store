@@ -7,7 +7,7 @@ const addStaffEmailBody = (option) => {
 >
 
   <head>
-    <title>Kachabazar</title>
+    <title>ClothyVS</title>
     <!--[if !mso]><!-->
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <!--<![endif]-->
@@ -227,7 +227,7 @@ const addStaffEmailBody = (option) => {
       
       <p style="margin-top: 35px;">If you did not initiate this request, please contact us immediately at support@dashter.com</p>
 
-     <p style="margin:0px auto; margin-top:40px; text-align:center;">Thank you   <h4 style="margin:1px; margin-bottom:0px; text-align:center;">Kachabazar Team</p></p>
+     <p style="margin:0px auto; margin-top:40px; text-align:center;">Thank you   <h4 style="margin:1px; margin-bottom:0px; text-align:center;">ClothyVS Team</p></p>
 
                             <!--end email_template -->
                           </div>
@@ -352,7 +352,7 @@ const addStaffEmailBody = (option) => {
                                                         You are receiving this
                                                         email because you
                                                         registered with
-                                                        Kachabazar and agreed
+                                                        ClothyVS and agreed
                                                         to receive emails from
                                                         us regarding new
                                                         features, events and
@@ -360,7 +360,7 @@ const addStaffEmailBody = (option) => {
                                                         <p
                                                           style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;font-weight:400;line-height:16px;text-align:center;color:#303030;"
                                                         >
-                                                          &copy; Kachabazar,
+                                                          &copy; ClothyVS,
                                                           All Rights Reserved.</p></div>
                                                     </td>
                                                   </tr>

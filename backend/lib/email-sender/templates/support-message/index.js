@@ -7,7 +7,7 @@ const sendSupportMessage = (option) => {
 >
 
   <head>
-    <title>Kachabazar</title>
+    <title>ClothyVS</title>
     <!--[if !mso]><!-->
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <!--<![endif]-->
@@ -204,7 +204,7 @@ const sendSupportMessage = (option) => {
                           >
                             <!--start email_template -->
                             <h2>Hello ${option.name}</h2>
-                            <p>Thank you for contacting Kachabazar. We got the
+                            <p>Thank you for contacting ClothyVS. We got the
                               following message from you.
                             </p>
 
@@ -226,7 +226,7 @@ const sendSupportMessage = (option) => {
                             >Thank you
                               <h4
                                 style='margin:1px; margin-bottom:0px; text-align:center;'
-                              >Kachabazar Team</h4></p>
+                              >ClothyVS Team</h4></p>
 
                             <!--end email_template -->
                           </div>
@@ -351,7 +351,7 @@ const sendSupportMessage = (option) => {
                                                         You are receiving this
                                                         email because you
                                                         registered with
-                                                        Kachabazar and agreed
+                                                        ClothyVS and agreed
                                                         to receive emails from
                                                         us regarding new
                                                         features, events and
@@ -359,7 +359,7 @@ const sendSupportMessage = (option) => {
                                                         <p
                                                           style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;font-weight:400;line-height:16px;text-align:center;color:#303030;"
                                                         >
-                                                          &copy; Kachabazar,
+                                                          &copy; ClothyVS,
                                                           All Rights Reserved.</p></div>
                                                     </td>
                                                   </tr>

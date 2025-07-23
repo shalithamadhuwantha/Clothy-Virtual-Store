@@ -87,12 +87,12 @@ app.listen(PORT, () => console.log(`server running on port ${PORT}`));
 //     origin: [
 //       "http://localhost:3000",
 //       "http://localhost:4100",
-//       "https://admin-kachabazar.vercel.app",
+//       "https://admin-ClothyVS.vercel.app",
 //       "https://dashtar-admin.vercel.app",
-//       "https://kachabazar-store.vercel.app",
-//       "https://kachabazar-admin.netlify.app",
+//       "https://ClothyVS-store.vercel.app",
+//       "https://ClothyVS-admin.netlify.app",
 //       "https://dashtar-admin.netlify.app",
-//       "https://kachabazar-store-nine.vercel.app",
+//       "https://ClothyVS-store-nine.vercel.app",
 //     ], //add your origin here instead of this
 //     methods: ["PUT", "GET", "POST", "DELETE", "PATCH", "OPTIONS"],
 //     credentials: false,

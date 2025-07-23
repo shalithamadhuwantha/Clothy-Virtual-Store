@@ -437,14 +437,14 @@ const Footer = () => {
 
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-10 flex justify-center py-4">
         <p className="text-sm text-gray-500 leading-6">
-          Copyright 2024 @{" "}
+          Copyright 2025 @{" "}
           <Link
-            href="https://themeforest.net/user/htmllover"
+            href="/locales"
             target="_blank"
             rel="noopener noreferrer"
             className="text-emerald-500"
           >
-            HtmlLover
+            Group11 (Elven)
           </Link>
           , All rights reserved.
         </p>
