@@ -78,6 +78,7 @@ const productSchema = new mongoose.Schema(
       default: "show",
       enum: ["show", "hide"],
     },
+    embedding: { type: [Number], required: false }, // store vector for CLIP
   },
   {
     timestamps: true,
