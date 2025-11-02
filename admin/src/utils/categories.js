@@ -17,8 +17,8 @@ const categories = [
   },
   {
     _id: '61b0d3975741dd2e949d5408',
-    children: ['Fresh Seafood'],
-    parent: 'Fresh Seafood',
+    children: ['Fresh Sea Cloth'],
+    parent: 'Fresh Sea Cloth',
     type: 'Grocery',
     icon: 'https://i.ibb.co/pfscwF4/shrimp.png',
     status: 'Show',
@@ -33,7 +33,7 @@ const categories = [
   },
   {
     _id: '61b0d3975741dd2e949d53fc',
-    children: ['Baby Food', 'Baby Accessories'],
+    children: ['Baby  Cloth', 'Baby Accessories'],
     parent: 'Baby Care',
     type: 'Health Care',
     icon: 'https://i.postimg.cc/QNqrnQBB/baby.png',
@@ -64,7 +64,7 @@ const categories = [
   },
   {
     _id: '61b0d3975741dd2e949d53ff',
-    children: ['Chocolate', 'Chips & Nuts', 'Canned Food'],
+    children: ['Chocolate', 'Chips & Nuts', 'Canned  Cloth'],
     parent: 'Snacks & Instant',
     type: 'Grocery',
     icon: 'https://i.ibb.co/HT7c6VT/chips.png',
@@ -151,8 +151,8 @@ const categories = [
   },
   {
     _id: '61b0d3975741dd2e949d5403',
-    children: ['Organic Food'],
-    parent: 'Organic Food',
+    children: ['Organic  Cloth'],
+    parent: 'Organic  Cloth',
     type: 'Grocery',
     icon: 'https://i.ibb.co/xmGhNRF/apple.png',
     status: 'Show',

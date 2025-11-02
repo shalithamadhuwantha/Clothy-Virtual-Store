@@ -44,11 +44,11 @@ const useStoreSettingSubmit = (id) => {
         setting: {
           cod_status: enabledCOD,
           stripe_status: enabledStripe,
-          razorpay_status: enabledRazorPay,
+          RazorPay_status: enabledRazorPay,
           stripe_key: data.stripe_key,
           stripe_secret: data.stripe_secret,
-          razorpay_id: data.razorpay_id,
-          razorpay_secret: data.razorpay_secret,
+          RazorPay_id: data.RazorPay_id,
+          RazorPay_secret: data.RazorPay_secret,
           google_login_status: enabledGoogleLogin,
           github_login_status: enabledGithubLogin,
           facebook_login_status: enabledFacebookLogin,
@@ -103,7 +103,7 @@ const useStoreSettingSubmit = (id) => {
           // for store setting
           setEnabledCOD(res.cod_status);
           setEnabledStripe(res.stripe_status);
-          setEnabledRazorPay(res.razorpay_status);
+          setEnabledRazorPay(res.RazorPay_status);
           setEnableFbPixel(res.fb_pixel_status);
           setEnabledTawkChat(res.tawk_chat_status);
           setEnabledGoogleLogin(res.google_login_status);
@@ -112,8 +112,8 @@ const useStoreSettingSubmit = (id) => {
           setEnabledGoogleAnalytics(res.google_analytic_status);
           setValue("stripe_key", res.stripe_key);
           setValue("stripe_secret", res.stripe_secret);
-          setValue("razorpay_id", res.razorpay_id);
-          setValue("razorpay_secret", res.razorpay_secret);
+          setValue("RazorPay_id", res.RazorPay_id);
+          setValue("RazorPay_secret", res.RazorPay_secret);
           setValue("google_id", res.google_id);
           setValue("google_secret", res.google_secret);
           setValue("github_id", res.github_id);

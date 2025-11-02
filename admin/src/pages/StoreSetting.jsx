@@ -135,7 +135,7 @@ const StoreSetting = () => {
                   <Label label="Enable RazorPay" />
                   <div className="sm:col-span-4">
                     <SwitchToggle
-                      id="razorpay"
+                      id="RazorPay"
                       processOption={enabledRazorPay}
                       handleProcess={setEnabledRazorPay}
                     />
@@ -158,11 +158,11 @@ const StoreSetting = () => {
                         required={enabledRazorPay}
                         register={register}
                         label="RazorPay ID"
-                        name="razorpay_id"
+                        name="RazorPay_id"
                         type="password"
                         placeholder="RazorPay ID"
                       />
-                      <Error errorName={errors.razorpay_id} />
+                      <Error errorName={errors.RazorPay_id} />
                     </div>
                   </div>
                   <div className="grid md:grid-cols-5 items-center sm:grid-cols-12 gap-3 md:gap-5 xl:gap-6 lg:gap-6">
@@ -172,11 +172,11 @@ const StoreSetting = () => {
                         required={enabledRazorPay}
                         register={register}
                         label="RazorPay Secret"
-                        name="razorpay_secret"
+                        name="RazorPay_secret"
                         type="password"
                         placeholder="RazorPay Secret"
                       />
-                      <Error errorName={errors.razorpay_secret} />
+                      <Error errorName={errors.RazorPay_secret} />
                     </div>
                   </div>
                 </div>

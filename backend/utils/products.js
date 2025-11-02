@@ -4096,7 +4096,7 @@ const products = [
       },
     ],
     image: ["https://i.postimg.cc/V636DsMm/paka-pape-50-gm-1-kg.webp"],
-    tag: ['["organic food","guava-jelly"]'],
+    tag: ['["organic  Cloth","guava-jelly"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c179f",
@@ -4108,7 +4108,7 @@ const products = [
       en: "Paka Pape",
     },
     description: {
-      en: "Organic food is food produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
+      en: "Organic  Cloth is  Cloth produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
     },
     category: {
       _id: "632ab1e04d87ff2494210a6a",
@@ -4139,7 +4139,7 @@ const products = [
     image: [
       "https://i.postimg.cc/yNpW3y8J/komola-Orange-imported-50-gm-1-kg.webp",
     ],
-    tag: ['["organic food","guava-jelly"]'],
+    tag: ['["organic  Cloth","guava-jelly"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c179e",
@@ -4151,7 +4151,7 @@ const products = [
       en: "Orange Imported",
     },
     description: {
-      en: "Organic food is food produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
+      en: "Organic  Cloth is  Cloth produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
     },
     category: {
       _id: "632ab1e04d87ff2494210a6a",
@@ -4180,7 +4180,7 @@ const products = [
       },
     ],
     image: ["https://i.postimg.cc/y6MgTjXc/china-fuji-apple-50-gm-1-kg.webp"],
-    tag: ['["organic food","guava-jelly"]'],
+    tag: ['["organic  Cloth","guava-jelly"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c179d",
@@ -4192,7 +4192,7 @@ const products = [
       en: "China Fuji apple",
     },
     description: {
-      en: "Organic food is food produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
+      en: "Organic  Cloth is  Cloth produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
     },
     category: {
       _id: "632ab1e04d87ff2494210a6a",
@@ -4221,7 +4221,7 @@ const products = [
       },
     ],
     image: ["https://i.postimg.cc/j5W2HnDM/Gerber-Organic.jpg"],
-    tag: ['["organic food","guava-jelly"]'],
+    tag: ['["organic  Cloth","guava-jelly"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c179c",
@@ -4233,7 +4233,7 @@ const products = [
       en: "Gerber-Organic",
     },
     description: {
-      en: "Organic food is food produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
+      en: "Organic  Cloth is  Cloth produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
     },
     category: {
       _id: "632ab1e04d87ff2494210a6a",
@@ -4264,7 +4264,7 @@ const products = [
     image: [
       "https://i.postimg.cc/2jbLvMvC/ahmed-sugar-free-Orange-jelly-375-gm.webp",
     ],
-    tag: ['["organic food","guava-jelly"]'],
+    tag: ['["organic  Cloth","guava-jelly"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c179b",
@@ -4276,7 +4276,7 @@ const products = [
       en: "Sugar Free Orange Jelly",
     },
     description: {
-      en: "Organic food is food produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
+      en: "Organic  Cloth is  Cloth produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
     },
     category: {
       _id: "632ab1e04d87ff2494210a6a",
@@ -4305,7 +4305,7 @@ const products = [
       },
     ],
     image: ["https://i.postimg.cc/9QpDCh3Y/jambura-pomelo-1-pcs.webp"],
-    tag: ['["organic food","guava-jelly"]'],
+    tag: ['["organic  Cloth","guava-jelly"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c179a",
@@ -4317,7 +4317,7 @@ const products = [
       en: "Pomelo",
     },
     description: {
-      en: "Organic food is food produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
+      en: "Organic  Cloth is  Cloth produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
     },
     category: {
       _id: "632ab1e04d87ff2494210a6a",
@@ -4346,7 +4346,7 @@ const products = [
       },
     ],
     image: ["https://i.postimg.cc/pXK9cjq7/anaros-pineapple-1-pcs.webp"],
-    tag: ['["organic food","guava-jelly"]'],
+    tag: ['["organic  Cloth","guava-jelly"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c1799",
@@ -4358,7 +4358,7 @@ const products = [
       en: "Pineapple",
     },
     description: {
-      en: "Organic food is food produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
+      en: "Organic  Cloth is  Cloth produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
     },
     category: {
       _id: "632ab1e04d87ff2494210a6a",
@@ -4382,7 +4382,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -4401,7 +4401,7 @@ const products = [
     image: [
       "https://i.postimg.cc/hhRB7fmQ/ahmed-sugar-free-guava-jelly-375-gm.webp",
     ],
-    tag: ['["organic food","guava-jelly"]'],
+    tag: ['["organic  Cloth","guava-jelly"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c1798",
@@ -4413,7 +4413,7 @@ const products = [
       en: "Sugar Free Guava Jelly",
     },
     description: {
-      en: "Organic food is food produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
+      en: "Organic  Cloth is  Cloth produced by methods complying with the standards of organic farming. Standards vary worldwide, but organic farming features practices that cycle resources, promote ecological balance, and conserve biodiversity.",
     },
     category: {
       _id: "632ab1e04d87ff2494210a6a",
@@ -5767,7 +5767,7 @@ const products = [
       en: "Robinsons Pink Lemonade",
     },
     description: {
-      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological food sources, such as meat or seafood, such as clam juice.",
+      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological  Cloth sources, such as meat or sea Cloth, such as clam juice.",
     },
     category: {
       _id: "632ab0564d87ff24942109df",
@@ -5816,7 +5816,7 @@ const products = [
       en: "Strawberry Lime juice",
     },
     description: {
-      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological food sources, such as meat or seafood, such as clam juice.",
+      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological  Cloth sources, such as meat or sea Cloth, such as clam juice.",
     },
     category: {
       _id: "632ab0564d87ff24942109df",
@@ -5865,7 +5865,7 @@ const products = [
       en: "Musselman Sparkling Cider",
     },
     description: {
-      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological food sources, such as meat or seafood, such as clam juice.",
+      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological  Cloth sources, such as meat or sea Cloth, such as clam juice.",
     },
     category: {
       _id: "632ab0564d87ff24942109df",
@@ -5912,7 +5912,7 @@ const products = [
       en: "Hood Orange juice",
     },
     description: {
-      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological food sources, such as meat or seafood, such as clam juice.",
+      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological  Cloth sources, such as meat or sea Cloth, such as clam juice.",
     },
     category: {
       _id: "632ab0564d87ff24942109df",
@@ -5961,7 +5961,7 @@ const products = [
       en: "Evolution Orange juice",
     },
     description: {
-      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological food sources, such as meat or seafood, such as clam juice.",
+      en: "juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables. It can also refer to liquids that are flavored with concentrate or other biological  Cloth sources, such as meat or sea Cloth, such as clam juice.",
     },
     category: {
       _id: "632ab0564d87ff24942109df",
@@ -6335,18 +6335,18 @@ const products = [
       },
     ],
     image: [
-      "https://i.postimg.cc/nrmZphW6/Food-Club-Original-Seltzer-water-33.jpg",
+      "https://i.postimg.cc/nrmZphW6/ Cloth-Club-Original-Seltzer-water-33.jpg",
     ],
     tag: ['["drinks","water"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c1775",
-    slug: "food-club-water",
+    slug: " Cloth-club-water",
     sku: "",
     barcode: "",
     productId: "",
     title: {
-      en: "Food Club water",
+      en: " Cloth Club water",
     },
     description: {
       en: "water, a substance composed of the chemical elements hydrogen and oxygen and existing in gaseous, liquid, and solid states. It is one of the most plentiful and essential of compounds. A tasteless and odourless liquid at room temperature, it has the important ability to dissolve many other substances.",
@@ -6478,7 +6478,7 @@ const products = [
     image: [
       "https://i.postimg.cc/63Mm1Pw8/Fresh-Wild-King-Salmon-Steak-1lb.jpg",
     ],
-    tag: ['["seafood","fish"]'],
+    tag: ['["sea Cloth","fish"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c1772",
@@ -6521,7 +6521,7 @@ const products = [
     image: [
       "https://i.postimg.cc/5tqG80Rq/Fresh-Whole-Canada-Salmon-25-5-oz.jpg",
     ],
-    tag: ['["seafood","fish"]'],
+    tag: ['["sea Cloth","fish"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c1771",
@@ -6564,7 +6564,7 @@ const products = [
     image: [
       "https://i.postimg.cc/bvjWGb3w/Fresh-Whole-Atlantic-Salmon-Steaks-1lb.jpg",
     ],
-    tag: ['["seafood","fish"]'],
+    tag: ['["sea Cloth","fish"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c1770",
@@ -6607,7 +6607,7 @@ const products = [
     image: [
       "https://i.postimg.cc/G3QLb33D/Black-Pearls-Salmon-Filet-Portion-6-oz.jpg",
     ],
-    tag: ['["seafood","fish"]'],
+    tag: ['["sea Cloth","fish"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c176f",
@@ -6648,7 +6648,7 @@ const products = [
       },
     ],
     image: ["https://i.postimg.cc/cCVTpyzL/Ling-Cod-Steak-1lb.jpg"],
-    tag: ['["seafood","fish"]'],
+    tag: ['["sea Cloth","fish"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c176e",
@@ -6691,7 +6691,7 @@ const products = [
     image: [
       "https://i.postimg.cc/RhVzWfCH/Cooked-Peeled-Deveined-Shrimp-2lb.jpg",
     ],
-    tag: ['["seafood","fish"]'],
+    tag: ['["sea Cloth","fish"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c176d",
@@ -6732,7 +6732,7 @@ const products = [
       },
     ],
     image: ["https://i.postimg.cc/xTjmhVRK/Ahi-Tuna-Steaks-per-lb.jpg"],
-    tag: ['["seafood","fish"]'],
+    tag: ['["sea Cloth","fish"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c176c",
@@ -6873,7 +6873,7 @@ const products = [
       en: "Fresh flour",
     },
     description: {
-      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various food products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
+      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various  Cloth products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
     },
     category: {
       _id: "632aca184d87ff2494210bd4",
@@ -6920,7 +6920,7 @@ const products = [
       en: "ACI Pure flour",
     },
     description: {
-      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various food products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
+      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various  Cloth products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
     },
     category: {
       _id: "632aca184d87ff2494210bd4",
@@ -6967,7 +6967,7 @@ const products = [
       en: "ACI Pure flour",
     },
     description: {
-      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various food products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
+      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various  Cloth products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
     },
     category: {
       _id: "632aca184d87ff2494210bd4",
@@ -7014,7 +7014,7 @@ const products = [
       en: "ACI Nutrilife Oats flour",
     },
     description: {
-      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various food products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
+      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various  Cloth products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
     },
     category: {
       _id: "632aca184d87ff2494210bd4",
@@ -7095,7 +7095,7 @@ const products = [
       en: "ACI Nutrilife flour",
     },
     description: {
-      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various food products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
+      en: "flour, finely ground cereal grains or other starchy portions of plants, used in various  Cloth products and as a basic ingredient of baked goods. flour made from wheat grains is the most satisfactory  for baked products that require spongy structure. ... The outer layers and internal structures of a kernel of wheat.",
     },
     category: {
       _id: "632aca184d87ff2494210bd4",
@@ -7982,7 +7982,7 @@ const products = [
       en: "Dan Cake Layer Cake",
     },
     description: {
-      en: "Cake is a form of sweet food made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
+      en: "Cake is a form of sweet  Cloth made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
     },
     category: {
       _id: "632ac9ef4d87ff2494210ba8",
@@ -8023,7 +8023,7 @@ const products = [
       en: "Dan Cake Lemon",
     },
     description: {
-      en: "Cake is a form of sweet food made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
+      en: "Cake is a form of sweet  Cloth made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
     },
     category: {
       _id: "632ac9ef4d87ff2494210ba8",
@@ -8064,7 +8064,7 @@ const products = [
       en: "Dan Cake Pound Cake",
     },
     description: {
-      en: "Cake is a form of sweet food made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
+      en: "Cake is a form of sweet  Cloth made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
     },
     category: {
       _id: "632ac9ef4d87ff2494210ba8",
@@ -8107,7 +8107,7 @@ const products = [
       en: "Dan Cake chocolate Muffin",
     },
     description: {
-      en: "Cake is a form of sweet food made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
+      en: "Cake is a form of sweet  Cloth made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
     },
     category: {
       _id: "632ac9ef4d87ff2494210ba8",
@@ -8150,7 +8150,7 @@ const products = [
       en: "Dan Cake",
     },
     description: {
-      en: "Cake is a form of sweet food made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
+      en: "Cake is a form of sweet  Cloth made from flour, sugar, and other ingredients, that is usually baked. ... The most commonly used cake ingredients include flour, sugar, eggs, butter or oil or margarine, a liquid, and a leavening agent, such as baking soda or baking powder.",
     },
     category: {
       _id: "632ac9ef4d87ff2494210ba8",
@@ -8193,7 +8193,7 @@ const products = [
       en: "Dekko Ovaltine Cookie",
     },
     description: {
-      en: "A biscuit is a flour-based baked food product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
+      en: "A biscuit is a flour-based baked  Cloth product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
     },
     category: {
       _id: "632ac9f64d87ff2494210bb0",
@@ -8236,7 +8236,7 @@ const products = [
       en: "Danish Orange Biscuit",
     },
     description: {
-      en: "A biscuit is a flour-based baked food product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
+      en: "A biscuit is a flour-based baked  Cloth product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
     },
     category: {
       _id: "632ac9f64d87ff2494210bb0",
@@ -8277,7 +8277,7 @@ const products = [
       en: "Bisk Club Cream Biscuit",
     },
     description: {
-      en: "A biscuit is a flour-based baked food product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
+      en: "A biscuit is a flour-based baked  Cloth product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
     },
     category: {
       _id: "632ac9f64d87ff2494210bb0",
@@ -8318,7 +8318,7 @@ const products = [
       en: "Bisk Club Masala Flavor",
     },
     description: {
-      en: "A biscuit is a flour-based baked food product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
+      en: "A biscuit is a flour-based baked  Cloth product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
     },
     category: {
       _id: "632ac9f64d87ff2494210bb0",
@@ -8359,7 +8359,7 @@ const products = [
       en: "Fun Milk Wafer Biscuit",
     },
     description: {
-      en: "A biscuit is a flour-based baked food product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
+      en: "A biscuit is a flour-based baked  Cloth product. In most countries, particularly in the Commonwealth and Ireland, biscuits are typically hard, flat and unleavened. They are usually sweet and may be made with sugar, chocolate, icing, jam, ginger or cinnamon. They can also be savoury and similar to crackers.",
     },
     category: {
       _id: "632ac9f64d87ff2494210bb0",
@@ -8400,7 +8400,7 @@ const products = [
       en: "Life Tomato Ketchup",
     },
     description: {
-      en: "sauce, liquid or semiliquid mixture that is added to a food as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which food is contained, for example, the velouté sauce of creamed chicken.",
+      en: "sauce, liquid or semiliquid mixture that is added to a  Cloth as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which  Cloth is contained, for example, the velouté sauce of creamed chicken.",
     },
     category: {
       _id: "62cfad52484d89068aa7a81f",
@@ -8441,7 +8441,7 @@ const products = [
       en: "Life Soya Sauce",
     },
     description: {
-      en: "sauce, liquid or semiliquid mixture that is added to a food as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which food is contained, for example, the velouté sauce of creamed chicken.",
+      en: "sauce, liquid or semiliquid mixture that is added to a  Cloth as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which  Cloth is contained, for example, the velouté sauce of creamed chicken.",
     },
     category: {
       _id: "62cfad52484d89068aa7a81f",
@@ -8484,7 +8484,7 @@ const products = [
       en: "Life Dark Soya Sauce",
     },
     description: {
-      en: "sauce, liquid or semiliquid mixture that is added to a food as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which food is contained, for example, the velouté sauce of creamed chicken.",
+      en: "sauce, liquid or semiliquid mixture that is added to a  Cloth as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which  Cloth is contained, for example, the velouté sauce of creamed chicken.",
     },
     category: {
       _id: "62cfad52484d89068aa7a81f",
@@ -8525,7 +8525,7 @@ const products = [
       en: "Kikkoman Soya Sauce",
     },
     description: {
-      en: "sauce, liquid or semiliquid mixture that is added to a food as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which food is contained, for example, the velouté sauce of creamed chicken.",
+      en: "sauce, liquid or semiliquid mixture that is added to a  Cloth as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which  Cloth is contained, for example, the velouté sauce of creamed chicken.",
     },
     category: {
       _id: "62cfad52484d89068aa7a81f",
@@ -8568,7 +8568,7 @@ const products = [
       en: "Calypso Sauce",
     },
     description: {
-      en: "sauce, liquid or semiliquid mixture that is added to a food as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which food is contained, for example, the velouté sauce of creamed chicken.",
+      en: "sauce, liquid or semiliquid mixture that is added to a  Cloth as it cooks or that is served with it. sauces provide flavour, moisture, and a contrast in texture and colour. They may also serve as a medium in which  Cloth is contained, for example, the velouté sauce of creamed chicken.",
     },
     category: {
       _id: "62cfad52484d89068aa7a81f",
@@ -8832,7 +8832,7 @@ const products = [
       en: "Pita bread",
     },
     description: {
-      en: "The definition of a breakfast food is a food that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast food is oatmeal. An example of a breakfast food is french toast with scrambled eggs.",
+      en: "The definition of a breakfast  Cloth is a  Cloth that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast  Cloth is oatmeal. An example of a breakfast  Cloth is french toast with scrambled eggs.",
     },
     category: {
       _id: "632aae7b4d87ff2494210967",
@@ -8885,7 +8885,7 @@ const products = [
       en: "632aae7b4d87ff2494210967",
     },
     description: {
-      en: "The definition of a breakfast food is a food that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast food is oatmeal. An example of a breakfast food is french toast with scrambled eggs.",
+      en: "The definition of a breakfast  Cloth is a  Cloth that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast  Cloth is oatmeal. An example of a breakfast  Cloth is french toast with scrambled eggs.",
     },
     category: {
       _id: "632aae7b4d87ff2494210967",
@@ -8938,7 +8938,7 @@ const products = [
       en: "Pita bread",
     },
     description: {
-      en: "The definition of a breakfast food is a food that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast food is oatmeal. An example of a breakfast food is french toast with scrambled eggs.",
+      en: "The definition of a breakfast  Cloth is a  Cloth that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast  Cloth is oatmeal. An example of a breakfast  Cloth is french toast with scrambled eggs.",
     },
     category: {
       _id: "632aae7b4d87ff2494210967",
@@ -8993,7 +8993,7 @@ const products = [
       en: "Wholemeal bread",
     },
     description: {
-      en: "The definition of a breakfast food is a food that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast food is oatmeal. An example of a breakfast food is french toast with scrambled eggs.",
+      en: "The definition of a breakfast  Cloth is a  Cloth that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast  Cloth is oatmeal. An example of a breakfast  Cloth is french toast with scrambled eggs.",
     },
     category: {
       _id: "632aae7b4d87ff2494210967",
@@ -9046,7 +9046,7 @@ const products = [
       en: "Quaker Oats Jar",
     },
     description: {
-      en: "The definition of a breakfast food is a food that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast food is oatmeal. An example of a breakfast food is french toast with scrambled eggs.",
+      en: "The definition of a breakfast  Cloth is a  Cloth that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast  Cloth is oatmeal. An example of a breakfast  Cloth is french toast with scrambled eggs.",
     },
     category: {
       _id: "632aae624d87ff2494210951",
@@ -9101,7 +9101,7 @@ const products = [
       en: "breakfast cereal Pouch",
     },
     description: {
-      en: "The definition of a breakfast food is a food that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast food is oatmeal. An example of a breakfast food is french toast with scrambled eggs.",
+      en: "The definition of a breakfast  Cloth is a  Cloth that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast  Cloth is oatmeal. An example of a breakfast  Cloth is french toast with scrambled eggs.",
     },
     category: {
       _id: "632aae624d87ff2494210951",
@@ -9156,7 +9156,7 @@ const products = [
       en: "honey breakfast cereal",
     },
     description: {
-      en: "The definition of a breakfast food is a food that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast food is oatmeal. An example of a breakfast food is french toast with scrambled eggs.",
+      en: "The definition of a breakfast  Cloth is a  Cloth that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast  Cloth is oatmeal. An example of a breakfast  Cloth is french toast with scrambled eggs.",
     },
     category: {
       _id: "632aae624d87ff2494210951",
@@ -9211,7 +9211,7 @@ const products = [
       en: "chocolate breakfast cereal",
     },
     description: {
-      en: "The definition of a breakfast food is a food that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast food is oatmeal. An example of a breakfast food is french toast with scrambled eggs.",
+      en: "The definition of a breakfast  Cloth is a  Cloth that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast  Cloth is oatmeal. An example of a breakfast  Cloth is french toast with scrambled eggs.",
     },
     category: {
       _id: "632aae624d87ff2494210951",
@@ -9266,7 +9266,7 @@ const products = [
       en: "Flakes breakfast cereal",
     },
     description: {
-      en: "The definition of a breakfast food is a food that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast food is oatmeal. An example of a breakfast food is french toast with scrambled eggs.",
+      en: "The definition of a breakfast  Cloth is a  Cloth that is eaten primarily for the first meal of the day commonly including: cereal, toast, eggs, pancakes, waffles, pastries, sausage or bacon. An example of a breakfast  Cloth is oatmeal. An example of a breakfast  Cloth is french toast with scrambled eggs.",
     },
     category: {
       _id: "632aae624d87ff2494210951",
@@ -9325,7 +9325,7 @@ const products = [
       en: "Aseel Vegetable Ghee",
     },
     description: {
-      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy food, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
+      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy  Cloth, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
     },
     category: {
       _id: "632ab16c4d87ff2494210a44",
@@ -9384,7 +9384,7 @@ const products = [
       en: "Ultra Ghee",
     },
     description: {
-      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy food, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
+      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy  Cloth, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
     },
     category: {
       _id: "632ab16c4d87ff2494210a44",
@@ -9443,7 +9443,7 @@ const products = [
       en: "Pran Premium Ghee",
     },
     description: {
-      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy food, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
+      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy  Cloth, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
     },
     category: {
       _id: "632ab16c4d87ff2494210a44",
@@ -9502,7 +9502,7 @@ const products = [
       en: "Aarong Ghee",
     },
     description: {
-      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy food, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
+      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy  Cloth, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
     },
     category: {
       _id: "632ab16c4d87ff2494210a44",
@@ -9561,7 +9561,7 @@ const products = [
       en: "Aarong dairy Ghee",
     },
     description: {
-      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy food, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
+      en: "Butter, a yellow-to-white solid emulsion of fat globules, water, and inorganic salts produced by churning the cream from cows'milk. ... Butter is a high-energy  Cloth, containing approximately 715 calories per 100 grams. It has a high content of butterfat, or milk fat (at least 80 percent), but is low in protein.",
     },
     category: {
       _id: "632ab16c4d87ff2494210a44",
@@ -13552,7 +13552,7 @@ const products = [
       en: "Bird Toy",
     },
     description: {
-      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious food, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
+      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious  Cloth, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
     },
     category: {
       _id: "632ab4434d87ff2494210b0e",
@@ -13599,7 +13599,7 @@ const products = [
       en: "Foraging Pouch Bird Toy",
     },
     description: {
-      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious food, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
+      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious  Cloth, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
     },
     category: {
       _id: "632ab4434d87ff2494210b0e",
@@ -13646,7 +13646,7 @@ const products = [
       en: "Ecotrition Goofy Links",
     },
     description: {
-      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious food, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
+      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious  Cloth, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
     },
     category: {
       _id: "632ab4434d87ff2494210b0e",
@@ -13693,7 +13693,7 @@ const products = [
       en: "Paradise Toys",
     },
     description: {
-      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious food, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
+      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious  Cloth, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
     },
     category: {
       _id: "632ab4524d87ff2494210b19",
@@ -13732,15 +13732,15 @@ const products = [
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16fd",
-    slug: "kaytee-bird-food",
+    slug: "kaytee-bird- Cloth",
     sku: "",
     barcode: "",
     productId: "",
     title: {
-      en: "Kaytee Bird Food",
+      en: "Kaytee Bird  Cloth",
     },
     description: {
-      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious food, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
+      en: "Many species of birds make fun, engaging pets. If you're considering bird ownership, the care requirements include providing good housing, nutritious  Cloth, and keeping an eye on the bird's health. You'll also need to provide plenty of enrichment and interaction, to keep your pet bird happy and alert.",
     },
     category: {
       _id: "632ab4434d87ff2494210b0e",
@@ -13783,16 +13783,16 @@ const products = [
     image: [
       "https://i.postimg.cc/659bdF8x/So-Phresh-Pink-Scoopable-Odor-Lock-Clumping-Micro-Crystal-Cat-Litter-8-lb.jpg",
     ],
-    tag: ['["cat-food","cat-care"]'],
+    tag: ['["cat- Cloth","cat-care"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16fc",
-    slug: "sophresh-cat-food",
+    slug: "sophresh-cat- Cloth",
     sku: "",
     barcode: "",
     productId: "",
     title: {
-      en: "Sophresh Cat Food",
+      en: "Sophresh Cat  Cloth",
     },
     description: {
       en: "Provide plenty of human companionship. Provide regular, suitable meals with a constant supply of fresh water. Provide a clean and comfortable bed. Provide the cat with outdoor access or be prepared to empty and clean a litter tray on a daily basis.",
@@ -14001,18 +14001,18 @@ const products = [
       },
     ],
     image: [
-      "https://i.postimg.cc/YCCVwT7z/IAMS-Proactive-Health-Oral-Care-Complete-Premium-Cat-Food-16-lb.jpg",
+      "https://i.postimg.cc/YCCVwT7z/IAMS-Proactive-Health-Oral-Care-Complete-Premium-Cat- Cloth-16-lb.jpg",
     ],
     tag: ['["cat-toy","cat-care"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16f8",
-    slug: "premium-cat-food",
+    slug: "premium-cat- Cloth",
     sku: "",
     barcode: "",
     productId: "",
     title: {
-      en: "Premium Cat Food",
+      en: "Premium Cat  Cloth",
     },
     description: {
       en: "Provide plenty of human companionship. Provide regular, suitable meals with a constant supply of fresh water. Provide a clean and comfortable bed. Provide the cat with outdoor access or be prepared to empty and clean a litter tray on a daily basis.",
@@ -14125,7 +14125,7 @@ const products = [
       en: "Blue Pin Brush",
     },
     description: {
-      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing food and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
+      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing  Cloth and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
     },
     category: {
       _id: "632ab45b4d87ff2494210b21",
@@ -14166,21 +14166,21 @@ const products = [
       },
     ],
     image: [
-      "https://i.postimg.cc/xCG8SXG7/Royal-Canin-Medium-Adult-Dog-Food-17-lb.jpg",
+      "https://i.postimg.cc/xCG8SXG7/Royal-Canin-Medium-Adult-Dog- Cloth-17-lb.jpg",
     ],
-    tag: ['["dog-food","dog-care"]'],
+    tag: ['["dog- Cloth","dog-care"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16f5",
-    slug: "royal-canin-dog-food",
+    slug: "royal-canin-dog- Cloth",
     sku: "",
     barcode: "",
     productId: "",
     title: {
-      en: "Royal Canin Dog Food",
+      en: "Royal Canin Dog  Cloth",
     },
     description: {
-      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing food and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
+      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing  Cloth and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
     },
     category: {
       _id: "632ab45b4d87ff2494210b21",
@@ -14235,7 +14235,7 @@ const products = [
       en: "Pet Safe Elite",
     },
     description: {
-      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing food and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
+      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing  Cloth and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
     },
     category: {
       _id: "632ab45b4d87ff2494210b21",
@@ -14290,7 +14290,7 @@ const products = [
       en: "Hill Science Diet Dog",
     },
     description: {
-      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing food and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
+      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing  Cloth and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
     },
     category: {
       _id: "632ab45b4d87ff2494210b21",
@@ -14345,7 +14345,7 @@ const products = [
       en: "Halloween Dog Taco",
     },
     description: {
-      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing food and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
+      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing  Cloth and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
     },
     category: {
       _id: "632ab45b4d87ff2494210b21",
@@ -14400,7 +14400,7 @@ const products = [
       en: "Colorado Dog Collar",
     },
     description: {
-      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing food and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
+      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing  Cloth and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
     },
     category: {
       _id: "632ab45b4d87ff2494210b21",
@@ -14455,7 +14455,7 @@ const products = [
       en: "Bling Dog Collar",
     },
     description: {
-      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing food and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
+      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing  Cloth and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
     },
     category: {
       _id: "632ab45b4d87ff2494210b21",
@@ -14510,7 +14510,7 @@ const products = [
       en: "Popsicle Dog Collar",
     },
     description: {
-      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing food and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
+      en: "Dog Sitters supervise pets and take care of them in their owners'absence. Typical activities seen on a Dog Sitter example resume are grooming, providing  Cloth and water, taking dogs out for walk, taking dogs to vet appointments, administering medication, providing companionship, and following owner instructions.",
     },
     category: {
       _id: "632ab45b4d87ff2494210b21",
@@ -14534,7 +14534,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -14552,14 +14552,14 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
     image: [
       "https://i.postimg.cc/hPmDFzS0/Hibiscus-Premium-Whole-Baby-Corn-425g.jpg",
     ],
-    tag: ['["hibiscus-corn","canned-food"]'],
+    tag: ['["hibiscus-corn","canned- Cloth"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16ee",
@@ -14571,12 +14571,12 @@ const products = [
       en: "Hibiscus Baby Corn",
     },
     description: {
-      en: "canned food - food preserved by canning. canned foods, canned goods, tinned goods. food product, foodstuff - a substance that can be used or prepared for use as food. canned meat, tinned meat - meat preserved in a can or tin.",
+      en: "canned  Cloth -  Cloth preserved by canning. canned  Cloths, canned goods, tinned goods.  Cloth product,  Clothstuff - a substance that can be used or prepared for use as  Cloth. canned meat, tinned meat - meat preserved in a can or tin.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 485,
@@ -14595,7 +14595,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -14613,12 +14613,12 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
     image: ["https://i.postimg.cc/br7qD8Rb/Figaro-Plain-Green-Olives-340g.jpg"],
-    tag: ['["figaro-olives","canned-food"]'],
+    tag: ['["figaro-olives","canned- Cloth"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16ed",
@@ -14630,12 +14630,12 @@ const products = [
       en: "Figaro Green Olives",
     },
     description: {
-      en: "canned food - food preserved by canning. canned foods, canned goods, tinned goods. food product, foodstuff - a substance that can be used or prepared for use as food. canned meat, tinned meat - meat preserved in a can or tin.",
+      en: "canned  Cloth -  Cloth preserved by canning. canned  Cloths, canned goods, tinned goods.  Cloth product,  Clothstuff - a substance that can be used or prepared for use as  Cloth. canned meat, tinned meat - meat preserved in a can or tin.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 212,
@@ -14654,7 +14654,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -14672,14 +14672,14 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
     image: [
       "https://i.postimg.cc/d3kqVDGw/Borges-Green-Pitted-Olives-320g.jpg",
     ],
-    tag: ['["borges-olives","canned-food"]'],
+    tag: ['["borges-olives","canned- Cloth"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16ec",
@@ -14691,12 +14691,12 @@ const products = [
       en: "Borges Green Olive",
     },
     description: {
-      en: "canned food - food preserved by canning. canned foods, canned goods, tinned goods. food product, foodstuff - a substance that can be used or prepared for use as food. canned meat, tinned meat - meat preserved in a can or tin.",
+      en: "canned  Cloth -  Cloth preserved by canning. canned  Cloths, canned goods, tinned goods.  Cloth product,  Clothstuff - a substance that can be used or prepared for use as  Cloth. canned meat, tinned meat - meat preserved in a can or tin.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 249,
@@ -14715,7 +14715,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -14733,14 +14733,14 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
     image: [
       "https://i.postimg.cc/pT1WvKhs/Borges-Black-Whole-Olives-330-Gm.jpg",
     ],
-    tag: ['["borges-olives","canned-food"]'],
+    tag: ['["borges-olives","canned- Cloth"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16eb",
@@ -14752,12 +14752,12 @@ const products = [
       en: "Borges Green Olives",
     },
     description: {
-      en: "canned food - food preserved by canning. canned foods, canned goods, tinned goods. food product, foodstuff - a substance that can be used or prepared for use as food. canned meat, tinned meat - meat preserved in a can or tin.",
+      en: "canned  Cloth -  Cloth preserved by canning. canned  Cloths, canned goods, tinned goods.  Cloth product,  Clothstuff - a substance that can be used or prepared for use as  Cloth. canned meat, tinned meat - meat preserved in a can or tin.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 18,
@@ -14776,7 +14776,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -14794,14 +14794,14 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
     image: [
       "https://i.postimg.cc/hjGDN2jJ/American-Garden-Mushroom-Whole-Can-425g.jpg",
     ],
-    tag: ['["american-mushroom","canned-food"]'],
+    tag: ['["american-mushroom","canned- Cloth"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16ea",
@@ -14813,12 +14813,12 @@ const products = [
       en: "American Mushroom",
     },
     description: {
-      en: "canned food - food preserved by canning. canned foods, canned goods, tinned goods. food product, foodstuff - a substance that can be used or prepared for use as food. canned meat, tinned meat - meat preserved in a can or tin.",
+      en: "canned  Cloth -  Cloth preserved by canning. canned  Cloths, canned goods, tinned goods.  Cloth product,  Clothstuff - a substance that can be used or prepared for use as  Cloth. canned meat, tinned meat - meat preserved in a can or tin.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 188,
@@ -14837,7 +14837,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -14855,7 +14855,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -14872,7 +14872,7 @@ const products = [
       en: "Lays Classic Salted",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab39484d89068aa7a7fb",
@@ -14896,7 +14896,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -14914,7 +14914,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -14933,7 +14933,7 @@ const products = [
       en: "Lays American Chips",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab39484d89068aa7a7fb",
@@ -14957,7 +14957,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -14975,7 +14975,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -14992,7 +14992,7 @@ const products = [
       en: "Kurkure Crackers",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab39484d89068aa7a7fb",
@@ -15016,7 +15016,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15034,7 +15034,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15051,7 +15051,7 @@ const products = [
       en: "Camel Smoked Almonds",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab39484d89068aa7a7fb",
@@ -15075,7 +15075,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15093,7 +15093,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15112,7 +15112,7 @@ const products = [
       en: "Blue Diamond Almonds",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab39484d89068aa7a7fb",
@@ -15136,7 +15136,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15154,7 +15154,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15171,7 +15171,7 @@ const products = [
       en: "Choco chocolate",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab28484d89068aa7a7f5",
@@ -15195,7 +15195,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15213,7 +15213,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15230,7 +15230,7 @@ const products = [
       en: "Lotte Almond Chocoball",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab28484d89068aa7a7f5",
@@ -15254,7 +15254,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15272,7 +15272,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15291,7 +15291,7 @@ const products = [
       en: "Passiar Mints",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab28484d89068aa7a7f5",
@@ -15315,7 +15315,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15333,7 +15333,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15352,7 +15352,7 @@ const products = [
       en: "Assorted chocolate Box",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab28484d89068aa7a7f5",
@@ -15376,7 +15376,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15394,7 +15394,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15413,7 +15413,7 @@ const products = [
       en: "Caramel Candy",
     },
     description: {
-      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of food: such as. (1) : a small, thin, crisp, usually salty piece of food typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
+      en: "a small usually thin and flat piece (as of wood or stone) cut, struck, or flaked off. b : a small piece of  Cloth: such as. (1) : a small, thin, crisp, usually salty piece of  Cloth typically prepared by frying, baking, or drying banana chips especially : potato chip — see also corn chip.",
     },
     category: {
       _id: "62cfab28484d89068aa7a7f5",
@@ -15437,7 +15437,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15455,7 +15455,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15474,12 +15474,12 @@ const products = [
       en: "Mr noodles Magic Masala",
     },
     description: {
-      en: "noodles are a  of food made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
+      en: "noodles are a  of  Cloth made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 755,
@@ -15498,7 +15498,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15516,7 +15516,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15535,12 +15535,12 @@ const products = [
       en: "Mama Hot Spicy noodles",
     },
     description: {
-      en: "noodles are a  of food made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
+      en: "noodles are a  of  Cloth made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 353,
@@ -15559,7 +15559,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15577,7 +15577,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15596,12 +15596,12 @@ const products = [
       en: "Mama Hot Spicy Flovour",
     },
     description: {
-      en: "noodles are a  of food made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
+      en: "noodles are a  of  Cloth made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 9,
@@ -15620,7 +15620,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15638,7 +15638,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15657,12 +15657,12 @@ const products = [
       en: "Maggi noodles",
     },
     description: {
-      en: "noodles are a  of food made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
+      en: "noodles are a  of  Cloth made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 627,
@@ -15681,7 +15681,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
       {
@@ -15699,7 +15699,7 @@ const products = [
       {
         _id: "62cfab4b484d89068aa7a7ff",
         name: {
-          en: "Canned Food",
+          en: "Canned  Cloth",
         },
       },
     ],
@@ -15716,12 +15716,12 @@ const products = [
       en: "Doodles noodles",
     },
     description: {
-      en: "noodles are a  of food made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
+      en: "noodles are a  of  Cloth made from unleavened dough which is rolled flat and cut, stretched or extruded, into long strips or strings. ... noodles are usually cooked in boiling water, sometimes with cooking oil or salt added. They are also often pan-fried or deep-fried.",
     },
     category: {
       _id: "62cfab4b484d89068aa7a7ff",
       name: {
-        en: "Canned Food",
+        en: "Canned  Cloth",
       },
     },
     stock: 220,
@@ -15757,7 +15757,7 @@ const products = [
       en: "Tropica Mustard honey",
     },
     description: {
-      en: "honey, sweet, viscous liquid food, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
+      en: "honey, sweet, viscous liquid  Cloth, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
     },
     category: {
       _id: "632ab2b64d87ff2494210aa7",
@@ -15798,7 +15798,7 @@ const products = [
       en: "Saffola honey",
     },
     description: {
-      en: "honey, sweet, viscous liquid food, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
+      en: "honey, sweet, viscous liquid  Cloth, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
     },
     category: {
       _id: "632ab2b64d87ff2494210aa7",
@@ -15839,7 +15839,7 @@ const products = [
       en: "Shefa Natural honey",
     },
     description: {
-      en: "honey, sweet, viscous liquid food, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
+      en: "honey, sweet, viscous liquid  Cloth, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
     },
     category: {
       _id: "632ab2b64d87ff2494210aa7",
@@ -15880,7 +15880,7 @@ const products = [
       en: "Dabur honey",
     },
     description: {
-      en: "honey, sweet, viscous liquid food, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
+      en: "honey, sweet, viscous liquid  Cloth, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
     },
     category: {
       _id: "632ab2b64d87ff2494210aa7",
@@ -15923,7 +15923,7 @@ const products = [
       en: "Dabur honey Oil Free",
     },
     description: {
-      en: "honey, sweet, viscous liquid food, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
+      en: "honey, sweet, viscous liquid  Cloth, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
     },
     category: {
       _id: "632ab2c34d87ff2494210ab2",
@@ -15966,7 +15966,7 @@ const products = [
       en: "Aussiebee honey Glass Bottle",
     },
     description: {
-      en: "honey, sweet, viscous liquid food, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
+      en: "honey, sweet, viscous liquid  Cloth, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
     },
     category: {
       _id: "632ab2c34d87ff2494210ab2",
@@ -16007,7 +16007,7 @@ const products = [
       en: "Aussiebee honey",
     },
     description: {
-      en: "honey, sweet, viscous liquid food, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
+      en: "honey, sweet, viscous liquid  Cloth, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
     },
     category: {
       _id: "632ab2c34d87ff2494210ab2",
@@ -16048,7 +16048,7 @@ const products = [
       en: "Aussiebee honey Bottle",
     },
     description: {
-      en: "honey, sweet, viscous liquid food, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
+      en: "honey, sweet, viscous liquid  Cloth, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
     },
     category: {
       _id: "632ab2c34d87ff2494210ab2",
@@ -16089,7 +16089,7 @@ const products = [
       en: "Alshifa Natural honey",
     },
     description: {
-      en: "honey, sweet, viscous liquid food, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
+      en: "honey, sweet, viscous liquid  Cloth, dark golden in colour, produced in the honey sacs of various bees from the nectar of flowers. Flavour and colour are determined by the flowers from which the nectar is gathered. Some of the most commercially desirable honeys are produced from clover by the domestic honeybee.",
     },
     category: {
       _id: "632ab2c34d87ff2494210ab2",
@@ -19911,14 +19911,14 @@ const products = [
       {
         _id: "63f12afdcc480f0454f475dd",
         name: {
-          en: "Baby Food",
+          en: "Baby  Cloth",
         },
       },
     ],
     image: [
       "https://i.ibb.co/yYsskBN/Cerelac-Wheat-apple-Cornflakes-400-Gm-BIB.jpg",
     ],
-    tag: ['["baby care","baby-food"]'],
+    tag: ['["baby care","baby- Cloth"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16a3",
@@ -19935,7 +19935,7 @@ const products = [
     category: {
       _id: "63f12afdcc480f0454f475dd",
       name: {
-        en: "Baby Food",
+        en: "Baby  Cloth",
       },
     },
     stock: 597,
@@ -19960,14 +19960,14 @@ const products = [
       {
         _id: "63f12afdcc480f0454f475dd",
         name: {
-          en: "Baby Food",
+          en: "Baby  Cloth",
         },
       },
     ],
     image: [
       "https://i.ibb.co/R9Pn8XN/Cerelac-Wheat-apple-Cherry-400-Gm-BIB.jpg",
     ],
-    tag: ['["baby care","baby-food"]'],
+    tag: ['["baby care","baby- Cloth"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16a2",
@@ -19984,7 +19984,7 @@ const products = [
     category: {
       _id: "63f12afdcc480f0454f475dd",
       name: {
-        en: "Baby Food",
+        en: "Baby  Cloth",
       },
     },
     stock: 379,
@@ -20008,7 +20008,7 @@ const products = [
       },
     ],
     image: ["https://i.ibb.co/YddcNxc/Biomil-1-MINI-Tin-200-Gm.jpg"],
-    tag: ['["baby care","baby-food"]'],
+    tag: ['["baby care","baby- Cloth"]'],
     variants: [],
     status: "show",
     _id: "644500c2839a5e0c2f5c16a1",

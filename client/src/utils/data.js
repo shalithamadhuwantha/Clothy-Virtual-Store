@@ -97,44 +97,18 @@ const sliderData = [
     url: "/search?Category=biscuits--cakes",
     image: "/slider/slider-1.jpg",
   },
-  {
-    id: 2,
-    title: "Slider2Title",
-    info: "Slider2description",
-    url: "/search?Category=fish--meat",
-    image: "/slider/slider-2.jpg",
-  },
-  {
-    id: 3,
-    title: "Slider3Title",
-    info: "Slider3description",
-    url: "/search?category=fresh-vegetable",
-    image: "/slider/slider-3.jpg",
-  },
+
 ];
 
 const ctaCardData = [
   // {
   //   id: 1,
   //   title: "Taste of",
-  //   subTitle: "Fresh & Natural",
-  //   image: "/cta/cta-bg-1.jpg",
-  //   url: "/search?category=fresh-vegetable",
+  //   subTitle: "T",
+  //   image: "/cta/",
+  //   url: "/search?category",
   // },
-  // {
-  //   id: 2,
-  //   title: "Taste of",
-  //   subTitle: "Fish & Meat",
-  //   image: "/cta/cta-bg-2.jpg",
-  //   url: "/search?Category=fish--meat",
-  // },
-  // {
-  //   id: 3,
-  //   title: "Taste of",
-  //   subTitle: "Bread & Bakery",
-  //   image: "/cta/cta-bg-3.jpg",
-  //   url: "/search?Category=biscuits--cakes",
-  // },
+
 ];
 
 const featurePromo = [

@@ -15,7 +15,7 @@ const PageTitle = ({ title, description }) => {
         content={
           description
             ? ` ${description} `
-            : "ClothyVS : React Grocery & Organic Food Store e-commerce Admin Dashboard"
+            : "ClothyVS : React Grocery & Organic  Cloth Store e-commerce Admin Dashboard"
         }
       />
     </Helmet>

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCart } from "react-use-cart";
-import useRazorpay from "react-razorpay";
+import useRazorPay from "react-RazorPay";
 import { useQuery } from "@tanstack/react-query";
 
 //internal import
@@ -35,7 +35,7 @@ const useCheckoutSubmit = (storeSetting) => {
 
   const router = useRouter();
   const couponRef = useRef("");
-  const [Razorpay] = useRazorpay();
+  const [RazorPay] = useRazorPay();
   const { isEmpty, emptyCart, items, cartTotal } = useCart();
 
   const userInfo = getUserSession();
@@ -149,8 +149,8 @@ const useCheckoutSubmit = (storeSetting) => {
 
       // Handle payment based on method
       switch (data.paymentMethod) {
-        case "RazorPay":
-          await handlePaymentWithRazorpay(orderInfo);
+        case "Pay With Card":
+          await handlePaymentWithRazorPay(orderInfo);
           break;
         case "Cash":
           await handleCashPayment(orderInfo);
@@ -229,8 +229,8 @@ const useCheckoutSubmit = (storeSetting) => {
     }
   };
 
-  //handle razorpay payment
-  const handlePaymentWithRazorpay = async (orderInfo) => {
+  //handle RazorPay payment
+  const handlePaymentWithRazorPay = async (orderInfo) => {
     try {
       const { amount, id, currency } =
         await OrderServices.createOrderByRazorPay({
@@ -238,22 +238,22 @@ const useCheckoutSubmit = (storeSetting) => {
         });
 
       const options = {
-        key: storeSetting?.razorpay_id,
+        key: storeSetting?.RazorPay_id,
         amount,
         currency,
         name: "ClothyVS Store",
         description: "This is the total cost of your purchase",
         order_id: id,
         handler: async (response) => {
-          const razorpayDetails = {
+          const RazorPayDetails = {
             amount: orderInfo.total,
-            razorpayPaymentId: response.razorpay_payment_id,
-            razorpayOrderId: response.razorpay_order_id,
-            razorpaySignature: response.razorpay_signature,
+            RazorPayPaymentId: response.RazorPay_payment_id,
+            RazorPayOrderId: response.RazorPay_order_id,
+            RazorPaySignature: response.RazorPay_signature,
           };
 
-          const orderData = { ...orderInfo, razorpay: razorpayDetails, car };
-          const orderResponse = await OrderServices.addRazorpayOrder(orderData);
+          const orderData = { ...orderInfo, RazorPay: RazorPayDetails, car };
+          const orderResponse = await OrderServices.addRazorPayOrder(orderData);
           await handleOrderSuccess(orderResponse, orderInfo);
         },
         prefill: {
@@ -264,10 +264,10 @@ const useCheckoutSubmit = (storeSetting) => {
         theme: { color: "#10b981" },
       };
 
-      const rzpay = new Razorpay(options);
+      const rzpay = new RazorPay(options);
       rzpay.open();
     } catch (err) {
-      console.error("Razorpay payment error:", err.message);
+      console.error("RazorPay payment error:", err.message);
       throw new Error(err.message);
     }
   };

@@ -5,10 +5,10 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     rollupOptions: {
-      input: "src/main.js", // Entry point of your application
+      input: "src/main.js",
       output: {
-        dir: "dist", // Output directory
-        format: "es", // Output format (ES module)
+        dir: "dist",
+        format: "es", 
       },
     },
   },

@@ -454,48 +454,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             <p className="font-sans text-sm text-gray-500">
                               {t("common:shareYourSocialText")}
                             </p>
-                            <ul className="flex mt-4">
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-emerald-500  mr-2 transition ease-in-out duration-500">
-                                <FacebookShareButton
-                                  url={`https://kachabazar-store-nine.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <FacebookIcon size={32} round />
-                                </FacebookShareButton>
-                              </li>
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-emerald-500  mr-2 transition ease-in-out duration-500">
-                                <TwitterShareButton
-                                  url={`https://kachabazar-store-nine.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <TwitterIcon size={32} round />
-                                </TwitterShareButton>
-                              </li>
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-emerald-500  mr-2 transition ease-in-out duration-500">
-                                <RedditShareButton
-                                  url={`https://kachabazar-store-nine.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <RedditIcon size={32} round />
-                                </RedditShareButton>
-                              </li>
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-emerald-500  mr-2 transition ease-in-out duration-500">
-                                <WhatsappShareButton
-                                  url={`https://kachabazar-store-nine.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <WhatsappIcon size={32} round />
-                                </WhatsappShareButton>
-                              </li>
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-emerald-500  mr-2 transition ease-in-out duration-500">
-                                <LinkedinShareButton
-                                  url={`https://kachabazar-store-nine.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <LinkedinIcon size={32} round />
-                                </LinkedinShareButton>
-                              </li>
-                            </ul>
                           </div>
                         </div>
                       </div>

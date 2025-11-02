@@ -22,7 +22,7 @@ const useBulkActionSubmit = (ids, lang = "en", childId) => {
   const [published2, setPublished2] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [defaultCategory, setDefaultCategory] = useState([]);
-  const [isFoodItem, setIsFoodItem] = useState(false);
+  const [isClothItem , setIsClothItem] = useState(false);
   const [selectCategoryName, setSelectCategoryName] = useState("");
 
   const { isBulkDrawerOpen, closeBulkDrawer, setIsUpdate } =
@@ -55,7 +55,7 @@ const useBulkActionSubmit = (ids, lang = "en", childId) => {
         ids: ids,
         categories: selectedCategory?.map((item) => item._id),
         category: defaultCategory[0]?._id,
-        productType: [isFoodItem ? "food" : "others"],
+        productType: [isClothItem ? " Cloth" : "others"],
         show: data.show,
         status: published ? "show" : "hide",
         tag: JSON.stringify(tag),
@@ -237,8 +237,8 @@ const useBulkActionSubmit = (ids, lang = "en", childId) => {
     setDefaultCategory,
     selectCategoryName,
     setSelectCategoryName,
-    isFoodItem,
-    setIsFoodItem,
+    isClothItem,
+    setIsClothItem,
   };
 };
 

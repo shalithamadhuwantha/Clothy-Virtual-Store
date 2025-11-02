@@ -21,7 +21,7 @@ class MyDocument extends Document {
             property="og:title"
             content={
               setting?.meta_title ||
-              "ClothyVS - React Grocery & Organic Food Store e-commerce Template"
+              "ClothyVS - Cloth Store e-commerce"
             }
           />
           <meta property="og:type" content="eCommerce Website" />
@@ -29,7 +29,7 @@ class MyDocument extends Document {
             property="og:description"
             content={
               setting?.meta_description ||
-              "React Grocery & Organic Food Store e-commerce Template"
+              "Cloth Store e-commerce"
             }
           />
           <meta

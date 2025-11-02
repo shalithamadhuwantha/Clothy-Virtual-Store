@@ -1,6 +1,6 @@
 require("dotenv").config();
 const stripe = require("stripe");
-const Razorpay = require("razorpay");
+const RazorPay = require("RazorPay");
 const MailChecker = require("mailchecker");
 // const stripe = require("stripe")(`${process.env.STRIPE_KEY}` || null); /// use hardcoded key if env not work
 
@@ -94,9 +94,9 @@ const createOrderByRazorPay = async (req, res) => {
     const storeSetting = await Setting.findOne({ name: "storeSetting" });
     // console.log("createOrderByRazorPay", storeSetting?.setting);
 
-    const instance = new Razorpay({
-      key_id: storeSetting?.setting?.razorpay_id,
-      key_secret: storeSetting?.setting?.razorpay_secret,
+    const instance = new RazorPay({
+      key_id: storeSetting?.setting?.RazorPay_id,
+      key_secret: storeSetting?.setting?.RazorPay_secret,
     });
 
     const options = {
@@ -117,7 +117,7 @@ const createOrderByRazorPay = async (req, res) => {
   }
 };
 
-const addRazorpayOrder = async (req, res) => {
+const addRazorPayOrder = async (req, res) => {
   try {
     const newOrder = new Order({
       ...req.body,
@@ -304,6 +304,6 @@ module.exports = {
   getOrderCustomer,
   createPaymentIntent,
   createOrderByRazorPay,
-  addRazorpayOrder,
+  addRazorPayOrder,
   sendEmailInvoiceToCustomer,
 };

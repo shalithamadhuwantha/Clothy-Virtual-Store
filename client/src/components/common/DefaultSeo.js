@@ -11,7 +11,7 @@ const DefaultSeo = () => {
     <NextSeo
       title={
         globalSetting?.meta_title ||
-        "ClothyVS - React Grocery & Organic Food Store e-commerce Template"
+        "ClothyVS - Cloth Store e-commerce"
       }
       openGraph={{
         type: "website",
@@ -19,7 +19,7 @@ const DefaultSeo = () => {
         url: globalSetting?.meta_url || "https://ClothyVS-store.vercel.app/",
         site_name:
           globalSetting?.meta_title ||
-          "ClothyVS - React Grocery & Organic Food Store e-commerce Template",
+          "ClothyVS - Cloth Store e-commerce",
       }}
       twitter={{
         handle: "@handle",

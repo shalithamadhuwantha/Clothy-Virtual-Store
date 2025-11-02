@@ -1,5 +1,5 @@
 {
-  "Top-Search": "Search for product (e.g. fish, apple, oil)",
+  "Top-Search": "Search for product (e.g. Shirt, T-shirt, etc.)",
 
   "/=================*Top Menu*=================/": "",
 
@@ -19,17 +19,17 @@
   "sliderH1": "POS and E-Commerce Website both controlled from a single easy to use Administration Panel",
   "Ckeckout": "Checkout",
 
-  "search-placeholder": "Search for products (e.g. fish, apple, oil)",
+  "search-placeholder": "Search for products (e.g. Shirt, T-shirt, etc.)",
 
   "/=================*Top Slider*=================/": "",
 
   "Slider1Title": "The Best Quality Products Guaranteed!",
   "Slider1description": "Dramatically facilitate effective total linkage for go forward processes...",
 
-  "Slider2Title": "Best Different Type of Grocery Store",
+  "Slider2Title": "Best Different Type of Clothy Store",
   "Slider2description": "Quickly aggregate empowered networks after emerging products...",
 
-  "Slider3Title": "Quality Freshness Guaranteed!",
+  "Slider3Title": "Quality Guaranteed!",
   "Slider3description": "Intrinsicly fashion performance based products rather than accurate benefits...",
 
   "Slider-btn": "Shop Now",
@@ -50,8 +50,8 @@
 
   "/=================*Banner*=================/": "",
 
-  "Banner-title-span-text": "100% Natural Quality",
-  "Banner-title-text": "Organic Porduct",
+  "Banner-title-span-text": "100% Quality",
+  "Banner-title-text": "Organic Product",
   "Banner-paragraph-text": "See Our latest discounted products from here and get a special",
   "Banner-link-text": "discount product",
   "Banner-btn-text": "Shop Now",
@@ -63,26 +63,26 @@
 
   "/=================*popular products*=================/": "",
 
-  "popular-products-title": "Popular Products for Daily Shopping",
-  "popular-products-sub-title": "See all our popular products in this week. You can choose your daily needs products from this list and get some special offer with free shipping.",
+  "popular-products-title": "Popular Products for Shopping",
+  "popular-products-sub-title": "See all our popular products in this week. You can choose your needs products from this list and get some special offer with free shipping.",
 
   "/=================*promotional banner*=================/": "",
 
-  "promotional-banner-title-span-text": "Organic Products and Food",
+  "promotional-banner-title-span-text": "Organic Products and  Cloth",
   "promotional-banner-title-text": "Quick Delivery to",
   "promotional-banner-title-span": "Your Home",
-  "promotional-banner-paragraph-text": " There are many products you will find our shop, Choose your daily necessary product from our ClothyVS shop and get some special offer. See Our latest discounted products from here and get a special discount.",
+  "promotional-banner-paragraph-text": " There are many products you will find our shop, Choose your necessary product from our ClothyVS shop and get some special offer. See Our latest discounted products from here and get a special discount.",
   "promotional-banner-link-text": "Download App",
 
   "/=================*Discounted Products*=================/": "",
 
   "discounted-products-title": "Latest Discounted Products",
-  "discounted-products-paragraph-text": "See Our latest discounted products below. Choose your daily needs from here and get a special discount with free shipping.",
+  "discounted-products-paragraph-text": "See Our latest discounted products below. Choose your needs from here and get a special discount with free shipping.",
 
   "/=================*Feature Promo*=================/": "",
 
   "featurePromo1-title": "Free Shipping",
-  "featurePromo1-info": "From $500.00",
+  "featurePromo1-info": "From Rs.500.00",
 
   "featurePromo2-title": "Support 24/7",
   "featurePromo2-info": "At Anytime",
@@ -95,8 +95,8 @@
 
   "/=================*Footer Top*=================/": "",
 
-  "footer-top-title": "Get Your Daily Needs From Our ClothyVS Store",
-  "footer-top-paragraph-text": "There are many products you will find our shop, Choose your daily necessary product from our ClothyVS shop and get some special offer.",
+  "footer-top-title": "Get Your Needs From Our ClothyVS Store",
+  "footer-top-paragraph-text": "There are many products you will find our shop, Choose your necessary product from our ClothyVS shop and get some special offer.",
 
   "/=================*Footer *=================/": "",
 
@@ -106,11 +106,6 @@
   "footer-careers": "Careers",
   "footer-news": "Latest News",
 
-  "footer-top-category": "Top Category",
-  "footer-top-category-fish-meat": "Fish & Meat",
-  "footer-top-category-soft-drinks": "Soft Drinks",
-  "footer-top-category-baby-care": "Baby Care",
-  "footer-top-category-beauty-health": " Beauty & Health",
 
   "footer-my-account-title": "My Account",
   "footer-my-account-dashboard": "Dashboard",

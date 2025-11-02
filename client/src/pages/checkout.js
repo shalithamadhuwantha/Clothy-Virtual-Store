@@ -288,13 +288,13 @@ const Checkout = () => {
                         </div>
                       )}
 
-                      {/* {storeSetting?.razorpay_status && ( */}
+                      {/* {storeSetting?.RazorPay_status && ( */}
                       <div className="">
                         <InputPayment
                           setShowCard={setShowCard}
                           register={register}
-                          name="RazorPay"
-                          value="RazorPay"
+                          name="Pay With Card"
+                          value="Credit Card"
                           Icon={ImCreditCard}
                         />
                         <Error errorMessage={errors.paymentMethod} />

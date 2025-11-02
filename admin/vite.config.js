@@ -62,7 +62,7 @@ export default defineConfig({
         short_name: "ClothyVS - E-Commerce Website",
         name: "ClothyVS | React eCommerce Admin Dashboard",
         description:
-          "ClothyVS : React Grocery & Organic Food Store e-commerce Admin Dashboard",
+          "ClothyVS : React Grocery & Organic  Cloth Store e-commerce Admin Dashboard",
         icons: [
           {
             src: "favicon.ico",

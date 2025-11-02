@@ -2,7 +2,7 @@ export const doughnutLegends = [
   { title: "Fresh Vegetable", color: "bg-emerald-500" },
   { title: "Cooking Essentials", color: "bg-blue-500" },
   { title: "Drinks", color: "bg-orange-500" },
-  { title: "Organic Food", color: "bg-indigo-500" },
+  { title: "Organic  Cloth", color: "bg-indigo-500" },
 ];
 
 export const lineLegends = [
@@ -14,7 +14,7 @@ export const barLegends = [
   { title: "Fresh Vegetable", color: "bg-emerald-500" },
   { title: "Cooking Essentials", color: "bg-blue-500" },
   { title: "Drinks", color: "bg-orange-500" },
-  { title: "Organic Food", color: "bg-indigo-500" },
+  { title: "Organic  Cloth", color: "bg-indigo-500" },
 ];
 
 export const pieLegends = [
@@ -35,7 +35,7 @@ export const doughnutOptions = {
         label: "Dataset 1",
       },
     ],
-    labels: ["Fresh Vegetable", "Cooking Essentials", "Drinks", "Organic Food"],
+    labels: ["Fresh Vegetable", "Cooking Essentials", "Drinks", "Organic  Cloth"],
   },
   options: {
     responsive: true,
@@ -132,7 +132,7 @@ export const barOptions = {
         data: [10, 45, 52, 74, 33, 50, 70],
       },
       {
-        label: "Organic Food",
+        label: "Organic  Cloth",
         backgroundColor: "#0EA5E9",
         // borderColor: window.chartColors.red,
         borderWidth: 1,

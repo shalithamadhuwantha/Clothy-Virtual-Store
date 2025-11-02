@@ -1,4 +1,4 @@
-/* for hiding process is not defined bug from console */
+
 body
   > iframe[style*="2147483647"]:not([id="webpack-dev-server-client-overlay"]) {
   display: none;
@@ -303,6 +303,7 @@ body
   outline: 0;
   box-shadow: none;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .react-tag-input__input::placeholder,
@@ -420,6 +421,7 @@ body
   font-size: 13px;
   margin-bottom: 5px;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;

@@ -15,13 +15,13 @@ const categories = [
     _id: "62cc0791d511b304aecdfbf2",
     status: "show",
     name: {
-      en: "Baby Food",
+      en: "Baby  Cloth",
       de: "Babynahrung",
     },
     parentId: "62cc0637d511b304aecdfba8",
     parentName: "Baby Care",
     description: {
-      en: "This is baby food category",
+      en: "This is baby  Cloth category",
     },
     icon: "",
   },
@@ -69,12 +69,12 @@ const categories = [
     _id: "62cfab4b484d89068aa7a7ff",
     status: "show",
     name: {
-      en: "Canned Food",
+      en: "Canned  Cloth",
     },
     parentId: "62cfab19484d89068aa7a7ef",
     parentName: "Snacks & Instant",
     description: {
-      en: "This is Canned Food category",
+      en: "This is Canned  Cloth category",
     },
     icon: "",
   },
@@ -856,10 +856,10 @@ const categories = [
     _id: "63f12afdcc480f0454f475dd",
     status: "show",
     name: {
-      en: "Baby Food",
+      en: "Baby  Cloth",
     },
     description: {
-      en: "Baby Food",
+      en: "Baby  Cloth",
     },
     parentId: "632aca2b4d87ff2494210be8",
     parentName: "Fruits & Vegetable",
