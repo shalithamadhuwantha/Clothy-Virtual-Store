@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
+    // "target": "es6",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules"]
+}

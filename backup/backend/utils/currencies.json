@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "643970c6e58a401b6c62c5a1"
+  },
+  "status": "show",
+  "name": "Sri Lanka Rupee",
+  "symbol": "Rs. ",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-04-14T15:27:02.393Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-14T15:27:02.393Z"
+  }
+}]
