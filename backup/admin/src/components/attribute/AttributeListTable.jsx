@@ -46,7 +46,7 @@ const AttributeListTable = ({
                 ) : (
                   <span>
                     <Avatar
-                      src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                      src="https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png"
                       alt="product"
                       className="hidden p-1 mr-2 md:block bg-gray-50 shadow-none"
                     />

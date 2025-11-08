@@ -614,6 +614,6 @@ export const storeCustomization = {
     meta_keywords: "e-commerce, online store",
     meta_title:
       "ClothyVS - Cloth Store e-commerce",
-    meta_url: "https://ClothyVS-store-nine.vercel.app/",
+    meta_url: "https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png",
   },
 };

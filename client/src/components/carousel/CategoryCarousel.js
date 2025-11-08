@@ -128,7 +128,7 @@ const CategoryCarousel = () => {
                       <Image
                         src={
                           category?.icon ||
-                          "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                          "https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png"
                         }
                         alt="category"
                         width={40}

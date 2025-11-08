@@ -73,7 +73,7 @@ const ProductDetails = () => {
                 <img src={data?.image[0]} alt="product" className="h-64 w-64" />
               ) : (
                 <img
-                  src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                  src="https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png"
                   alt="product"
                 />
               )}

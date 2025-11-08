@@ -124,7 +124,7 @@ const Products = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
-                  <Button
+                  {/* <Button
                     disabled={isCheck.length < 1}
                     onClick={() => handleUpdateMany(isCheck)}
                     className="w-full rounded-md h-12 btn-gray text-gray-600"
@@ -133,7 +133,7 @@ const Products = () => {
                       <FiEdit />
                     </span>
                     {t("BulkAction")}
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
                   <Button

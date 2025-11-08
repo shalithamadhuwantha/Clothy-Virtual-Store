@@ -96,7 +96,7 @@ const ProductCard = ({ product, attributes }) => {
               />
             ) : (
               <Image
-                src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                src="https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png"
                 fill
                 style={{ objectFit: "contain" }}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

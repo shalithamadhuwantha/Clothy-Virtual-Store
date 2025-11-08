@@ -286,7 +286,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                       />
                     ) : (
                       <Image
-                        src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                        src="https://res.cloudinary.com/dxsdop6od/image/upload/v1753271578/customer/gghgvhgvghvhg.png"
                         width={650}
                         height={650}
                         alt="product Image"
