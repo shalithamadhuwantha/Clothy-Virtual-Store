@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Products | Clothy Virtual Try-On</title>
+    <title>Image Search | Clothy Virtual Try-On</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -12,7 +12,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
         }
 
         .header-green {
@@ -22,26 +23,31 @@
         .upload-zone {
             border: 3px dashed #10b981;
             transition: all 0.3s ease;
+            background: #ffffff;
         }
 
         .upload-zone:hover {
             border-color: #059669;
             background: #f0fdf4;
+            transform: translateY(-2px);
         }
 
         .upload-zone.dragover {
             background: #dcfce7;
             border-color: #059669;
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
         }
 
         .product-card {
             transition: all 0.3s ease;
-            border: 2px solid #e5e7eb;
+            border: 1px solid #e5e7eb;
+            background: white;
         }
 
         .product-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
             border-color: #10b981;
         }
 
@@ -50,206 +56,293 @@
             color: white;
         }
 
-        .tag-chip {
-            background: #dcfce7;
-            color: #059669;
-            border: 1px solid #10b981;
+        .badge-red {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-search {
+            background: linear-gradient(to right, #10b981, #059669);
+            transition: all 0.3s ease;
+        }
+
+        .btn-search:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-try-on {
+            background: linear-gradient(to right, #10b981, #059669);
+            transition: all 0.3s ease;
+        }
+
+        .btn-try-on:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .price-text {
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #ef4444;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            z-index: 10;
+        }
+
+        .stock-badge {
+            background: #10b981;
+            color: white;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .upload-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
     <!-- Header -->
     <header class="header-green shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
                         <i class="fas fa-tshirt text-emerald-600 text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-white text-xl font-bold">CLOTHY</h1>
+                        <h1 class="text-white text-xl font-bold tracking-wide">CLOTHY</h1>
                         <p class="text-emerald-100 text-xs font-medium">VIRTUAL STORE</p>
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-4">
-                    <a href="/" class="text-white hover:text-emerald-100 text-sm font-medium">Home</a>
-                    <button class="relative text-white hover:text-emerald-100">
+                <div class="flex items-center space-x-6">
+                    <a href="/" class="text-white hover:text-emerald-100 text-sm font-semibold transition-colors">
+                        <i class="fas fa-home mr-1"></i>Home
+                    </a>
+                    <button class="relative text-white hover:text-emerald-100 transition-colors">
                         <i class="fas fa-shopping-cart text-xl"></i>
-                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">{{ cart_count }}</span>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold shadow-md">
+                            {{ cart_count }}
+                        </span>
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="bg-white border-t border-emerald-200">
+            <div class="container mx-auto px-4">
+                <nav class="flex items-center space-x-8 py-3">
+                    <a href="/" class="text-gray-700 hover:text-emerald-600 font-medium text-sm transition-colors">Home</a>
+                    <a href="/search" class="text-emerald-600 font-semibold text-sm border-b-2 border-emerald-600 pb-3">
+                        <i class="fas fa-camera mr-1"></i>Image Search
+                    </a>
+                    <a href="#" class="text-gray-700 hover:text-emerald-600 font-medium text-sm transition-colors">Categories</a>
+                </nav>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <div class="container mx-auto px-4 py-8">
-        <!-- Search Header -->
-        <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold text-gray-900 mb-2">Search Products</h2>
-            <p class="text-gray-600">Find your perfect style by text or image</p>
+    <div class="container mx-auto px-4 py-10">
+        <!-- Breadcrumb -->
+        <div class="flex items-center pb-4 mb-6">
+            <ol class="flex items-center w-full overflow-hidden">
+                <li class="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-emerald-500 font-semibold">
+                    <a href="/">Home</a>
+                </li>
+                <li class="text-sm mt-[1px] text-gray-400">
+                    <i class="fas fa-chevron-right text-xs"></i>
+                </li>
+                <li class="text-sm pl-1 text-gray-600">Image Search</li>
+            </ol>
         </div>
 
-        <!-- Search Options -->
-        <div class="max-w-4xl mx-auto mb-8">
-            <div class="bg-white rounded-2xl shadow-lg p-6">
-                <!-- Tab Selection -->
-                <div class="flex space-x-4 mb-6 border-b">
-                    <button onclick="switchTab('text')" id="tab-text" class="tab-button px-6 py-3 font-semibold border-b-2 border-emerald-500 text-emerald-600">
-                        <i class="fas fa-search mr-2"></i>Text Search
-                    </button>
-                    <button onclick="switchTab('image')" id="tab-image" class="tab-button px-6 py-3 font-semibold text-gray-500 hover:text-emerald-600">
-                        <i class="fas fa-camera mr-2"></i>Image Search
-                    </button>
-                </div>
+        <!-- Search Header -->
+        <div class="text-center mb-8">
+            <h2 class="text-4xl font-bold text-gray-900 mb-3 font-serif">AI-Powered Image Search</h2>
+            <p class="text-gray-600 text-lg">Upload a product image to find similar items in our store</p>
+        </div>
 
-                <!-- Text Search Tab -->
-                <div id="text-search-tab" class="search-tab">
-                    <div class="flex gap-3">
-                        <input 
-                            type="text" 
-                            id="text-search-input"
-                            placeholder="Search by color, type, brand... (e.g., 'blue tshirt', 'green hoodie')"
-                            class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500"
-                        />
-                        <button onclick="searchByText()" class="px-8 py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-colors">
-                            <i class="fas fa-search mr-2"></i>Search
-                        </button>
+        <!-- Upload Card -->
+        <div class="max-w-4xl mx-auto mb-10">
+            <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-10">
+                <div class="upload-zone rounded-3xl p-16 text-center cursor-pointer" id="upload-zone" onclick="document.getElementById('file-input').click()">
+                    <input type="file" id="file-input" accept="image/*" class="hidden" onchange="handleFileUpload(event)" />
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt text-8xl text-emerald-500 mb-6"></i>
                     </div>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-sm text-gray-600 font-medium">Popular:</span>
-                        <button onclick="quickSearch('blue tshirt')" class="tag-chip px-3 py-1 rounded-full text-sm font-medium">blue tshirt</button>
-                        <button onclick="quickSearch('green tshirt')" class="tag-chip px-3 py-1 rounded-full text-sm font-medium">green tshirt</button>
-                        <button onclick="quickSearch('red hoodie')" class="tag-chip px-3 py-1 rounded-full text-sm font-medium">red hoodie</button>
-                        <button onclick="quickSearch('black shirt')" class="tag-chip px-3 py-1 rounded-full text-sm font-medium">black shirt</button>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-3">Upload Product Image</h3>
+                    <p class="text-gray-600 text-lg mb-3">Click to browse or drag and drop your image here</p>
+                    <p class="text-sm text-gray-500 font-medium">Supports: JPG, PNG, JPEG • Max size: 5MB</p>
+                    <div class="mt-6 flex items-center justify-center space-x-4">
+                        <div class="flex items-center text-emerald-600 text-sm font-semibold">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>AI Detection</span>
+                        </div>
+                        <div class="flex items-center text-emerald-600 text-sm font-semibold">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Smart Match</span>
+                        </div>
+                        <div class="flex items-center text-emerald-600 text-sm font-semibold">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Instant Results</span>
+                        </div>
                     </div>
                 </div>
+                
+                <!-- Preview Container -->
+                <div id="preview-container" class="mt-8 hidden fade-in">
+                    <div class="text-center">
+                        <div class="inline-block relative">
+                            <img id="image-preview" class="max-w-md mx-auto rounded-3xl shadow-2xl border-4 border-emerald-100" />
+                            <button onclick="resetUpload()" class="absolute top-4 right-4 bg-red-500 text-white w-10 h-10 rounded-full hover:bg-red-600 transition-colors shadow-lg">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button onclick="searchByImage()" class="mt-8 w-full btn-search text-white font-bold text-lg px-10 py-5 rounded-2xl flex items-center justify-center space-x-3 shadow-xl">
+                        <i class="fas fa-search text-xl"></i>
+                        <span>Find Similar Products</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                <!-- Image Search Tab -->
-                <div id="image-search-tab" class="search-tab hidden">
-                    <div class="upload-zone rounded-lg p-8 text-center cursor-pointer" id="upload-zone" onclick="document.getElementById('file-input').click()">
-                        <input type="file" id="file-input" accept="image/*" class="hidden" onchange="handleFileUpload(event)" />
-                        <i class="fas fa-cloud-upload-alt text-6xl text-emerald-500 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Upload Product Image</h3>
-                        <p class="text-gray-600">Click to browse or drag and drop</p>
-                        <p class="text-sm text-gray-500 mt-2">Supports JPG, PNG, JPEG</p>
+        <!-- How It Works -->
+        <div class="max-w-4xl mx-auto mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
+                    <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-upload text-white text-2xl"></i>
                     </div>
-                    <div id="preview-container" class="mt-4 hidden">
-                        <img id="image-preview" class="max-w-xs mx-auto rounded-lg shadow-lg" />
-                        <button onclick="searchByImage()" class="mt-4 w-full px-8 py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600">
-                            <i class="fas fa-search mr-2"></i>Search Similar Products
-                        </button>
+                    <h4 class="font-bold text-gray-800 mb-2">1. Upload Image</h4>
+                    <p class="text-sm text-gray-600">Choose or drag a product image</p>
+                </div>
+                <div class="text-center p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
+                    <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-magic text-white text-2xl"></i>
                     </div>
+                    <h4 class="font-bold text-gray-800 mb-2">2. AI Analysis</h4>
+                    <p class="text-sm text-gray-600">Our AI detects colors & style</p>
+                </div>
+                <div class="text-center p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
+                    <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-sparkles text-white text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">3. Get Results</h4>
+                    <p class="text-sm text-gray-600">See matching products instantly</p>
                 </div>
             </div>
         </div>
 
         <!-- Loading Spinner -->
-        <div id="loading" class="hidden text-center py-8">
-            <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500"></div>
-            <p class="mt-4 text-gray-600 font-medium">Searching products...</p>
+        <div id="loading" class="hidden text-center py-16">
+            <div class="inline-block animate-spin rounded-full h-20 w-20 border-b-4 border-emerald-500"></div>
+            <p class="mt-6 text-gray-700 font-bold text-xl">Analyzing your image...</p>
+            <p class="mt-2 text-gray-500">This may take a few seconds</p>
         </div>
 
         <!-- Detected Tags -->
-        <div id="detected-tags" class="hidden max-w-4xl mx-auto mb-6">
-            <div class="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-4">
-                <h4 class="font-bold text-emerald-800 mb-2">
-                    <i class="fas fa-tags mr-2"></i>Detected Tags:
+        <div id="detected-tags" class="hidden max-w-4xl mx-auto mb-10 fade-in">
+            <div class="bg-gradient-to-r from-emerald-50 to-green-50 border-2 border-emerald-200 rounded-2xl p-6 shadow-lg">
+                <h4 class="font-bold text-emerald-800 mb-4 flex items-center text-xl">
+                    <i class="fas fa-tags mr-3 text-2xl"></i>
+                    Detected Features
                 </h4>
-                <div id="tags-list" class="flex flex-wrap gap-2"></div>
+                <div id="tags-list" class="flex flex-wrap gap-3"></div>
             </div>
         </div>
 
-        <!-- Results -->
-        <div id="results-container" class="hidden">
-            <div class="flex items-center justify-between mb-6">
-                <h3 class="text-2xl font-bold text-gray-900">
-                    <span id="results-count">0</span> Results Found
+        <!-- Results Header -->
+        <div id="results-header" class="hidden mb-8 fade-in">
+            <div class="flex items-center justify-between">
+                <h3 class="text-3xl font-bold text-gray-900 font-serif">
+                    <span id="results-count" class="text-emerald-600">0</span> Matching Products
                 </h3>
+                <button onclick="resetSearch()" class="text-emerald-600 hover:text-emerald-700 font-semibold text-sm flex items-center space-x-2">
+                    <i class="fas fa-redo"></i>
+                    <span>New Search</span>
+                </button>
             </div>
-            <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
         </div>
+
+        <!-- Products Grid -->
+        <div id="products-grid" class="hidden fade-in grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5"></div>
 
         <!-- No Results -->
-        <div id="no-results" class="hidden text-center py-12">
-            <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
-            <h3 class="text-xl font-bold text-gray-700 mb-2">No products found</h3>
-            <p class="text-gray-500">Try different search terms or upload another image</p>
+        <div id="no-results" class="hidden text-center py-20">
+            <div class="max-w-md mx-auto">
+                <i class="fas fa-search-minus text-9xl text-gray-300 mb-6"></i>
+                <h3 class="text-3xl font-bold text-gray-700 mb-4">No Matching Products</h3>
+                <p class="text-gray-500 text-lg mb-8">We couldn't find products matching your image. Try uploading a different image or browse our catalog.</p>
+                <div class="flex space-x-4 justify-center">
+                    <button onclick="resetSearch()" class="btn-search text-white font-semibold px-8 py-3 rounded-xl flex items-center space-x-2">
+                        <i class="fas fa-redo"></i>
+                        <span>Try Again</span>
+                    </button>
+                    <a href="/" class="bg-white border-2 border-emerald-500 text-emerald-600 font-semibold px-8 py-3 rounded-xl hover:bg-emerald-50 transition-colors">
+                        Browse Products
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-8 mt-20">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-600 text-sm">
+                © 2025 Clothy Virtual Store. Powered by AI Image Recognition Technology.
+            </p>
+        </div>
+    </footer>
+
     <script>
         let uploadedFile = null;
-
-        // Tab switching
-        function switchTab(tab) {
-            const textTab = document.getElementById('text-search-tab');
-            const imageTab = document.getElementById('image-search-tab');
-            const textBtn = document.getElementById('tab-text');
-            const imageBtn = document.getElementById('tab-image');
-
-            if (tab === 'text') {
-                textTab.classList.remove('hidden');
-                imageTab.classList.add('hidden');
-                textBtn.classList.add('border-b-2', 'border-emerald-500', 'text-emerald-600');
-                textBtn.classList.remove('text-gray-500');
-                imageBtn.classList.remove('border-b-2', 'border-emerald-500', 'text-emerald-600');
-                imageBtn.classList.add('text-gray-500');
-            } else {
-                textTab.classList.add('hidden');
-                imageTab.classList.remove('hidden');
-                imageBtn.classList.add('border-b-2', 'border-emerald-500', 'text-emerald-600');
-                imageBtn.classList.remove('text-gray-500');
-                textBtn.classList.remove('border-b-2', 'border-emerald-500', 'text-emerald-600');
-                textBtn.classList.add('text-gray-500');
-            }
-        }
-
-        // Quick search
-        function quickSearch(query) {
-            document.getElementById('text-search-input').value = query;
-            searchByText();
-        }
-
-        // Text search
-        async function searchByText() {
-            const query = document.getElementById('text-search-input').value.trim();
-            
-            if (!query) {
-                alert('Please enter a search query');
-                return;
-            }
-
-            showLoading();
-
-            try {
-                const response = await fetch('/api/search', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ query: query })
-                });
-
-                const data = await response.json();
-
-                hideLoading();
-
-                if (data.success) {
-                    displayResults(data.products);
-                } else {
-                    showNoResults();
-                }
-            } catch (error) {
-                console.error('Search error:', error);
-                hideLoading();
-                alert('Search failed. Please try again.');
-            }
-        }
 
         // File upload handling
         function handleFileUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
+
+            if (!file.type.startsWith('image/')) {
+                showNotification('Please upload an image file', 'error');
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) {
+                showNotification('Image size must be less than 5MB', 'error');
+                return;
+            }
 
             uploadedFile = file;
 
@@ -257,11 +350,12 @@
             reader.onload = function(e) {
                 document.getElementById('image-preview').src = e.target.result;
                 document.getElementById('preview-container').classList.remove('hidden');
+                showNotification('Image uploaded successfully! Click "Find Similar Products" to search.', 'success');
             };
             reader.readAsDataURL(file);
         }
 
-        // Drag and drop
+        // Drag and drop handlers
         const uploadZone = document.getElementById('upload-zone');
         
         uploadZone.addEventListener('dragover', (e) => {
@@ -285,13 +379,15 @@
                 input.files = dataTransfer.files;
                 
                 handleFileUpload({ target: input });
+            } else {
+                showNotification('Please drop an image file', 'error');
             }
         });
 
         // Image search
         async function searchByImage() {
             if (!uploadedFile) {
-                alert('Please upload an image first');
+                showNotification('Please upload an image first', 'warning');
                 return;
             }
 
@@ -307,21 +403,24 @@
                 });
 
                 const data = await response.json();
-
                 hideLoading();
 
                 if (data.success) {
                     if (data.detected_tags && data.detected_tags.length > 0) {
                         displayDetectedTags(data.detected_tags);
                     }
-                    displayResults(data.products);
+                    if (data.products && data.products.length > 0) {
+                        displayResults(data.products);
+                    } else {
+                        showNoResults();
+                    }
                 } else {
                     showNoResults();
                 }
             } catch (error) {
                 console.error('Image search error:', error);
                 hideLoading();
-                alert('Image search failed. Please try again.');
+                showNotification('Search failed. Please try again.', 'error');
             }
         }
 
@@ -331,7 +430,9 @@
             const tagsList = document.getElementById('tags-list');
             
             tagsList.innerHTML = tags.map(tag => 
-                `<span class="badge-green px-3 py-1 rounded-full text-sm font-semibold">${tag}</span>`
+                `<span class="badge-green px-5 py-2.5 rounded-full text-sm font-bold shadow-md flex items-center">
+                    <i class="fas fa-tag mr-2"></i>${tag}
+                </span>`
             ).join('');
             
             container.classList.remove('hidden');
@@ -339,55 +440,69 @@
 
         // Display results
         function displayResults(products) {
-            const container = document.getElementById('results-container');
             const grid = document.getElementById('products-grid');
+            const header = document.getElementById('results-header');
             const count = document.getElementById('results-count');
             const noResults = document.getElementById('no-results');
 
             if (products.length === 0) {
-                container.classList.add('hidden');
-                noResults.classList.remove('hidden');
+                showNoResults();
                 return;
             }
 
             count.textContent = products.length;
+            
             grid.innerHTML = products.map(product => `
-                <div class="product-card bg-white rounded-xl overflow-hidden">
-                    <div class="relative aspect-square">
-                        <img src="${product.images[0] || '/static/placeholder.png'}" 
+                <div class="product-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl">
+                    <div class="relative aspect-square overflow-hidden bg-gray-100">
+                        <img src="${product.images[0] || 'https://via.placeholder.com/300?text=No+Image'}" 
                              alt="${product.name}" 
-                             class="w-full h-full object-cover"
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                              onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
                         ${product.discount > 0 ? `
-                            <span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                                -${product.discount}%
+                            <span class="discount-badge">
+                                ${product.discount.toFixed(0)}% OFF
+                            </span>
+                        ` : ''}
+                        ${product.in_stock ? `
+                            <span class="absolute top-2 left-2 stock-badge shadow-md">
+                                <i class="fas fa-check mr-1"></i>In Stock
                             </span>
                         ` : ''}
                     </div>
-                    <div class="p-3">
-                        <h4 class="font-semibold text-gray-800 text-sm mb-1 truncate">${product.name}</h4>
-                        <p class="text-xs text-gray-500 mb-2">${product.brand}</p>
-                        <div class="flex items-center justify-between">
+                    <div class="p-4">
+                        <h4 class="font-bold text-gray-800 text-sm mb-1 truncate" title="${product.name}">
+                            ${product.name}
+                        </h4>
+                        <p class="text-xs text-gray-500 mb-3 font-semibold">${product.brand}</p>
+                        <div class="flex items-center justify-between mb-3">
                             <div>
-                                <span class="text-emerald-600 font-bold">Rs ${product.price.toFixed(2)}</span>
+                                <span class="price-text text-lg">Rs ${product.price.toFixed(2)}</span>
                                 ${product.original_price !== product.price ? `
-                                    <span class="text-xs text-gray-400 line-through ml-1">Rs ${product.original_price.toFixed(2)}</span>
+                                    <div class="text-xs text-gray-400 line-through">Rs ${product.original_price.toFixed(2)}</div>
                                 ` : ''}
                             </div>
                         </div>
                         <button onclick="tryProduct('${product.productId || product.id}')" 
-                                class="mt-3 w-full bg-emerald-500 text-white text-sm font-bold py-2 rounded-lg hover:bg-emerald-600 transition-colors">
-                            <i class="fas fa-glasses mr-1"></i> Try On
+                                class="w-full btn-try-on text-white text-sm font-bold py-3 rounded-xl flex items-center justify-center space-x-2 shadow-lg">
+                            <i class="fas fa-glasses"></i>
+                            <span>Try Virtual Fit-On</span>
                         </button>
                     </div>
                 </div>
             `).join('');
 
-            container.classList.remove('hidden');
+            grid.classList.remove('hidden');
+            header.classList.remove('hidden');
             noResults.classList.add('hidden');
+            
+            // Scroll to results
+            setTimeout(() => {
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
         }
 
-        // Try product
+        // Try product - opens virtual try-on
         function tryProduct(productId) {
             window.open(`/product/${productId}`, '_blank');
         }
@@ -395,7 +510,8 @@
         // Show/hide loading
         function showLoading() {
             document.getElementById('loading').classList.remove('hidden');
-            document.getElementById('results-container').classList.add('hidden');
+            document.getElementById('products-grid').classList.add('hidden');
+            document.getElementById('results-header').classList.add('hidden');
             document.getElementById('no-results').classList.add('hidden');
             document.getElementById('detected-tags').classList.add('hidden');
         }
@@ -404,17 +520,69 @@
             document.getElementById('loading').classList.add('hidden');
         }
 
+        // Show no results
         function showNoResults() {
             document.getElementById('no-results').classList.remove('hidden');
-            document.getElementById('results-container').classList.add('hidden');
+            document.getElementById('products-grid').classList.add('hidden');
+            document.getElementById('results-header').classList.add('hidden');
         }
 
-        // Enter key support
-        document.getElementById('text-search-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchByText();
-            }
-        });
+        // Reset upload
+        function resetUpload() {
+            document.getElementById('file-input').value = '';
+            document.getElementById('preview-container').classList.add('hidden');
+            uploadedFile = null;
+        }
+
+        // Reset search
+        function resetSearch() {
+            document.getElementById('file-input').value = '';
+            document.getElementById('preview-container').classList.add('hidden');
+            document.getElementById('no-results').classList.add('hidden');
+            document.getElementById('detected-tags').classList.add('hidden');
+            document.getElementById('products-grid').classList.add('hidden');
+            document.getElementById('results-header').classList.add('hidden');
+            uploadedFile = null;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const colors = {
+                success: 'bg-emerald-500',
+                error: 'bg-red-500',
+                warning: 'bg-yellow-500',
+                info: 'bg-blue-500'
+            };
+
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-exclamation-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+
+            const notification = document.createElement('div');
+            notification.className = `fixed top-24 right-6 z-50 px-6 py-4 rounded-2xl ${colors[type]} text-white font-semibold shadow-2xl transform transition-all duration-300`;
+            notification.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <i class="fas ${icons[type]} text-2xl"></i>
+                    <span class="text-sm">${message}</span>
+                </div>
+            `;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.transform = 'translateX(500px)';
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+
+        // Initialize
+        console.log('🔍 Image Search page loaded successfully');
     </script>
 </body>
 </html>
