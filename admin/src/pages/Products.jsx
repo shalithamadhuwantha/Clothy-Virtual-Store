@@ -183,9 +183,9 @@ const Products = () => {
                 ></button>
               </div>
 
-              <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
-                <SelectCategory setCategory={setCategory} lang={lang} />
-              </div>
+                <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
+                  <SelectCategory setCategory={setCategory} lang={lang} />
+                </div>
 
               <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
                 <Select onChange={(e) => setSortedField(e.target.value)}>

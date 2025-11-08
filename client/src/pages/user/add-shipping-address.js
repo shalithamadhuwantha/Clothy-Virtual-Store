@@ -7,7 +7,9 @@ import { countries } from "@utils/countries";
 import InputArea from "@components/form/InputArea";
 import SelectOption from "@components/form/SelectOption";
 import useShippingAddressSubmit from "@hooks/useShippingAddressSubmit";
-
+import { sriLankaAreas } from "@utils/areas";
+import { useState } from "react";
+import { useEffect } from "react";  
 const AddShippingAddress = () => {
   const id = useSearchParams().get("id");
 
@@ -18,14 +20,21 @@ const AddShippingAddress = () => {
     onSubmit,
     errors,
     cities,
-    areas,
     handleSubmit,
     selectedValue,
     isSubmitting,
     handleInputChange,
   } = useShippingAddressSubmit(id);
+const [areas, setAreas] = useState([]);
 
   //   console.log("selectedValues", selectedValue);
+
+  useEffect(() => {
+  if (selectedValue?.country === "Sri Lanka" && selectedValue?.city) {
+    const cityAreas = sriLankaAreas[selectedValue.city] || [];
+    setAreas(cityAreas);
+  }
+}, [selectedValue?.city, selectedValue?.country]);
 
   return (
     <Dashboard
@@ -37,7 +46,7 @@ const AddShippingAddress = () => {
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
               <h2 className="text-xl font-semibold mb-5">
-                Add Shipping Address
+                My Profile
               </h2>
             </div>
           </div>
@@ -123,7 +132,7 @@ const AddShippingAddress = () => {
                         />
                         <Error errorName={errors.city} />
                       </div>
-                      <div className="col-span-6 sm:col-span-3">
+                      <div className="col-span-6 sm:col-span-3 hidden">
                         <SelectOption
                           name="area"
                           label="Area"
@@ -170,7 +179,7 @@ const AddShippingAddress = () => {
                           type="submit"
                           className="md:text-sm leading-5 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-medium text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none bg-cyan-600 text-white px-5 md:px-6 lg:px-8 py-2 md:py-3 lg:py-3 hover:text-white hover:bg-cyan-700 h-12 mt-1 text-sm lg:text-sm w-full sm:w-auto"
                         >
-                          Add Shipping Address
+                          Save
                         </button>
                       )}
                     </div>

@@ -15,14 +15,15 @@ from bson import ObjectId
 from bson.errors import InvalidId
 import requests
 from io import BytesIO
-
+from PIL import Image as PILImage
+import re
 
 app = Flask(__name__)
 
 # MongoDB Connection
 MONGO_URI = "mongodb+srv://group11saalmsrusl:seK8BiD5rPgYg15A@cluster0.ovjz0tq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = MongoClient(MONGO_URI)
-db = client['test']  # Replace with your actual database name
+db = client['test']
 products_collection = db['products']
 
 # Initialize MediaPipe Pose and Hands
@@ -47,7 +48,9 @@ smooth_buffer = deque(maxlen=5)
 
 # Photo capture storage
 captured_photos_dir = "./static/captured_photos"
+upload_folder = "./static/uploads"
 os.makedirs(captured_photos_dir, exist_ok=True)
+os.makedirs(upload_folder, exist_ok=True)
 latest_captured_frame = None
 
 # Global state
@@ -77,38 +80,31 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
-# Override Flask's default JSON encoder
 app.json_encoder = JSONEncoder
 
 
 # ============ MONGODB FUNCTIONS ============
 
 def get_product_by_any_id(identifier):
-    """
-    Smart function to get product by either:
-    - MongoDB _id (ObjectId)
-    - productId field (custom string)
-    - slug field
-    """
+    """Get product by productId, _id, or slug"""
     try:
         print(f"\n🔍 Searching for product with identifier: {identifier}")
-        print(f"   Type: {type(identifier)}, Length: {len(str(identifier))}")
         
-        # Method 1: Try as productId field (exact match)
+        # Method 1: Try as productId field
         product = products_collection.find_one({'productId': identifier})
         if product:
             print(f"✅ Found by productId field")
             return product
         
-        # Method 2: Try as ObjectId if it's 24 hex characters
+        # Method 2: Try as ObjectId
         if len(str(identifier)) == 24:
             try:
                 product = products_collection.find_one({'_id': ObjectId(identifier)})
                 if product:
-                    print(f"✅ Found by MongoDB _id (ObjectId)")
+                    print(f"✅ Found by MongoDB _id")
                     return product
             except InvalidId:
-                print(f"   Not a valid ObjectId")
+                pass
         
         # Method 3: Try as slug
         product = products_collection.find_one({'slug': identifier})
@@ -116,20 +112,106 @@ def get_product_by_any_id(identifier):
             print(f"✅ Found by slug field")
             return product
         
-        # Debug: Check if productId exists in database at all
-        print(f"\n❌ Product not found. Checking database...")
-        all_product_ids = list(products_collection.find({}, {'productId': 1, 'title': 1}).limit(5))
-        print(f"   Sample productIds in database:")
-        for p in all_product_ids:
-            print(f"      - productId: '{p.get('productId', 'N/A')}' (type: {type(p.get('productId'))})")
-            
         return None
         
     except Exception as e:
         print(f"❌ Error fetching product: {e}")
-        import traceback
-        traceback.print_exc()
         return None
+
+
+def search_products_by_tags(search_query):
+    """Search products by tags (color, type, etc.)"""
+    try:
+        print(f"\n🔎 Searching products with query: {search_query}")
+        
+        # Normalize search query
+        query_lower = search_query.lower().strip()
+        
+        # Search in multiple fields
+        search_filter = {
+            '$or': [
+                {'tag': {'$regex': query_lower, '$options': 'i'}},
+                {'title.en': {'$regex': query_lower, '$options': 'i'}},
+                {'description.en': {'$regex': query_lower, '$options': 'i'}},
+                {'productId': {'$regex': query_lower, '$options': 'i'}},
+            ],
+            'status': 'show'
+        }
+        
+        products = list(products_collection.find(search_filter).limit(20))
+        
+        print(f"✅ Found {len(products)} products")
+        return products
+        
+    except Exception as e:
+        print(f"❌ Error searching products: {e}")
+        return []
+
+
+def analyze_image_tags(image_path):
+    """
+    Analyze uploaded image and extract color/type tags
+    This is a simple implementation - you can enhance with ML models
+    """
+    try:
+        # Load image
+        img = PILImage.open(image_path)
+        img_array = np.array(img)
+        
+        # Convert to RGB if needed
+        if len(img_array.shape) == 2:
+            img_array = cv2.cvtColor(img_array, cv2.COLOR_GRAY2RGB)
+        elif img_array.shape[2] == 4:
+            img_array = cv2.cvtColor(img_array, cv2.COLOR_RGBA2RGB)
+        
+        # Get dominant colors
+        pixels = img_array.reshape(-1, 3)
+        avg_color = pixels.mean(axis=0)
+        
+        # Determine color name
+        color_name = get_color_name(avg_color)
+        
+        # Basic shape detection (placeholder - enhance with ML)
+        detected_tags = [color_name]
+        
+        print(f"🎨 Detected tags from image: {detected_tags}")
+        return detected_tags
+        
+    except Exception as e:
+        print(f"❌ Error analyzing image: {e}")
+        return []
+
+
+def get_color_name(rgb):
+    """Convert RGB to color name"""
+    r, g, b = rgb
+    
+    # Define color ranges
+    colors = {
+        'red': (200, 50, 50),
+        'blue': (50, 50, 200),
+        'green': (50, 200, 50),
+        'yellow': (200, 200, 50),
+        'black': (50, 50, 50),
+        'white': (200, 200, 200),
+        'orange': (200, 100, 50),
+        'purple': (150, 50, 150),
+        'pink': (200, 100, 150),
+        'brown': (100, 50, 50),
+        'gray': (128, 128, 128),
+    }
+    
+    # Find closest color
+    min_distance = float('inf')
+    closest_color = 'unknown'
+    
+    for color_name, color_rgb in colors.items():
+        distance = np.sqrt(sum((a - b) ** 2 for a, b in zip(rgb, color_rgb)))
+        if distance < min_distance:
+            min_distance = distance
+            closest_color = color_name
+    
+    return closest_color
 
 
 def load_product_images(product):
@@ -147,25 +229,18 @@ def load_product_images(product):
     for idx, img_url in enumerate(images):
         try:
             print(f"   Loading image {idx + 1}: {img_url[:60]}...")
-            # Download image from URL
             response = requests.get(img_url, timeout=10)
             if response.status_code == 200:
-                # Convert to numpy array
                 image_array = np.asarray(bytearray(response.content), dtype=np.uint8)
                 img = cv2.imdecode(image_array, cv2.IMREAD_UNCHANGED)
                 
                 if img is not None:
-                    # Ensure image has alpha channel
-                    if len(img.shape) == 2:  # Grayscale
+                    if len(img.shape) == 2:
                         img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGRA)
-                    elif img.shape[2] == 3:  # BGR
+                    elif img.shape[2] == 3:
                         img = cv2.cvtColor(img, cv2.COLOR_BGR2BGRA)
                     product_images.append(img)
-                    print(f"   ✅ Loaded successfully (shape: {img.shape})")
-                else:
-                    print(f"   ❌ Failed to decode image")
-            else:
-                print(f"   ❌ HTTP {response.status_code}")
+                    print(f"   ✅ Loaded successfully")
         except Exception as e:
             print(f"   ❌ Error: {e}")
     
@@ -184,10 +259,10 @@ def get_all_products():
 
 
 def format_product_for_inventory(product):
-    """Format MongoDB product for frontend - converts ObjectId to string"""
+    """Format MongoDB product for frontend"""
     try:
         return {
-            'id': str(product['_id']),  # Convert ObjectId to string
+            'id': str(product['_id']),
             'productId': product.get('productId', ''),
             'name': product['title'].get('en', 'Unknown Product') if isinstance(product['title'], dict) else str(product.get('title', 'Unknown Product')),
             'slug': product.get('slug', ''),
@@ -198,15 +273,14 @@ def format_product_for_inventory(product):
             'stock': int(product.get('stock', 0)),
             'images': product.get('image', []),
             'description': product['description'].get('en', '') if isinstance(product.get('description'), dict) else str(product.get('description', '')),
-            'categories': [str(cat) if isinstance(cat, ObjectId) else cat for cat in product.get('categories', [])],  # Convert ObjectIds
+            'categories': [str(cat) if isinstance(cat, ObjectId) else cat for cat in product.get('categories', [])],
+            'tags': product.get('tag', []),
             'in_stock': product.get('stock', 0) > 0,
             'sku': product.get('sku', ''),
             'barcode': product.get('barcode', '')
         }
     except Exception as e:
         print(f"❌ Error formatting product: {e}")
-        import traceback
-        traceback.print_exc()
         return None
 
 
@@ -220,7 +294,7 @@ def extract_brand_from_tags(tags):
     return tags[0] if tags else 'Generic'
 
 
-# ============ ORIGINAL OVERLAY FUNCTION ============
+# ============ OVERLAY & GESTURE FUNCTIONS ============
 
 def overlay_image_alpha(background, overlay, x, y):
     if overlay is None:
@@ -242,8 +316,6 @@ def overlay_image_alpha(background, overlay, x, y):
     return background
 
 
-# ============ GESTURE DETECTION ============
-
 def detect_hand_gesture(hand_landmarks, image_width, image_height):
     """Enhanced hand gesture detection"""
     if not hand_landmarks:
@@ -257,18 +329,16 @@ def detect_hand_gesture(hand_landmarks, image_width, image_height):
     index_mcp = landmarks[mp_hands.HandLandmark.INDEX_FINGER_MCP]
     
     wrist_x, wrist_y = int(wrist.x * image_width), int(wrist.y * image_height)
-    thumb_x, thumb_y = int(thumb_tip.x * image_width), int(thumb_tip.y * image_height)
-    index_x, index_y = int(index_tip.x * image_width), int(index_tip.y * image_height)
+    thumb_y = int(thumb_tip.y * image_height)
+    index_x = int(index_tip.x * image_width)
+    index_y = int(index_tip.y * image_height)
     
-    # Thumbs up = Add to cart
     if (thumb_y < wrist_y - 40 and thumb_tip.y < thumb_mcp.y and index_tip.y > index_mcp.y):
         return "add_to_cart"
     
-    # Point right = Next image
     if (index_x > wrist_x + 60 and abs(index_y - wrist_y) < 40 and index_tip.x > index_mcp.x):
         return "next_shirt"
     
-    # Point left = Previous image
     if (index_x < wrist_x - 60 and abs(index_y - wrist_y) < 40 and index_tip.x < index_mcp.x):
         return "previous_shirt"
     
@@ -303,13 +373,11 @@ def save_captured_photo(frame):
     
     height, width = frame.shape[:2]
     
-    # Add metadata overlay
     overlay = frame.copy()
     cv2.rectangle(overlay, (10, height - 80), (400, height - 10), (0, 0, 0), -1)
     cv2.addWeighted(frame, 0.7, overlay, 0.3, 0, frame)
     
-    # Add text information
-    cv2.putText(frame, f"Clothy Virtual Store (G11)", (20, height - 60), 
+    cv2.putText(frame, f"Clothy Virtual Store", (20, height - 60), 
                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
     cv2.putText(frame, f"Captured: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", 
                (20, height - 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
@@ -317,7 +385,6 @@ def save_captured_photo(frame):
     if app_state['current_product']:
         title = app_state['current_product']['title']
         product_name = title.get('en', 'Product') if isinstance(title, dict) else str(title)
-        product_id = app_state['current_product'].get('productId', str(app_state['current_product']['_id']))
         cv2.putText(frame, f"Product: {product_name}", 
                    (20, height - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
     
@@ -343,7 +410,6 @@ def gen_frames():
         
         current_time = time.time()
         
-        # Hand gesture detection
         if hands_results.multi_hand_landmarks:
             for hand_landmarks in hands_results.multi_hand_landmarks:
                 gesture = detect_hand_gesture(hand_landmarks, image.shape[1], image.shape[0])
@@ -359,7 +425,6 @@ def gen_frames():
                     elif gesture == "add_to_cart":
                         add_current_product_to_cart()
         
-        # Pose detection and shirt overlay
         if pose_results.pose_landmarks and app_state['shirt_overlay_active']:
             lm11 = pose_results.pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER]
             lm12 = pose_results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER]
@@ -376,7 +441,6 @@ def gen_frames():
                 max(0, min(ih - shirt_height, min(avg_lm11[1], avg_lm12[1]) - int(shirt_height * 0.2)))
             )
             
-            # Overlay shirt from product images
             if len(product_images) > 0 and imageNumber < len(product_images):
                 imgShirt = product_images[imageNumber].copy()
                 imgShirt = cv2.resize(imgShirt, (shirt_width, shirt_height))
@@ -385,21 +449,17 @@ def gen_frames():
                 app_state['fit_detection'] = min(85 + (shirt_width % 15), 98)
                 app_state['tracking_quality'] = min(80 + (len(smooth_buffer) * 4), 95)
             
-            # Pose landmarks
             if app_state['show_pose_landmarks']:
                 mp_drawing.draw_landmarks(image, pose_results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
         
-        # Photo capture
         if app_state['capture_requested']:
             latest_captured_frame = image.copy()
             filename = save_captured_photo(latest_captured_frame)
             app_state['capture_requested'] = False
             app_state['last_captured_photo'] = filename
         
-        # Add UI overlays
         add_ui_overlays(image, current_time)
         
-        # Encode frame
         ret, buffer = cv2.imencode('.jpg', image)
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
@@ -461,11 +521,9 @@ def view_product(identifier):
         print(f"❌ Product not found!")
         return jsonify({
             'error': 'Product not found', 
-            'searched_for': identifier,
-            'hint': 'Check console logs for debugging info'
+            'searched_for': identifier
         }), 404
     
-    # Load product images
     current_product_id = identifier
     app_state['current_product'] = product
     product_images = load_product_images(product)
@@ -474,28 +532,98 @@ def view_product(identifier):
     product_info = format_product_for_inventory(product)
     
     if not product_info:
-        print(f"❌ Error formatting product!")
         return jsonify({'error': 'Error formatting product data'}), 500
     
-    # Convert to JSON string safely
     try:
         product_json_str = json.dumps(product_info, cls=JSONEncoder)
         print(f"\n✅ Product data prepared successfully")
-        print(f"   Name: {product_info['name']}")
-        print(f"   Images: {len(product_info['images'])}")
-        print(f"   Price: ${product_info['price']}")
     except Exception as e:
         print(f"❌ JSON serialization error: {e}")
-        import traceback
-        traceback.print_exc()
         return jsonify({'error': 'JSON serialization error'}), 500
     
-    # Pass product data to template
     return render_template('index.html', 
                          product=product_info,
                          product_json=product_json_str,
                          image_count=len(product_images),
                          cart_count=len(app_state['cart_items']))
+
+
+# 🆕 NEW: Image Search Route
+@app.route('/search')
+def search_page():
+    """Image search page"""
+    return render_template('search.html', cart_count=len(app_state['cart_items']))
+
+
+# 🆕 NEW: Text-based search API
+@app.route('/api/search', methods=['POST'])
+def search_products():
+    """Search products by text query"""
+    try:
+        data = request.get_json()
+        query = data.get('query', '')
+        
+        if not query:
+            return jsonify({'error': 'No search query provided'}), 400
+        
+        products = search_products_by_tags(query)
+        inventory = [format_product_for_inventory(p) for p in products if p]
+        
+        return jsonify({
+            'success': True,
+            'count': len(inventory),
+            'products': inventory
+        })
+        
+    except Exception as e:
+        print(f"❌ Search error: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+# 🆕 NEW: Image upload and search
+@app.route('/api/search/image', methods=['POST'])
+def search_by_image():
+    """Search products by uploaded image"""
+    try:
+        if 'image' not in request.files:
+            return jsonify({'error': 'No image file provided'}), 400
+        
+        file = request.files['image']
+        
+        if file.filename == '':
+            return jsonify({'error': 'No selected file'}), 400
+        
+        # Save uploaded image
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"search_{timestamp}_{file.filename}"
+        filepath = os.path.join(upload_folder, filename)
+        file.save(filepath)
+        
+        print(f"📸 Image uploaded: {filepath}")
+        
+        # Analyze image to extract tags
+        detected_tags = analyze_image_tags(filepath)
+        
+        # Search products with detected tags
+        all_products = []
+        for tag in detected_tags:
+            products = search_products_by_tags(tag)
+            all_products.extend(products)
+        
+        # Remove duplicates
+        unique_products = {p['_id']: p for p in all_products}.values()
+        inventory = [format_product_for_inventory(p) for p in unique_products if p]
+        
+        return jsonify({
+            'success': True,
+            'detected_tags': detected_tags,
+            'count': len(inventory),
+            'products': inventory
+        })
+        
+    except Exception as e:
+        print(f"❌ Image search error: {e}")
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/video_feed')
@@ -559,14 +687,10 @@ def select_image():
     data = request.get_json()
     image_index = data.get('image_index', 0)
     
-    print(f"📸 Image selection request: {image_index} (total: {len(product_images)})")
-    
     if 0 <= image_index < len(product_images):
         imageNumber = image_index
-        print(f"✅ Image selected: {imageNumber}")
         return jsonify({'success': True, 'current_image': imageNumber})
     
-    print(f"❌ Invalid image index")
     return jsonify({'error': 'Invalid image index'}), 400
 
 
@@ -704,39 +828,35 @@ def toggle_overlay():
 
 if __name__ == '__main__':
     os.makedirs(captured_photos_dir, exist_ok=True)
+    os.makedirs(upload_folder, exist_ok=True)
     
-    # Test MongoDB connection
     try:
         client.admin.command('ping')
         print("✅ MongoDB connection successful!")
         
-        # Get database name
         db_name = db.name
         print(f"📊 Connected to database: '{db_name}'")
         
         products_count = products_collection.count_documents({})
-        print(f"📦 Found {products_count} products in '{products_collection.name}' collection")
+        print(f"📦 Found {products_count} products")
         
-        # Show sample products with all ID types
         print("\n" + "="*70)
-        print("📋 Sample Products in Database:")
+        print("📋 Sample Products:")
         print("="*70)
-        sample_products = list(products_collection.find({}).limit(5))
+        sample_products = list(products_collection.find({}).limit(3))
         for idx, p in enumerate(sample_products, 1):
             title = p['title'].get('en', 'Unknown') if isinstance(p.get('title'), dict) else p.get('title', 'Unknown')
             print(f"\n{idx}. {title}")
-            print(f"   MongoDB _id: {p['_id']}")
-            print(f"   productId: '{p.get('productId', 'NOT SET')}' (type: {type(p.get('productId')).__name__})")
-            print(f"   slug: {p.get('slug', 'NOT SET')}")
-            print(f"   Images: {len(p.get('image', []))} images")
+            print(f"   productId: {p.get('productId', 'N/A')}")
+            print(f"   Tags: {p.get('tag', [])}")
         print("="*70)
         
     except Exception as e:
         print(f"❌ MongoDB connection failed: {e}")
-        import traceback
-        traceback.print_exc()
     
-    print(f"\n📸 Photos will be saved to {captured_photos_dir}")
+    print(f"\n📸 Photos: {captured_photos_dir}")
+    print(f"📂 Uploads: {upload_folder}")
     print(f"\n🚀 Server starting...")
-    print(f"   Access: http://localhost:5000/product/6880e310082b1e21881f3aaa")
+    print(f"   Main: http://localhost:5000/")
+    print(f"   Search: http://localhost:5000/search")
     app.run(debug=True, threaded=True)

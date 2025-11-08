@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { FiChevronRight, FiMinus, FiPlus } from "react-icons/fi";
+import { IoMdGlasses } from "react-icons/io";
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -16,8 +17,8 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-//internal import
 
+// Internal imports
 import Price from "@components/common/Price";
 import Stock from "@components/common/Stock";
 import Tags from "@components/common/Tags";
@@ -38,16 +39,12 @@ import ImageCarousel from "@components/carousel/ImageCarousel";
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const router = useRouter();
 
-  const { lang, showingTranslateValue, getNumber, currency } =
-    useUtilsFunction();
-
-  // console.log('product',product)
+  const { lang, showingTranslateValue, getNumber, currency } = useUtilsFunction();
 
   const { isLoading, setIsLoading } = useContext(SidebarContext);
   const { handleAddItem, item, setItem } = useAddToCart();
 
-  // react hook
-
+  // React hooks
   const [value, setValue] = useState("");
   const [price, setPrice] = useState(0);
   const [img, setImg] = useState("");
@@ -66,7 +63,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
         Object.keys(selectVa).every((k) => selectVa[k] === variant[k])
       );
 
-      //just check bellow code and make sure your code also same
       const res = result?.map(
         ({
           originalPrice,
@@ -80,7 +76,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
           ...rest
         }) => ({ ...rest })
       );
-      // console.log("res", res);
 
       const filterKey = Object.keys(Object.assign({}, ...res));
       const selectVar = filterKey?.reduce(
@@ -96,7 +91,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
         Object.keys(newObj).every((k) => newObj[k] === v[k])
       );
 
-      // console.log("result2", result2);
       if (result.length <= 0 || result2 === undefined) return setStock(0);
 
       setVariants(result);
@@ -156,7 +150,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
   useEffect(() => {
     const res = Object.keys(Object.assign({}, ...product?.variants));
     const varTitle = attributes?.filter((att) => res.includes(att?._id));
-
     setVariantTitle(varTitle?.sort());
   }, [variants, attributes]);
 
@@ -167,9 +160,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const handleAddToCart = (p) => {
     if (p.variants.length === 1 && p.variants[0].quantity < 1)
       return notifyError("Insufficient stock");
-    // if (notAvailable) return notifyError('This Variation Not Available Now!');
     if (stock <= 0) return notifyError("Insufficient stock");
-    // console.log('selectVariant', selectVariant);
 
     if (
       product?.variants.map(
@@ -186,10 +177,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
             ? p._id
             : p._id +
               variantTitle
-                ?.map(
-                  // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
-                  (att) => selectVariant[att._id]
-                )
+                ?.map((att) => selectVariant[att._id])
                 .join("-")
         }`,
 
@@ -199,10 +187,8 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
             : showingTranslateValue(product?.title) +
               "-" +
               variantTitle
-                ?.map(
-                  // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
-                  (att) =>
-                    att.variants?.find((v) => v._id === selectVariant[att._id])
+                ?.map((att) =>
+                  att.variants?.find((v) => v._id === selectVariant[att._id])
                 )
                 .map((el) => showingTranslateValue(el?.name))
         }`,
@@ -221,14 +207,19 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
     setImg(img);
   };
 
+  // NEW: Virtual Try-On function
+  const handleVirtualTryOn = () => {
+    // Change this URL to match your Flask server
+    const virtualTryOnUrl = `http://localhost:5000/product/${product.productId || product._id}`;
+    window.open(virtualTryOnUrl, '_blank');
+  };
+
   const { t } = useTranslation();
 
-  // category name slug
+  // Category name slug
   const category_name = showingTranslateValue(product?.category?.name)
     .toLowerCase()
     .replace(/[^A-Z0-9]+/gi, "-");
-
-  // console.log("discount", discount);
 
   return (
     <>
@@ -241,14 +232,14 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
         >
           <div className="px-0 py-10 lg:py-10">
             <div className="mx-auto px-3 lg:px-10 max-w-screen-2xl">
+              {/* Breadcrumb */}
               <div className="flex items-center pb-4">
                 <ol className="flex items-center w-full overflow-hidden font-serif">
                   <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-emerald-500 font-semibold">
                     <Link href="/">Home</Link>
                   </li>
                   <li className="text-sm mt-[1px]">
-                    {" "}
-                    <FiChevronRight />{" "}
+                    <FiChevronRight />
                   </li>
                   <li className="text-sm pl-1 transition duration-200 ease-in cursor-pointer hover:text-emerald-500 font-semibold ">
                     <Link
@@ -263,16 +254,17 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                     </Link>
                   </li>
                   <li className="text-sm mt-[1px]">
-                    {" "}
-                    <FiChevronRight />{" "}
+                    <FiChevronRight />
                   </li>
                   <li className="text-sm px-1 transition duration-200 ease-in ">
                     {showingTranslateValue(product?.title)}
                   </li>
                 </ol>
               </div>
+
               <div className="w-full rounded-lg p-3 lg:p-12 bg-white">
                 <div className="flex flex-col xl:flex-row">
+                  {/* Product Image Section */}
                   <div className="flex-shrink-0 xl:pr-10 lg:block w-full mx-auto md:w-6/12 lg:w-5/12 xl:w-4/12">
                     <Discount slug product={product} discount={discount} />
 
@@ -303,16 +295,18 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                     )}
                   </div>
 
+                  {/* Product Details Section */}
                   <div className="w-full">
                     <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row">
                       <div className="xl:pr-6 md:pr-6 md:w-2/3 w-full">
+                        {/* Product Title & SKU */}
                         <div className="mb-6">
                           <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold font-serif text-gray-800">
                             {showingTranslateValue(product?.title)}
                           </h1>
 
                           <p className="uppercase font-serif font-medium text-gray-500 text-sm">
-                            SKU :{" "}
+                            SKU:{" "}
                             <span className="font-bold text-gray-600">
                               {product.sku}
                             </span>
@@ -322,6 +316,8 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             <Stock stock={stock} />
                           </div>
                         </div>
+
+                        {/* Price */}
                         <Price
                           price={price}
                           product={product}
@@ -329,6 +325,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           originalPrice={originalPrice}
                         />
 
+                        {/* Variants */}
                         <div className="mb-4">
                           {variantTitle?.map((a, i) => (
                             <span key={i + 1}>
@@ -352,6 +349,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           ))}
                         </div>
 
+                        {/* Description */}
                         <div>
                           <div className="text-sm leading-6 text-gray-500 md:leading-7">
                             {isReadMore
@@ -383,8 +381,10 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                 )}
                           </div>
 
+                          {/* Quantity & Add to Cart */}
                           <div className="flex items-center mt-4">
                             <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
+                              {/* Quantity Selector */}
                               <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-12 border-gray-300">
                                 <button
                                   onClick={() => setItem(item - 1)}
@@ -408,15 +408,42 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                   </span>
                                 </button>
                               </div>
+
+                              {/* Add to Cart Button */}
                               <button
                                 onClick={() => handleAddToCart(product)}
-                                className={`bg-gray-800 hover:text-white hover:bg-gray-900 text-white text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-12`}
+                                className="bg-gray-800 hover:text-white hover:bg-gray-900 text-white text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-12"
                               >
                                 {t("common:addToCart")}
                               </button>
                             </div>
                           </div>
 
+                          {/* 🆕 NEW: Virtual Try-On Button */}
+                          <div className="mt-4">
+                            <button
+                              onClick={handleVirtualTryOn}
+                              className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white text-sm font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-3 group"
+                            >
+                              <IoMdGlasses className="text-2xl group-hover:rotate-12 transition-transform" />
+                              <span className="tracking-wide">Try Virtual Fit-On</span>
+                              <svg
+                                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+
+                          {/* Category & Tags */}
                           <div className="flex flex-col mt-4">
                             <span className="font-serif font-semibold py-1 text-sm d-block">
                               <span className="text-gray-800">
@@ -437,16 +464,17 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             <Tags product={product} />
                           </div>
 
+                          {/* Call to Order */}
                           <div className="mt-8">
                             <p className="text-xs sm:text-sm text-gray-700 font-medium">
-                              Call Us To Order By Mobile Number :{" "}
+                              Call Us To Order By Mobile Number:{" "}
                               <span className="text-emerald-700 font-semibold">
                                 +0044235234
-                              </span>{" "}
+                              </span>
                             </p>
                           </div>
 
-                          {/* social share */}
+                          {/* Social Share */}
                           <div className="mt-2">
                             <h3 className="text-base font-semibold mb-1 font-serif">
                               {t("common:shareYourSocial")}
@@ -458,11 +486,9 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                         </div>
                       </div>
 
-                      {/* shipping description card */}
+                      {/* Shipping Description Card */}
                       <div className="w-full xl:w-5/12 lg:w-6/12 md:w-5/12">
-                        <div
-                          className={`mt-6 md:mt-0 lg:mt-0 bg-gray-50 border border-gray-100 p-4 lg:p-8 rounded-lg`}
-                        >
+                        <div className="mt-6 md:mt-0 lg:mt-0 bg-gray-50 border border-gray-100 p-4 lg:p-8 rounded-lg">
                           <Card />
                         </div>
                       </div>
@@ -471,7 +497,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                 </div>
               </div>
 
-              {/* related products */}
+              {/* Related Products */}
               {relatedProducts?.length >= 2 && (
                 <div className="pt-10 lg:pt-20 lg:pb-10">
                   <h3 className="leading-7 text-lg lg:text-xl mb-3 font-semibold font-serif hover:text-gray-600">
@@ -500,8 +526,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
   );
 };
 
-// you can use getServerSideProps alternative for getStaticProps and getStaticPaths
-
+// Server-side props
 export const getServerSideProps = async (context) => {
   const { slug } = context.params;
 
@@ -510,9 +535,9 @@ export const getServerSideProps = async (context) => {
       category: "",
       slug: slug,
     }),
-
     AttributeServices.getShowingAttributes({}),
   ]);
+
   let product = {};
 
   if (slug) {

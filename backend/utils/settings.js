@@ -59,7 +59,7 @@ const setting = [
           en: "Pages"
         },
         my_account: {
-          en: "My Account"
+          en: "My Account2"
         },
         login: {
           en: "Login"

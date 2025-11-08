@@ -76,17 +76,11 @@ const Dashboard = ({ title, description, children }) => {
     },
     {
       title: "My Account",
-      href: "/user/my-account",
+      href: "/user/add-shipping-address",
       icon: FiUser,
     },
 
-    {
-      title: showingTranslateValue(
-        storeCustomizationSetting?.dashboard?.update_profile
-      ),
-      href: "/user/update-profile",
-      icon: FiSettings,
-    },
+  
     {
       title: showingTranslateValue(
         storeCustomizationSetting?.dashboard?.change_password

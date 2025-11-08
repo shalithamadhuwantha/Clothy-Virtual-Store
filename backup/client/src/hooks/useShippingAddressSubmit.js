@@ -36,8 +36,7 @@ const useShippingAddressSubmit = (id) => {
   const onSubmit = async (data) => {
     if (
       !selectedValue?.country ||
-      !selectedValue?.city ||
-      !selectedValue?.area
+      !selectedValue?.city 
     ) {
       return notifyError("Country, city and area is required!");
     }

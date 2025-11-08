@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import useTranslation from "next-translate/useTranslation";
@@ -8,7 +8,7 @@ import { FiMail, FiMapPin, FiBell } from "react-icons/fi";
 import Layout from "@layout/Layout";
 import Label from "@components/form/Label";
 import Error from "@components/form/Error";
-import { notifySuccess } from "@utils/toast";
+import { notifySuccess, notifyError } from "@utils/toast";
 import useGetSetting from "@hooks/useGetSetting";
 import InputArea from "@components/form/InputArea";
 import PageHeader from "@components/header/PageHeader";
@@ -17,19 +17,48 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 
 const ContactUs = () => {
   const { t } = useTranslation();
+  const [submitting, setSubmitting] = useState(false);
+  
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const { showingTranslateValue } = useUtilsFunction();
   const { storeCustomizationSetting, loading, error } = useGetSetting();
 
-  const submitHandler = () => {
-    notifySuccess(
-      "your message sent successfully. We will contact you shortly."
-    );
+  const submitHandler = async (data) => {
+    if (submitting) return;
+
+    setSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        notifySuccess(
+          "Your message sent successfully. We will contact you shortly."
+        );
+        reset();
+      } else {
+        notifyError(result.error || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      notifyError("An error occurred. Please try again later.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -97,7 +126,7 @@ const ContactUs = () => {
                 </h5>
                 <p className="mb-0 text-base opacity-90 leading-7">
                   <a
-                    href={`mailto:${storeCustomizationSetting?.contact_us?.call_box_phone}`}
+                    href={`tel:${storeCustomizationSetting?.contact_us?.call_box_phone}`}
                     className="text-emerald-500"
                   >
                     {showingTranslateValue(
@@ -110,6 +139,7 @@ const ContactUs = () => {
                 </p>
               </div>
             )}
+
             {loading ? (
               <CMSkeleton
                 count={10}
@@ -133,9 +163,7 @@ const ContactUs = () => {
                       storeCustomizationSetting?.contact_us
                         ?.address_box_address_one
                     )}
-                  </span>{" "}
-                  <br />
-                  
+                  </span>
                 </p>
               </div>
             )}
@@ -183,15 +211,13 @@ const ContactUs = () => {
 
                 <div className="flex flex-col space-y-5">
                   <div className="flex flex-col md:flex-row space-y-5 md:space-y-0">
-                    <div className="w-full md:w-1/2 ">
+                    <div className="w-full md:w-1/2">
                       <InputArea
                         register={register}
                         label={t("common:contact-page-form-input-name")}
                         name="name"
                         type="text"
-                        placeholder={t(
-                          "common:contact-page-form-plaholder-name"
-                        )}
+                        placeholder={t("common:contact-page-form-plaholder-name")}
                       />
                       <Error errorName={errors.name} />
                     </div>
@@ -201,9 +227,7 @@ const ContactUs = () => {
                         label={t("common:contact-page-form-input-email")}
                         name="email"
                         type="email"
-                        placeholder={t(
-                          "common:contact-page-form-plaholder-email"
-                        )}
+                        placeholder={t("common:contact-page-form-plaholder-email")}
                       />
                       <Error errorName={errors.email} />
                     </div>
@@ -214,16 +238,12 @@ const ContactUs = () => {
                       label={t("common:contact-page-form-input-subject")}
                       name="subject"
                       type="text"
-                      placeholder={t(
-                        "common:contact-page-form-plaholder-subject"
-                      )}
+                      placeholder={t("common:contact-page-form-plaholder-subject")}
                     />
                     <Error errorName={errors.subject} />
                   </div>
                   <div className="relative mb-4">
-                    <Label
-                      label={t("common:contact-page-form-input-message")}
-                    />
+                    <Label label={t("common:contact-page-form-input-message")} />
                     <textarea
                       {...register("message", {
                         required: `Message is required!`,
@@ -233,18 +253,47 @@ const ContactUs = () => {
                       autoComplete="off"
                       spellCheck="false"
                       rows="4"
-                      placeholder={t(
-                        "common:contact-page-form-plaholder-message"
-                      )}
+                      placeholder={t("common:contact-page-form-plaholder-message")}
                     ></textarea>
                     <Error errorName={errors.message} />
                   </div>
                   <div className="relative">
                     <button
-                      data-variant="flat"
-                      className="md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none bg-emerald-500 text-white px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 hover:text-white hover:bg-emerald-600 h-12 mt-1 text-sm lg:text-base w-full sm:w-auto"
+                      type="submit"
+                      disabled={submitting}
+                      className={`md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none ${
+                        submitting 
+                          ? 'bg-gray-400 cursor-not-allowed' 
+                          : 'bg-emerald-500 hover:bg-emerald-600'
+                      } text-white px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 h-12 mt-1 text-sm lg:text-base w-full sm:w-auto`}
                     >
-                      {t("common:contact-page-form-send-btn")}
+                      {submitting ? (
+                        <>
+                          <svg 
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            fill="none" 
+                            viewBox="0 0 24 24"
+                          >
+                            <circle 
+                              className="opacity-25" 
+                              cx="12" 
+                              cy="12" 
+                              r="10" 
+                              stroke="currentColor" 
+                              strokeWidth="4"
+                            ></circle>
+                            <path 
+                              className="opacity-75" 
+                              fill="currentColor" 
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        t("common:contact-page-form-send-btn")
+                      )}
                     </button>
                   </div>
                 </div>

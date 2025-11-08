@@ -60,14 +60,14 @@ const routes = [
     path: "/categories",
     component: Category,
   },
-  {
-    path: "/languages",
-    component: Languages,
-  },
-  {
-    path: "/currencies",
-    component: Currencies,
-  },
+  // {
+  //   path: "/languages",
+  //   component: Languages,
+  // },
+  // {
+  //   path: "/currencies",
+  //   component: Currencies,
+  // },
 
   {
     path: "/categories/:id",
@@ -93,35 +93,35 @@ const routes = [
     path: "/order/:id",
     component: OrderInvoice,
   },
-  {
-    path: "/coupons",
-    component: Coupons,
-  },
-  { path: "/settings", component: Setting },
-  {
-    path: "/store/customization",
-    component: StoreHome,
-  },
-  {
-    path: "/store/store-settings",
-    component: StoreSetting,
-  },
-  {
-    path: "/404",
-    component: Page404,
-  },
-  {
-    path: "/coming-soon",
-    component: ComingSoon,
-  },
-  {
-    path: "/edit-profile",
-    component: EditProfile,
-  },
-  {
-    path: "/notifications",
-    component: Notifications,
-  },
+  // {
+  //   path: "/coupons",
+  //   component: Coupons,
+  // },
+  // { path: "/settings", component: Setting },
+  // {
+  //   path: "/store/customization",
+  //   component: StoreHome,
+  // },
+  // {
+  //   path: "/store/store-settings",
+  //   component: StoreSetting,
+  // },
+  // {
+  //   path: "/404",
+  //   component: Page404,
+  // },
+  // {
+  //   path: "/coming-soon",
+  //   component: ComingSoon,
+  // },
+  // {
+  //   path: "/edit-profile",
+  //   component: EditProfile,
+  // },
+  // {
+  //   path: "/notifications",
+  //   component: Notifications,
+  // },
 ];
 
 const routeAccessList = [
@@ -133,25 +133,25 @@ const routeAccessList = [
   { label: "Products", value: "products" },
   { label: "Categories", value: "categories" },
   { label: "Attributes", value: "attributes" },
-  { label: "Coupons", value: "coupons" },
+  // { label: "Coupons", value: "coupons" },
   { label: "Customers", value: "customers" },
   { label: "Orders", value: "orders" },
   { label: "Staff", value: "our-staff" },
-  { label: "Settings", value: "settings" },
-  { label: "Languages", value: "languages" },
-  { label: "Currencies", value: "currencies" },
-  { label: "ViewStore", value: "store" },
-  { label: "StoreCustomization", value: "customization" },
-  { label: "StoreSettings", value: "store-settings" },
+  // { label: "Settings", value: "settings" },
+  // { label: "Languages", value: "languages" },
+  // { label: "Currencies", value: "currencies" },
+  // { label: "ViewStore", value: "store" },
+  // { label: "StoreCustomization", value: "customization" },
+  // { label: "StoreSettings", value: "store-settings" },
   { label: "Product Details", value: "product" },
   { label: "Order Invoice", value: "order" },
-  { label: "Edit Profile", value: "edit-profile" },
+  // { label: "Edit Profile", value: "edit-profile" },
   {
     label: "Customer Order",
     value: "customer-order",
   },
-  { label: "Notification", value: "notifications" },
-  { label: "Coming Soon", value: "coming-soon" },
+  // { label: "Notification", value: "notifications" },
+  // { label: "Coming Soon", value: "coming-soon" },
 ];
 
 export { routeAccessList, routes };

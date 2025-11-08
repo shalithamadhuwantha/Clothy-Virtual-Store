@@ -37,7 +37,7 @@ const AddShippingAddress = () => {
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
               <h2 className="text-xl font-semibold mb-5">
-                Add Shipping Address
+                My Profile
               </h2>
             </div>
           </div>
