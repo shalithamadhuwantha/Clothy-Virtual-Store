@@ -22,11 +22,14 @@ export default function Home() {
         size: number
         bold?: boolean
         italic?: boolean
+        opacity?: number
+        zIndex?: number
       }>
     >(texts)
   const [localImages, setLocalImages] =
-    useState<Array<{ id: string; src: string; x: number; y: number; width: number; height: number }>>(images)
+    useState<Array<{ id: string; src: string; x: number; y: number; width: number; height: number; opacity?: number; zIndex?: number }>>(images)
   const [selectedElement, setSelectedElement] = useState<string | null>(null)
+  const [designImage, setDesignImage] = useState<string | null>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   const addText = () => {
@@ -52,6 +55,22 @@ export default function Home() {
   const deleteText = (id: string) => {
     setLocalTexts(localTexts.filter((t) => t.id !== id))
     setSelectedElement(null)
+  }
+
+  const bringTextForward = (id: string) => {
+    const textIndex = localTexts.findIndex((t) => t.id === id)
+    if (textIndex === localTexts.length - 1) return
+    const newTexts = [...localTexts]
+    ;[newTexts[textIndex], newTexts[textIndex + 1]] = [newTexts[textIndex + 1], newTexts[textIndex]]
+    setLocalTexts(newTexts)
+  }
+
+  const sendTextBackward = (id: string) => {
+    const textIndex = localTexts.findIndex((t) => t.id === id)
+    if (textIndex === 0) return
+    const newTexts = [...localTexts]
+    ;[newTexts[textIndex], newTexts[textIndex - 1]] = [newTexts[textIndex - 1], newTexts[textIndex]]
+    setLocalTexts(newTexts)
   }
 
   const handleImageUpload = (file: File) => {
@@ -81,6 +100,22 @@ export default function Home() {
     setSelectedElement(null)
   }
 
+  const bringImageForward = (id: string) => {
+    const imageIndex = localImages.findIndex((img) => img.id === id)
+    if (imageIndex === localImages.length - 1) return
+    const newImages = [...localImages]
+    ;[newImages[imageIndex], newImages[imageIndex + 1]] = [newImages[imageIndex + 1], newImages[imageIndex]]
+    setLocalImages(newImages)
+  }
+
+  const sendImageBackward = (id: string) => {
+    const imageIndex = localImages.findIndex((img) => img.id === id)
+    if (imageIndex === 0) return
+    const newImages = [...localImages]
+    ;[newImages[imageIndex], newImages[imageIndex - 1]] = [newImages[imageIndex - 1], newImages[imageIndex]]
+    setLocalImages(newImages)
+  }
+
   const downloadDesign = async () => {
     if (!canvasRef.current) return
 
@@ -95,13 +130,18 @@ export default function Home() {
     ctx.fillStyle = canvasColor
     ctx.fillRect(0, 0, 384, 384)
 
-    const imagePromises = localImages.map(
+    // Sort images by zIndex for proper layering
+    const sortedImages = [...localImages].sort((a, b) => (a.zIndex ?? 0) - (b.zIndex ?? 0))
+
+    const imagePromises = sortedImages.map(
       (img) =>
         new Promise<void>((resolve) => {
           const image = new Image()
           image.crossOrigin = "anonymous"
           image.onload = () => {
+            ctx.globalAlpha = (img.opacity !== undefined ? img.opacity : 100) / 100
             ctx.drawImage(image, img.x, img.y, img.width, img.height)
+            ctx.globalAlpha = 1
             resolve()
           }
           image.onerror = () => resolve() // Continue if image fails
@@ -111,8 +151,12 @@ export default function Home() {
 
     await Promise.all(imagePromises)
 
+    // Sort texts by zIndex for proper layering
+    const sortedTexts = [...localTexts].sort((a, b) => (a.zIndex ?? 0) - (b.zIndex ?? 0))
+
     // Draw text
-    for (const textItem of localTexts) {
+    for (const textItem of sortedTexts) {
+      ctx.globalAlpha = (textItem.opacity !== undefined ? textItem.opacity : 100) / 100
       ctx.fillStyle = textItem.color
       let fontString = `${textItem.size}px ${textItem.font}`
       if (textItem.bold) {
@@ -125,9 +169,15 @@ export default function Home() {
       ctx.fillText(textItem.text, textItem.x, textItem.y + textItem.size)
     }
 
+    ctx.globalAlpha = 1
+
+    // Get the canvas image data
+    const imageData = canvas.toDataURL("image/png")
+    setDesignImage(imageData)
+
     // Download
     const link = document.createElement("a")
-    link.href = canvas.toDataURL("image/png")
+    link.href = imageData
     link.download = "tshirt-design.png"
     link.click()
   }
@@ -147,6 +197,7 @@ export default function Home() {
         images={localImages}
         selectedElement={selectedElement}
         onSelectElement={setSelectedElement}
+        designImage={designImage}
       />
 
       {/* Canvas Area */}
@@ -174,12 +225,16 @@ export default function Home() {
               text={localTexts.find((t) => t.id === selectedElement)!}
               onUpdate={(updates) => updateText(selectedElement, updates)}
               onDelete={() => deleteText(selectedElement)}
+              onBringForward={() => bringTextForward(selectedElement)}
+              onSendBackward={() => sendTextBackward(selectedElement)}
             />
           ) : (
             <ImageEditor
               image={localImages.find((i) => i.id === selectedElement)!}
               onUpdate={(updates) => updateImage(selectedElement, updates)}
               onDelete={() => deleteImage(selectedElement)}
+              onBringForward={() => bringImageForward(selectedElement)}
+              onSendBackward={() => sendImageBackward(selectedElement)}
             />
           )
         ) : (

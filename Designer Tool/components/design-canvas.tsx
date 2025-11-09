@@ -17,8 +17,10 @@ interface DesignCanvasProps {
     size: number
     bold?: boolean
     italic?: boolean
+    opacity?: number
+    zIndex?: number
   }>
-  images: Array<{ id: string; src: string; x: number; y: number; width: number; height: number }>
+  images: Array<{ id: string; src: string; x: number; y: number; width: number; height: number; opacity?: number; zIndex?: number }>
   selectedElement: string | null
   onSelectElement: (id: string | null) => void
   onUpdateText: (id: string, updates: any) => void
@@ -192,6 +194,8 @@ export const DesignCanvas = forwardRef<HTMLCanvasElement, DesignCanvasProps>(
               top: `${image.y}px`,
               width: `${image.width}px`,
               height: `${image.height}px`,
+              opacity: (image.opacity !== undefined ? image.opacity : 100) / 100,
+              zIndex: image.zIndex !== undefined ? image.zIndex : images.indexOf(image),
             }}
             onMouseDown={(e) => handleMouseDown(e, image.id, "image")}
             onClick={() => onSelectElement(image.id)}
@@ -265,6 +269,8 @@ export const DesignCanvas = forwardRef<HTMLCanvasElement, DesignCanvasProps>(
               fontSize: `${textItem.size}px`,
               fontWeight: textItem.bold ? "bold" : "normal",
               fontStyle: textItem.italic ? "italic" : "normal",
+              opacity: (textItem.opacity !== undefined ? textItem.opacity : 100) / 100,
+              zIndex: textItem.zIndex !== undefined ? textItem.zIndex : texts.indexOf(textItem),
             }}
             onMouseDown={(e) => handleMouseDown(e, textItem.id, "text")}
             onClick={() => onSelectElement(textItem.id)}

@@ -6,6 +6,8 @@ export const texts: Array<{
   color: string
   font: string
   size: number
+  opacity?: number
+  zIndex?: number
 }> = []
 
 export const images: Array<{
@@ -15,4 +17,6 @@ export const images: Array<{
   y: number
   width: number
   height: number
+  opacity?: number
+  zIndex?: number
 }> = []
