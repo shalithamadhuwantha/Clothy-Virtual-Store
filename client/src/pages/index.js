@@ -104,14 +104,14 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
 
                     {/* Floating Action Button */}
                     <div className="flex justify-center mt-12">
-                      <button className="group bg-gradient-to-r from-green-600 to-emerald-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                      {/* <button className="group bg-gradient-to-r from-green-600 to-emerald-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                         <span className="flex items-center">
                           View All Categories
                           <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
                         </span>
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
