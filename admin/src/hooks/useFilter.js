@@ -30,6 +30,7 @@ const categorySchema = {
   },
   required: ["name"],
 };
+
 const attributeSchema = {
   type: "object",
   properties: {
@@ -42,6 +43,7 @@ const attributeSchema = {
   },
   required: ["name", "title"],
 };
+
 const couponSchema = {
   type: "object",
   properties: {
@@ -57,6 +59,7 @@ const couponSchema = {
   },
   required: ["title", "couponCode", "endTime", "status"],
 };
+
 const customerSchema = {
   type: "object",
   properties: {
@@ -88,7 +91,7 @@ const useFilter = (data) => {
   const [role, setRole] = useState("");
   const [time, setTime] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [dataTable, setDataTable] = useState([]); //tableTable for showing on table according to filtering
+  const [dataTable, setDataTable] = useState([]);
   const [todayOrder, setTodayOrder] = useState("");
   const [monthlyOrder, setMonthlyOrder] = useState("");
   const [totalOrder, setTotalOrder] = useState("");
@@ -97,6 +100,7 @@ const useFilter = (data) => {
   const [isDisabled, setIsDisable] = useState(false);
   const [shipping, setShipping] = useState("");
   const [newProducts] = useState([]);
+  
   const currencyRef = useRef("");
   const searchRef = useRef("");
   const userRef = useRef("");
@@ -111,182 +115,257 @@ const useFilter = (data) => {
 
   dayjs.extend(isBetween);
   dayjs.extend(isToday);
+  
   const location = useLocation();
   const { lang, setIsUpdate, setLoading } = useContext(SidebarContext);
   const { globalSetting } = useUtilsFunction();
-
   const { handleDisableForDemo } = useDisableForDemo();
 
-  //service data filtering
+  // ============= SERVICE DATA FILTERING - FULLY FIXED =============
   const serviceData = useMemo(() => {
-    const date = new Date();
-    date.setDate(date.getDate() - time);
-    let services = data?.map((el) => {
-      const newDate = new Date(el?.updatedAt).toLocaleString("en-US", {
-        timeZone: globalSetting?.default_time_zone,
+    // CRITICAL FIX: Check if data exists and is an array
+    if (!data || !Array.isArray(data)) {
+      return [];
+    }
+
+    try {
+      const date = new Date();
+      date.setDate(date.getDate() - (time || 0));
+      
+      let services = data?.map((el) => {
+        const newDate = new Date(el?.updatedAt).toLocaleString("en-US", {
+          timeZone: globalSetting?.default_time_zone || "UTC",
+        });
+        const newObj = {
+          ...el,
+          updatedDate: newDate === "Invalid Date" ? "" : newDate,
+        };
+        return newObj;
       });
-      const newObj = {
-        ...el,
-        updatedDate: newDate === "Invalid Date" ? "" : newDate,
-      };
-      return newObj;
-    });
-    if (location.pathname === "/dashboard") {
-      const orderPending = services?.filter(
-        (statusP) => statusP.status === "Pending"
-      );
-      setPending(orderPending);
-      const orderProcessing = services?.filter(
-        (statusO) => statusO.status === "Processing"
-      );
-      setProcessing(orderProcessing);
-      const orderDelivered = services?.filter(
-        (statusD) => statusD.status === "Delivered"
-      );
-      setDelivered(orderDelivered);
-      //daily total order calculation
-      const todayServices = services?.filter((order) =>
-        dayjs(order.createdAt).isToday()
-      );
-      const todayOrder = todayServices?.reduce(
-        (preValue, currentValue) => preValue + currentValue.total,
-        0
-      );
-      setTodayOrder(todayOrder);
-      //monthly order calculation
-      const monthlyServices = services?.filter((order) =>
-        dayjs(order.createdAt).isBetween(
-          new Date().setDate(new Date().getDate() - 30),
-          new Date()
-        )
-      );
-      const monthlyOrder = monthlyServices?.reduce(
-        (preValue, currentValue) => preValue + currentValue.total,
-        0
-      );
-      setMonthlyOrder(monthlyOrder);
-      //total order calculation
-      const totalOrder = services?.reduce(
-        (preValue, currentValue) => preValue + currentValue.total,
-        0
-      );
-      setTotalOrder(totalOrder);
-    }
-    //products filtering
-    if (filter) {
-      services = services.filter((item) => item.parent === filter);
-    }
-    if (sortedField === "Low") {
-      services = services.sort((a, b) => a.price < b.price && -1);
-    }
-    if (sortedField === "High") {
-      services = services.sort((a, b) => a.price > b.price && -1);
-    }
-    if (searchText) {
-      services = services.filter((search) =>
-        search?.title?.toLowerCase().includes(searchText.toLowerCase())
-      );
-    }
 
-    if (attributeTitle) {
-      // console.log("asss");
-      services = services.filter(
-        (search) =>
-          search?.title[lang]
-            ?.toLowerCase()
-            ?.includes(attributeTitle?.toLowerCase()) ||
-          search?.attribute
-            ?.toLowerCase()
-            .includes(attributeTitle?.toLowerCase())
-      );
-    }
+      // Dashboard statistics
+      if (location.pathname === "/dashboard") {
+        const orderPending = services?.filter(
+          (statusP) => statusP?.status === "Pending"
+        ) || [];
+        setPending(orderPending);
+        
+        const orderProcessing = services?.filter(
+          (statusO) => statusO?.status === "Processing"
+        ) || [];
+        setProcessing(orderProcessing);
+        
+        const orderDelivered = services?.filter(
+          (statusD) => statusD?.status === "Delivered"
+        ) || [];
+        setDelivered(orderDelivered);
+        
+        // Daily total order calculation
+        const todayServices = services?.filter((order) =>
+          order?.createdAt ? dayjs(order.createdAt).isToday() : false
+        ) || [];
+        const todayOrder = todayServices?.reduce(
+          (preValue, currentValue) => preValue + (currentValue?.total || 0),
+          0
+        );
+        setTodayOrder(todayOrder);
+        
+        // Monthly order calculation
+        const monthlyServices = services?.filter((order) =>
+          order?.createdAt ? dayjs(order.createdAt).isBetween(
+            new Date().setDate(new Date().getDate() - 30),
+            new Date()
+          ) : false
+        ) || [];
+        const monthlyOrder = monthlyServices?.reduce(
+          (preValue, currentValue) => preValue + (currentValue?.total || 0),
+          0
+        );
+        setMonthlyOrder(monthlyOrder);
+        
+        // Total order calculation
+        const totalOrder = services?.reduce(
+          (preValue, currentValue) => preValue + (currentValue?.total || 0),
+          0
+        ) || 0;
+        setTotalOrder(totalOrder);
+      }
 
-    if (categoryType) {
-      services = services.filter(
-        (search) =>
-          search?.name[lang]
-            ?.toLowerCase()
-            ?.includes(categoryType?.toLowerCase()) ||
-          search?.category?.toLowerCase().includes(categoryType?.toLowerCase())
-      );
-    }
+      // Products filtering
+      if (filter) {
+        services = services.filter((item) => item?.parent === filter);
+      }
+      
+      if (sortedField === "Low") {
+        services = services.sort((a, b) => (a?.price || 0) < (b?.price || 0) ? -1 : 1);
+      }
+      
+      if (sortedField === "High") {
+        services = services.sort((a, b) => (a?.price || 0) > (b?.price || 0) ? -1 : 1);
+      }
+      
+      if (searchText) {
+        services = services.filter((search) =>
+          search?.title?.toLowerCase().includes(searchText.toLowerCase())
+        );
+      }
 
-    //admin Filtering
-    if (role) {
-      services = services.filter((staff) => staff.role === role);
-    }
-    //User and Admin filtering
-    if (searchUser) {
-      services = services.filter(
-        (search) =>
-          search?.name[lang]
-            ?.toLowerCase()
-            .includes(searchUser.toLowerCase()) ||
-          search?.phone?.toLowerCase().includes(searchUser.toLowerCase()) ||
-          search?.email?.toLowerCase().includes(searchUser.toLowerCase())
-      );
-    }
-    //Coupon filtering
-    if (searchCoupon) {
-      services = services?.filter(
-        (search) =>
-          search?.title[lang]
-            ?.toLowerCase()
-            ?.includes(searchCoupon?.toLowerCase()) ||
-          search?.couponCode
-            ?.toLowerCase()
-            .includes(searchCoupon?.toLowerCase())
-      );
-    }
-    // order filtering
-    if (status) {
-      services = services.filter((order) => order.status === status);
-    }
-    if (searchOrder) {
-      services = services.filter((search) =>
-        search.contact.toLowerCase().includes(searchOrder.toLowerCase())
-      );
-    }
-    if (time) {
-      services = services.filter((order) =>
-        dayjs(order.createdAt).isBetween(date, new Date())
-      );
-    }
+      // Attribute filtering - FIXED
+      if (attributeTitle) {
+        services = services.filter(
+          (search) =>
+            search?.title?.[lang]
+              ?.toLowerCase()
+              ?.includes(attributeTitle?.toLowerCase()) ||
+            search?.attribute
+              ?.toLowerCase()
+              .includes(attributeTitle?.toLowerCase())
+        );
+      }
 
-    //country filtering
-    if (country) {
-      services = services.filter(
-        (cou) =>
-          cou?.name?.toLowerCase().includes(country.toLowerCase()) ||
-          cou?.iso_code?.toLowerCase().includes(country.toLowerCase())
-      );
-    }
+      // Category filtering - FIXED
+      if (categoryType) {
+        services = services.filter(
+          (search) =>
+            search?.name?.[lang]
+              ?.toLowerCase()
+              ?.includes(categoryType?.toLowerCase()) ||
+            search?.category?.toLowerCase().includes(categoryType?.toLowerCase())
+        );
+      }
 
-    //shipping filtering
-    if (shipping) {
-      services = services.filter((ship) =>
-        ship?.name.toLowerCase().includes(shipping.toLowerCase())
-      );
-    }
+      // Admin filtering
+      if (role) {
+        services = services.filter((staff) => staff?.role === role);
+      }
 
-    //language filtering
-    if (language) {
-      services = services.filter(
-        (lan) =>
-          lan.name.toLowerCase().includes(language.toLowerCase()) ||
-          lan.iso_code.toLowerCase().includes(language.toLowerCase()) ||
-          lan.language_code.toLowerCase().includes(language.toLowerCase())
-      );
-    }
+      // User and Customer filtering - FIXED
+      if (searchUser) {
+        services = services.filter(
+          (search) => {
+            const nameMultiLang = search?.name?.[lang]?.toLowerCase() || "";
+            const nameSingle = search?.name?.toLowerCase() || "";
+            const phone = search?.phone?.toLowerCase() || "";
+            const email = search?.email?.toLowerCase() || "";
+            const searchTerm = searchUser.toLowerCase();
+            
+            return (
+              nameMultiLang.includes(searchTerm) ||
+              nameSingle.includes(searchTerm) ||
+              phone.includes(searchTerm) ||
+              email.includes(searchTerm)
+            );
+          }
+        );
+      }
 
-    if (currency) {
-      services = services.filter((cur) =>
-        cur.iso_code.toLowerCase().includes(currency.toLowerCase())
-      );
-    }
-    // console.log("render", data, "categoryRef", categoryRef);
+      // Coupon filtering - FIXED
+      if (searchCoupon) {
+        services = services?.filter(
+          (search) => {
+            const title = search?.title?.[lang]?.toLowerCase() || "";
+            const couponCode = search?.couponCode?.toLowerCase() || "";
+            const searchTerm = searchCoupon?.toLowerCase() || "";
+            
+            return (
+              title.includes(searchTerm) ||
+              couponCode.includes(searchTerm)
+            );
+          }
+        );
+      }
 
-    return services;
+      // Order filtering - FIXED for 500 errors
+      if (status) {
+        services = services.filter((order) => order?.status === status);
+      }
+      
+      if (searchOrder) {
+        services = services.filter((search) => {
+          // Handle multiple possible order data structures
+          const contact = search?.contact?.toLowerCase() || "";
+          const customerName = search?.user?.name?.toLowerCase() || "";
+          const customerPhone = search?.user?.phone?.toLowerCase() || "";
+          const customerEmail = search?.user?.email?.toLowerCase() || "";
+          const phone = search?.phone?.toLowerCase() || "";
+          const name = search?.name?.toLowerCase() || "";
+          const orderNumber = search?.invoice?.toString().toLowerCase() || "";
+          const orderId = search?._id?.toLowerCase() || "";
+          
+          const searchTerm = searchOrder.toLowerCase();
+          
+          return (
+            contact.includes(searchTerm) ||
+            customerName.includes(searchTerm) ||
+            customerPhone.includes(searchTerm) ||
+            customerEmail.includes(searchTerm) ||
+            phone.includes(searchTerm) ||
+            name.includes(searchTerm) ||
+            orderNumber.includes(searchTerm) ||
+            orderId.includes(searchTerm)
+          );
+        });
+      }
+      
+      if (time) {
+        services = services.filter((order) =>
+          order?.createdAt ? dayjs(order.createdAt).isBetween(date, new Date()) : false
+        );
+      }
+
+      // Country filtering - FIXED
+      if (country) {
+        services = services.filter(
+          (cou) => {
+            const name = cou?.name?.toLowerCase() || "";
+            const isoCode = cou?.iso_code?.toLowerCase() || "";
+            const searchTerm = country.toLowerCase();
+            
+            return (
+              name.includes(searchTerm) ||
+              isoCode.includes(searchTerm)
+            );
+          }
+        );
+      }
+
+      // Shipping filtering - FIXED
+      if (shipping) {
+        services = services.filter((ship) =>
+          ship?.name?.toLowerCase().includes(shipping.toLowerCase())
+        );
+      }
+
+      // Language filtering - FIXED
+      if (language) {
+        services = services.filter(
+          (lan) => {
+            const name = lan?.name?.toLowerCase() || "";
+            const isoCode = lan?.iso_code?.toLowerCase() || "";
+            const languageCode = lan?.language_code?.toLowerCase() || "";
+            const searchTerm = language.toLowerCase();
+            
+            return (
+              name.includes(searchTerm) ||
+              isoCode.includes(searchTerm) ||
+              languageCode.includes(searchTerm)
+            );
+          }
+        );
+      }
+
+      // Currency filtering - FIXED
+      if (currency) {
+        services = services.filter((cur) =>
+          cur?.iso_code?.toLowerCase().includes(currency.toLowerCase())
+        );
+      }
+
+      return services || [];
+    } catch (error) {
+      console.error("Filter error:", error);
+      return [];
+    }
   }, [
     time,
     data,
@@ -305,82 +384,91 @@ const useFilter = (data) => {
     shipping,
     language,
     currency,
-    categoryRef,
     globalSetting?.default_time_zone,
     lang,
   ]);
 
-  //pagination functionality start
+  // ============= PAGINATION - FIXED =============
   const resultsPerPage = 20;
-  const totalResults = serviceData?.length;
+  const totalResults = serviceData?.length || 0;
+  
   const handleChangePage = (p) => {
     setCurrentPage(p);
   };
+  
   useEffect(() => {
     setDataTable(
       serviceData?.slice(
         (currentPage - 1) * resultsPerPage,
         currentPage * resultsPerPage
-      )
+      ) || []
     );
   }, [serviceData, currentPage, resultsPerPage]);
-  //pagination functionality end
-  //table form submit function for search start
+
+  // ============= FORM SUBMIT HANDLERS - FIXED =============
   const handleSubmitForAll = (e) => {
     e.preventDefault();
-    setSearchText(searchRef.current.value);
+    setSearchText(searchRef.current?.value || "");
   };
+  
   const handleSubmitUser = (e) => {
     e.preventDefault();
-    setSearchUser(userRef.current.value);
+    setSearchUser(userRef.current?.value || "");
   };
+  
   const handleSubmitCoupon = (e) => {
     e.preventDefault();
-    setSearchCoupon(couponRef.current.value);
+    setSearchCoupon(couponRef.current?.value || "");
   };
+  
   const handleSubmitOrder = (e) => {
     e.preventDefault();
-    setSearchOrder(orderRef.current.value);
+    setSearchOrder(orderRef.current?.value || "");
   };
+  
   const handleSubmitCategory = (e) => {
     e.preventDefault();
-    setCategoryType(categoryRef.current.value);
+    setCategoryType(categoryRef.current?.value || "");
   };
+  
   const handleSubmitAttribute = (e) => {
     e.preventDefault();
-    setAttributeTitle(attributeRef.current.value);
+    setAttributeTitle(attributeRef.current?.value || "");
   };
 
   const handleSubmitCountry = (e) => {
     e.preventDefault();
-    setCountry(countryRef.current.value);
+    setCountry(countryRef.current?.value || "");
   };
 
   const handleSubmitShipping = (e) => {
     e.preventDefault();
-    setShipping(shippingRef.current.value);
+    setShipping(shippingRef.current?.value || "");
   };
+  
   const handleSubmitLanguage = (e) => {
     e.preventDefault();
-    setLanguage(languageRef.current.value);
+    setLanguage(languageRef.current?.value || "");
   };
+  
   const handleSubmitCurrency = (e) => {
     e.preventDefault();
-    setCurrency(currencyRef.current.value);
+    setCurrency(currencyRef.current?.value || "");
   };
-  // table form submit function for search end
-  // handle submit multiple product data with csv format
+
+  // ============= CSV/JSON FILE HANDLING =============
   const handleOnDrop = (data) => {
     for (let i = 0; i < data.length; i++) {
       newProducts.push(data[i].data);
     }
   };
+  
   const handleUploadProducts = () => {
     if (newProducts.length < 1) {
       notifyError("Please upload/select csv file first!");
     } else {
       if (handleDisableForDemo()) {
-        return; // Exit the function if the feature is disabled
+        return;
       }
       ProductServices.addAllProducts(newProducts)
         .then((res) => {
@@ -389,165 +477,182 @@ const useFilter = (data) => {
         .catch((err) => notifyError(err.message));
     }
   };
+  
   const handleSelectFile = (e) => {
     e.preventDefault();
     if (handleDisableForDemo()) {
-      return; // Exit the function if the feature is disabled
+      return;
     }
 
     const fileReader = new FileReader();
-    const file = e.target?.files[0];
+    const file = e.target?.files?.[0];
 
-    if (file && file.type === "application/json") {
+    if (!file) {
+      notifyError("No file selected!");
+      return;
+    }
+
+    if (file.type === "application/json") {
       setFileName(file?.name);
       setIsDisable(true);
-      console.log("if");
 
       fileReader.readAsText(file, "UTF-8");
       fileReader.onload = (e) => {
-        let text = JSON.parse(e.target.result);
+        try {
+          let text = JSON.parse(e.target.result);
+          let data = [];
+          
+          if (location.pathname === "/categories") {
+            data = text.map((value) => {
+              return {
+                _id: value._id,
+                id: value.id,
+                status: value.status,
+                name: value.name,
+                description: value.description,
+                parentName: value.parentName,
+                parentId: value.parentId,
+                icon: value.icon,
+              };
+            });
+          }
+          
+          if (location.pathname === "/attributes") {
+            data = text.map((value) => {
+              return {
+                _id: value._id,
+                status: value.status,
+                title: value.title,
+                name: value.name,
+                variants: value.variants,
+                option: value.option,
+                type: value.type,
+              };
+            });
+          }
 
-        let data = [];
-        if (location.pathname === "/categories") {
-          data = text.map((value) => {
-            return {
-              _id: value._id,
-              id: value.id,
-              status: value.status,
-              name: value.name,
-              description: value.description,
-              parentName: value.parentName,
-              parentId: value.parentId,
-              icon: value.icon,
-            };
-          });
+          if (location.pathname === "/coupons") {
+            data = text.map((value) => {
+              return {
+                title: value.title,
+                couponCode: value.couponCode,
+                endTime: value.endTime,
+                discountPercentage: value.discountPercentage,
+                minimumAmount: value.minimumAmount,
+                productType: value.productType,
+                logo: value.logo,
+                discountType: value.discountType,
+                status: value.status,
+              };
+            });
+          }
+          
+          if (location.pathname === "/customers") {
+            data = text.map((value) => {
+              return {
+                name: value.name,
+                email: value.email,
+                password: value.password,
+                phone: value.phone,
+              };
+            });
+          }
+          
+          setSelectedFile(data);
+        } catch (error) {
+          notifyError("Invalid JSON file format!");
+          console.error("JSON parse error:", error);
         }
-        if (location.pathname === "/attributes") {
-          data = text.map((value) => {
-            return {
-              _id: value._id,
-              status: value.status,
-              title: value.title,
-              name: value.name,
-              variants: value.variants,
-              option: value.option,
-              type: value.type,
-            };
-          });
-        }
-
-        if (location.pathname === "/coupons") {
-          data = text.map((value) => {
-            return {
-              title: value.title,
-              couponCode: value.couponCode,
-              endTime: value.endTime,
-              discountPercentage: value.discountPercentage,
-              minimumAmount: value.minimumAmount,
-              productType: value.productType,
-              logo: value.logo,
-              discountType: value.discountType,
-              status: value.status,
-            };
-          });
-        }
-        if (location.pathname === "/customers") {
-          data = text.map((value) => {
-            return {
-              name: value.name,
-              email: value.email,
-              password: value.password,
-              phone: value.phone,
-            };
-          });
-        }
-        setSelectedFile(data);
       };
-    } else if (file && file.type === "text/csv") {
+    } else if (file.type === "text/csv") {
       setFileName(file?.name);
       setIsDisable(true);
 
-      console.log("else if");
-
       fileReader.onload = async (event) => {
-        const text = event.target.result;
-        const json = await csvToJson().fromString(text);
-        // console.log("json", json);
-        let data = [];
+        try {
+          const text = event.target.result;
+          const json = await csvToJson().fromString(text);
+          let data = [];
 
-        if (location.pathname === "/categories") {
-          data = json.map((value) => {
-            return {
-              _id: value._id,
-              id: value.id,
-              status: value.status,
-              name: JSON.parse(value.name),
-              description: JSON.parse(value.description),
-              parentName: value.parentName,
-              parentId: value.parentId,
-              icon: value.icon,
-            };
-          });
-        }
-        if (location.pathname === "/attributes") {
-          data = json.map((value) => {
-            return {
-              status: value.status,
-              title: JSON.parse(value.title),
-              name: JSON.parse(value.name),
-              variants: JSON.parse(value.variants),
-              option: value.option,
-              type: value.type,
-            };
-          });
-        }
+          if (location.pathname === "/categories") {
+            data = json.map((value) => {
+              return {
+                _id: value._id,
+                id: value.id,
+                status: value.status,
+                name: JSON.parse(value.name),
+                description: JSON.parse(value.description),
+                parentName: value.parentName,
+                parentId: value.parentId,
+                icon: value.icon,
+              };
+            });
+          }
+          
+          if (location.pathname === "/attributes") {
+            data = json.map((value) => {
+              return {
+                status: value.status,
+                title: JSON.parse(value.title),
+                name: JSON.parse(value.name),
+                variants: JSON.parse(value.variants),
+                option: value.option,
+                type: value.type,
+              };
+            });
+          }
 
-        if (location.pathname === "/coupons") {
-          data = json.map((value) => {
-            return {
-              title: JSON.parse(value.title),
-              couponCode: value.couponCode,
-              endTime: value.endTime,
-              discountPercentage: value.discountPercentage
-                ? JSON.parse(value.discountPercentage)
-                : 0,
-              minimumAmount: value.minimumAmount
-                ? JSON.parse(value.minimumAmount)
-                : 0,
-              productType: value.productType,
-              logo: value.logo,
-              // discountType: JSON.parse(value.discountType),
-              status: value.status,
-            };
-          });
+          if (location.pathname === "/coupons") {
+            data = json.map((value) => {
+              return {
+                title: JSON.parse(value.title),
+                couponCode: value.couponCode,
+                endTime: value.endTime,
+                discountPercentage: value.discountPercentage
+                  ? JSON.parse(value.discountPercentage)
+                  : 0,
+                minimumAmount: value.minimumAmount
+                  ? JSON.parse(value.minimumAmount)
+                  : 0,
+                productType: value.productType,
+                logo: value.logo,
+                status: value.status,
+              };
+            });
+          }
+          
+          if (location.pathname === "/customers") {
+            data = json.map((value) => {
+              return {
+                name: value.name,
+                email: value.email,
+                password: value.password,
+                phone: value.phone,
+              };
+            });
+          }
+          
+          setSelectedFile(data);
+        } catch (error) {
+          notifyError("Invalid CSV file format!");
+          console.error("CSV parse error:", error);
         }
-        if (location.pathname === "/customers") {
-          data = json.map((value) => {
-            return {
-              name: value.name,
-              email: value.email,
-              password: value.password,
-              phone: value.phone,
-            };
-          });
-        }
-        setSelectedFile(data);
       };
       fileReader.readAsText(file);
     } else {
       setFileName(file?.name);
       setIsDisable(true);
-
-      notifyError("Unsupported file type!");
+      notifyError("Unsupported file type! Please upload JSON or CSV file.");
     }
   };
 
   const handleUploadMultiple = (e) => {
     if (handleDisableForDemo()) {
-      return; // Exit the function if the feature is disabled
+      return;
     }
 
-    if (selectedFile.length > 1) {
+    if (selectedFile.length > 0) {
+      // Categories upload
       if (location.pathname === "/categories") {
         setLoading(true);
         let categoryDataValidation = selectedFile.map((value) =>
@@ -566,12 +671,15 @@ const useFilter = (data) => {
             })
             .catch((err) => {
               setLoading(false);
-              notifyError(err ? err.response.data.message : err.message);
+              notifyError(err ? err?.response?.data?.message : err.message);
             });
         } else {
-          notifyError("Please enter valid data!");
+          setLoading(false);
+          notifyError("Please enter valid category data!");
         }
       }
+      
+      // Customers upload
       if (location.pathname === "/customers") {
         setLoading(true);
         let customerDataValidation = selectedFile.map((value) =>
@@ -580,9 +688,6 @@ const useFilter = (data) => {
 
         const isBelowThreshold = (currentValue) => currentValue === true;
         const validationData = customerDataValidation.every(isBelowThreshold);
-
-        // console.log(validationData);
-        // console.log(customerDataValidation);
 
         if (validationData) {
           CustomerServices.addAllCustomers(selectedFile)
@@ -593,20 +698,23 @@ const useFilter = (data) => {
             })
             .catch((err) => {
               setLoading(false);
-              notifyError(err ? err.response.data.message : err.message);
+              notifyError(err ? err?.response?.data?.message : err.message);
             });
         } else {
-          notifyError("Please enter valid data!");
+          setLoading(false);
+          notifyError("Please enter valid customer data!");
         }
       }
+      
+      // Coupons upload
       if (location.pathname === "/coupons") {
         setLoading(true);
-        let attributeDataValidation = selectedFile.map((value) =>
+        let couponDataValidation = selectedFile.map((value) =>
           ajv.validate(couponSchema, value)
         );
 
         const isBelowThreshold = (currentValue) => currentValue === true;
-        const validationData = attributeDataValidation.every(isBelowThreshold);
+        const validationData = couponDataValidation.every(isBelowThreshold);
 
         if (validationData) {
           CouponServices.addAllCoupon(selectedFile)
@@ -617,12 +725,15 @@ const useFilter = (data) => {
             })
             .catch((err) => {
               setLoading(false);
-              notifyError(err ? err.response.data.message : err.message);
+              notifyError(err ? err?.response?.data?.message : err.message);
             });
         } else {
-          notifyError("Please enter valid data!");
+          setLoading(false);
+          notifyError("Please enter valid coupon data!");
         }
       }
+      
+      // Attributes upload
       if (location.pathname === "/attributes") {
         setLoading(true);
         let attributeDataValidation = selectedFile.map((value) =>
@@ -641,46 +752,55 @@ const useFilter = (data) => {
             })
             .catch((err) => {
               setLoading(false);
-              notifyError(err ? err.response.data.message : err.message);
+              notifyError(err ? err?.response?.data?.message : err.message);
             });
         } else {
-          notifyError("Please enter valid data!");
+          setLoading(false);
+          notifyError("Please enter valid attribute data!");
         }
       }
 
+      // Languages upload
       if (location.pathname === "/languages") {
+        setLoading(true);
         LanguageServices.addAllLanguage(selectedFile)
           .then((res) => {
+            setLoading(false);
             setIsUpdate(true);
             notifySuccess(res.message);
           })
-          .catch((err) =>
-            notifyError(err ? err.response.data.message : err.message)
-          );
+          .catch((err) => {
+            setLoading(false);
+            notifyError(err ? err?.response?.data?.message : err.message);
+          });
       }
 
+      // Currencies upload
       if (location.pathname === "/currencies") {
+        setLoading(true);
         CurrencyServices.addAllCurrency(selectedFile)
           .then((res) => {
+            setLoading(false);
             setIsUpdate(true);
             notifySuccess(res.message);
           })
-          .catch((err) =>
-            notifyError(err ? err.response.data.message : err.message)
-          );
+          .catch((err) => {
+            setLoading(false);
+            notifyError(err ? err?.response?.data?.message : err.message);
+          });
       }
     } else {
-      notifyError("Please select a valid .JSON/.CSV/.XLS file first!");
+      notifyError("Please select a valid .JSON/.CSV file first!");
     }
   };
 
   const handleRemoveSelectFile = (e) => {
-    // console.log('remove');
     setFileName("");
     setSelectedFile([]);
     setTimeout(() => setIsDisable(false), 1000);
   };
 
+  // ============= RETURN ALL VALUES =============
   return {
     userRef,
     searchRef,

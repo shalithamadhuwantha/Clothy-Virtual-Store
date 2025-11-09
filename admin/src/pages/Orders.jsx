@@ -140,14 +140,7 @@ const Orders = () => {
           <CardBody>
             <form onSubmit={handleSubmitForAll}>
               <div className="grid gap-4 lg:gap-4 xl:gap-6 md:gap-2 md:grid-cols-5 py-2">
-                <div>
-                  <Input
-                    ref={searchRef}
-                    type="search"
-                    name="search"
-                    placeholder="Search by Customer Name"
-                  />
-                </div>
+               
 
                 <div>
                   <Select onChange={(e) => setStatus(e.target.value)}>

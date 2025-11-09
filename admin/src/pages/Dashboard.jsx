@@ -314,7 +314,7 @@ const Dashboard = () => {
             Icon={FiRefreshCw}
             loading={loadingOrderCount}
             quantity={dashboardOrderCount?.totalPendingOrder?.count || 0}
-            amount={dashboardOrderCount?.totalPendingOrder?.total || 0}
+            // amount={dashboardOrderCount?.totalPendingOrder?.total || 0}
             className="text-blue-600 dark:text-blue-100 bg-blue-100 dark:bg-blue-500"
           />
           <CardItem

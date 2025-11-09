@@ -54,7 +54,7 @@ const useShippingAddressSubmit = (id) => {
 
       notifySuccess(res.message);
       setIsSubmitting(false);
-      router.push("/user/my-account");
+      router.push("/user/add-shipping-address");
 
       // console.log("onSubmit", data);
     } catch (err) {
