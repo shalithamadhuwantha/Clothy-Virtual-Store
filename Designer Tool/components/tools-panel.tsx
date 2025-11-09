@@ -5,7 +5,8 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Download, Upload, Type } from "lucide-react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
+import { SendToSellerDialog } from "@/components/send-to-seller-dialog"
 
 interface ToolsPanelProps {
   canvasColor: string
@@ -17,6 +18,7 @@ interface ToolsPanelProps {
   images: any[]
   selectedElement: string | null
   onSelectElement: (id: string | null) => void
+  designImage: string | null
 }
 
 export function ToolsPanel({
@@ -29,6 +31,7 @@ export function ToolsPanel({
   images,
   selectedElement,
   onSelectElement,
+  designImage,
 }: ToolsPanelProps) {
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -134,6 +137,11 @@ export function ToolsPanel({
         <Download className="w-4 h-4 mr-2" />
         Download Design
       </Button>
+
+      {/* Send to Seller */}
+      <div className="mt-4">
+        <SendToSellerDialog designImage={designImage} />
+      </div>
     </div>
   )
 }
