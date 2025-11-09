@@ -234,7 +234,7 @@ const UploadMany = ({
           )}
         </div>
 
-        <div className="lg:flex-1 md:flex-1 mr-3  sm:flex-none">
+        {/* <div className="lg:flex-1 md:flex-1 mr-3  sm:flex-none">
           <button
             onClick={() => setIsImportBoxShown(!isImportBoxShown)}
             className="border flex justify-center items-center h-10 w-20 hover:text-yellow-400  border-gray-300 dark:text-gray-300 cursor-pointer  py-2 hover:border-yellow-400 rounded-md focus:outline-none"
@@ -242,7 +242,7 @@ const UploadMany = ({
             <FiDownload className="mr-2" />
             <span className="text-xs">Import</span>
           </button>
-        </div>
+        </div> */}
       </div>
 
       {isImportBoxShown && (
