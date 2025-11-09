@@ -10,6 +10,7 @@ const PageHeader = ({ title, headerBg }) => {
         <div className="w-full flex justify-center flex-col relative">
           <h2 className="text-xl md:text-3xl lg:text-4xl font-bold font-serif text-center">
             {/* {t(`common:${title}`)} */}
+            
             {title}
           </h2>
         </div>

@@ -7,6 +7,8 @@ import { useCart } from "react-use-cart";
 import { IoSearchOutline } from "react-icons/io5";
 import { FiShoppingCart, FiUser, FiBell } from "react-icons/fi";
 import useTranslation from "next-translate/useTranslation";
+import { MdOutlineImageSearch } from "react-icons/md";
+
 
 //internal import
 import { getUserSession } from "@lib/auth";
@@ -102,6 +104,15 @@ const Navbar = () => {
               </div>
             </div>
             <div className="hidden md:hidden md:items-center lg:flex xl:block absolute inset-y-0 right-0 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <button
+                aria-label="Total"
+                onClick={()=>router.push("http://localhost:5000/search")}
+                className="relative px-5 text-white text-2xl font-bold"
+              >
+                
+                <MdOutlineImageSearch className="w-6 h-6 drop-shadow-xl" />
+              </button>
+
               <button
                 aria-label="Total"
                 onClick={toggleCartDrawer}
