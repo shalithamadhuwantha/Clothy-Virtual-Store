@@ -407,7 +407,7 @@ const addShippingAddress = async (req, res) => {
 
     if (result.nModified > 0 || result.upserted) {
       return res.send({
-        message: "Shipping address added or updated successfully.",
+        message: "Profile updated successfully.",
       });
     } else {
       return res.status(404).send({ message: "Customer not found." });
