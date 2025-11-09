@@ -24,10 +24,11 @@ export default function Home() {
         italic?: boolean
         opacity?: number
         zIndex?: number
+        locked?: boolean
       }>
     >(texts)
   const [localImages, setLocalImages] =
-    useState<Array<{ id: string; src: string; x: number; y: number; width: number; height: number; opacity?: number; zIndex?: number }>>(images)
+    useState<Array<{ id: string; src: string; x: number; y: number; width: number; height: number; opacity?: number; zIndex?: number; rotation?: number; locked?: boolean }>>(images)
   const [selectedElement, setSelectedElement] = useState<string | null>(null)
   const [designImage, setDesignImage] = useState<string | null>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -73,6 +74,28 @@ export default function Home() {
     setLocalTexts(newTexts)
   }
 
+  const bringTextToFront = (id: string) => {
+    const textIndex = localTexts.findIndex((t) => t.id === id)
+    if (textIndex === localTexts.length - 1) return
+    const newTexts = [...localTexts]
+    const element = newTexts.splice(textIndex, 1)[0]
+    newTexts.push(element)
+    setLocalTexts(newTexts)
+  }
+
+  const sendTextToBack = (id: string) => {
+    const textIndex = localTexts.findIndex((t) => t.id === id)
+    if (textIndex === 0) return
+    const newTexts = [...localTexts]
+    const element = newTexts.splice(textIndex, 1)[0]
+    newTexts.unshift(element)
+    setLocalTexts(newTexts)
+  }
+
+  const toggleTextLock = (id: string) => {
+    setLocalTexts(localTexts.map((t) => (t.id === id ? { ...t, locked: !t.locked } : t)))
+  }
+
   const handleImageUpload = (file: File) => {
     const reader = new FileReader()
     reader.onload = (e) => {
@@ -116,19 +139,49 @@ export default function Home() {
     setLocalImages(newImages)
   }
 
+  const bringImageToFront = (id: string) => {
+    const imageIndex = localImages.findIndex((img) => img.id === id)
+    if (imageIndex === localImages.length - 1) return
+    const newImages = [...localImages]
+    const element = newImages.splice(imageIndex, 1)[0]
+    newImages.push(element)
+    setLocalImages(newImages)
+  }
+
+  const sendImageToBack = (id: string) => {
+    const imageIndex = localImages.findIndex((img) => img.id === id)
+    if (imageIndex === 0) return
+    const newImages = [...localImages]
+    const element = newImages.splice(imageIndex, 1)[0]
+    newImages.unshift(element)
+    setLocalImages(newImages)
+  }
+
+  const toggleImageLock = (id: string) => {
+    setLocalImages(localImages.map((img) => (img.id === id ? { ...img, locked: !img.locked } : img)))
+  }
+
   const downloadDesign = async () => {
     if (!canvasRef.current) return
 
+    // Use higher resolution for better quality (2x the display size)
+    const CANVAS_SIZE = 768
+    const DISPLAY_SIZE = 384
+    const scale = CANVAS_SIZE / DISPLAY_SIZE
+
     const canvas = document.createElement("canvas")
-    canvas.width = 384
-    canvas.height = 384
+    canvas.width = CANVAS_SIZE
+    canvas.height = CANVAS_SIZE
     const ctx = canvas.getContext("2d")
 
     if (!ctx) return
 
+    // Set higher DPI for better quality
+    ctx.scale(scale, scale)
+
     // Draw background
     ctx.fillStyle = canvasColor
-    ctx.fillRect(0, 0, 384, 384)
+    ctx.fillRect(0, 0, DISPLAY_SIZE, DISPLAY_SIZE)
 
     // Sort images by zIndex for proper layering
     const sortedImages = [...localImages].sort((a, b) => (a.zIndex ?? 0) - (b.zIndex ?? 0))
@@ -139,9 +192,21 @@ export default function Home() {
           const image = new Image()
           image.crossOrigin = "anonymous"
           image.onload = () => {
+            ctx.save()
             ctx.globalAlpha = (img.opacity !== undefined ? img.opacity : 100) / 100
+            
+            // Apply rotation if it exists
+            const rotation = (img as any).rotation || 0
+            if (rotation !== 0) {
+              const centerX = img.x + img.width / 2
+              const centerY = img.y + img.height / 2
+              ctx.translate(centerX, centerY)
+              ctx.rotate((rotation * Math.PI) / 180)
+              ctx.translate(-centerX, -centerY)
+            }
+            
             ctx.drawImage(image, img.x, img.y, img.width, img.height)
-            ctx.globalAlpha = 1
+            ctx.restore()
             resolve()
           }
           image.onerror = () => resolve() // Continue if image fails
@@ -156,6 +221,7 @@ export default function Home() {
 
     // Draw text
     for (const textItem of sortedTexts) {
+      ctx.save()
       ctx.globalAlpha = (textItem.opacity !== undefined ? textItem.opacity : 100) / 100
       ctx.fillStyle = textItem.color
       let fontString = `${textItem.size}px ${textItem.font}`
@@ -167,6 +233,7 @@ export default function Home() {
       }
       ctx.font = fontString
       ctx.fillText(textItem.text, textItem.x, textItem.y + textItem.size)
+      ctx.restore()
     }
 
     ctx.globalAlpha = 1
@@ -227,6 +294,9 @@ export default function Home() {
               onDelete={() => deleteText(selectedElement)}
               onBringForward={() => bringTextForward(selectedElement)}
               onSendBackward={() => sendTextBackward(selectedElement)}
+              onBringToFront={() => bringTextToFront(selectedElement)}
+              onSendToBack={() => sendTextToBack(selectedElement)}
+              onToggleLock={() => toggleTextLock(selectedElement)}
             />
           ) : (
             <ImageEditor
@@ -235,6 +305,9 @@ export default function Home() {
               onDelete={() => deleteImage(selectedElement)}
               onBringForward={() => bringImageForward(selectedElement)}
               onSendBackward={() => sendImageBackward(selectedElement)}
+              onBringToFront={() => bringImageToFront(selectedElement)}
+              onSendToBack={() => sendImageToBack(selectedElement)}
+              onToggleLock={() => toggleImageLock(selectedElement)}
             />
           )
         ) : (
