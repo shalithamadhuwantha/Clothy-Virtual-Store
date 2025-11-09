@@ -380,7 +380,7 @@ const Checkout = () => {
                   )}
                 </div>
 
-                <div className="flex items-center mt-4 py-4 lg:py-4 text-sm w-full font-semibold text-heading last:border-b-0 last:text-base last:pb-0">
+                {/* <div className="flex items-center mt-4 py-4 lg:py-4 text-sm w-full font-semibold text-heading last:border-b-0 last:text-base last:pb-0">
                   <form className="w-full">
                     {couponInfo.couponCode ? (
                       <span className="bg-emerald-50 px-4 py-3 leading-tight w-full rounded-md flex justify-between">
@@ -426,7 +426,7 @@ const Checkout = () => {
                       </div>
                     )}
                   </form>
-                </div>
+                </div> */}
                 <div className="flex items-center py-2 text-sm w-full font-semibold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   {showingTranslateValue(
                     storeCustomizationSetting?.checkout?.sub_total
