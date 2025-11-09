@@ -77,7 +77,7 @@ const useShippingAddressSubmit = (id) => {
       setAreas([]);
     }
     if (name === "city") {
-      const result = cities?.find((city) => city?.name === value).areas;
+      const result = cities?.find((city) => city?.name === value);
       setAreas(result);
     }
   };

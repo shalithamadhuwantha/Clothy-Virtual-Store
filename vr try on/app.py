@@ -79,7 +79,6 @@ class JSONEncoder(json.JSONEncoder):
             return str(obj)
         return json.JSONEncoder.default(self, obj)
 
-
 app.json_encoder = JSONEncoder
 
 
@@ -150,60 +149,200 @@ def search_products_by_tags(search_query):
 
 def analyze_image_tags(image_path):
     """
-    Analyze uploaded image and extract color/type tags
-    This is a simple implementation - you can enhance with ML models
+    Enhanced image analysis with accurate color detection using K-means clustering
     """
     try:
+        print(f"\n🎨 Analyzing image: {image_path}")
+        
         # Load image
         img = PILImage.open(image_path)
+        img = img.convert('RGB')  # Ensure RGB
         img_array = np.array(img)
         
-        # Convert to RGB if needed
-        if len(img_array.shape) == 2:
-            img_array = cv2.cvtColor(img_array, cv2.COLOR_GRAY2RGB)
-        elif img_array.shape[2] == 4:
-            img_array = cv2.cvtColor(img_array, cv2.COLOR_RGBA2RGB)
+        # Resize for faster processing
+        max_size = 400
+        height, width = img_array.shape[:2]
+        if max(height, width) > max_size:
+            scale = max_size / max(height, width)
+            new_width = int(width * scale)
+            new_height = int(height * scale)
+            img = img.resize((new_width, new_height), PILImage.Resampling.LANCZOS)
+            img_array = np.array(img)
         
-        # Get dominant colors
+        # Convert to HSV for better color detection
+        img_hsv = cv2.cvtColor(img_array, cv2.COLOR_RGB2HSV)
+        
+        # Flatten the image
         pixels = img_array.reshape(-1, 3)
-        avg_color = pixels.mean(axis=0)
+        pixels_hsv = img_hsv.reshape(-1, 3)
         
-        # Determine color name
-        color_name = get_color_name(avg_color)
+        # Remove very dark and very bright pixels (likely shadows/highlights)
+        brightness = pixels_hsv[:, 2]
+        valid_mask = (brightness > 30) & (brightness < 240)
+        filtered_pixels = pixels[valid_mask]
+        filtered_pixels_hsv = pixels_hsv[valid_mask]
         
-        # Basic shape detection (placeholder - enhance with ML)
-        detected_tags = [color_name]
+        if len(filtered_pixels) == 0:
+            filtered_pixels = pixels
+            filtered_pixels_hsv = pixels_hsv
         
-        print(f"🎨 Detected tags from image: {detected_tags}")
+        # Use K-means to find dominant colors
+        try:
+            from sklearn.cluster import KMeans
+            
+            n_colors = 3
+            kmeans = KMeans(n_clusters=n_colors, random_state=42, n_init=10)
+            kmeans.fit(filtered_pixels)
+            
+            # Get cluster centers and their counts
+            colors = kmeans.cluster_centers_
+            labels = kmeans.labels_
+            counts = np.bincount(labels)
+            
+            # Sort colors by frequency
+            indices = np.argsort(-counts)
+            dominant_colors = colors[indices]
+            
+            print(f"   Found {n_colors} dominant colors")
+            
+            # Detect color names for top 2 dominant colors
+            detected_colors = []
+            for idx, color in enumerate(dominant_colors[:2]):
+                color_name = get_color_name_advanced(color)
+                percentage = (counts[indices[idx]] / len(labels)) * 100
+                print(f"   Color {idx + 1}: {color_name} ({percentage:.1f}%)")
+                detected_colors.append(color_name)
+            
+            # Remove duplicates while preserving order
+            detected_tags = list(dict.fromkeys(detected_colors))
+            
+        except ImportError:
+            print("⚠️ scikit-learn not installed, using basic color detection")
+            detected_tags = analyze_image_tags_basic(image_path)
+            return detected_tags
+        
+        # Add product type detection (basic - can be enhanced with ML)
+        detected_tags.append('tshirt')  # Default assumption
+        
+        print(f"✅ Final detected tags: {detected_tags}")
         return detected_tags
         
     except Exception as e:
         print(f"❌ Error analyzing image: {e}")
-        return []
+        import traceback
+        traceback.print_exc()
+        return ['shirt']  # Fallback
 
 
-def get_color_name(rgb):
-    """Convert RGB to color name"""
+def analyze_image_tags_basic(image_path):
+    """
+    Fallback basic image analysis without scikit-learn
+    """
+    try:
+        img = PILImage.open(image_path).convert('RGB')
+        img_array = np.array(img)
+        
+        # Resize for faster processing
+        max_size = 300
+        height, width = img_array.shape[:2]
+        if max(height, width) > max_size:
+            scale = max_size / max(height, width)
+            new_width = int(width * scale)
+            new_height = int(height * scale)
+            img = img.resize((new_width, new_height), PILImage.Resampling.LANCZOS)
+            img_array = np.array(img)
+        
+        # Get central region (usually the product)
+        h, w = img_array.shape[:2]
+        center_h_start = h // 4
+        center_h_end = 3 * h // 4
+        center_w_start = w // 4
+        center_w_end = 3 * w // 4
+        
+        center_region = img_array[center_h_start:center_h_end, center_w_start:center_w_end]
+        pixels = center_region.reshape(-1, 3)
+        
+        # Get median color (more robust than mean)
+        median_color = np.median(pixels, axis=0)
+        
+        color_name = get_color_name_advanced(median_color)
+        print(f"🎨 Detected color (basic): {color_name}")
+        
+        return [color_name, 'tshirt']
+        
+    except Exception as e:
+        print(f"❌ Error in basic analysis: {e}")
+        return ['shirt']
+
+
+def get_color_name_advanced(rgb):
+    """
+    Advanced color name detection using HSV color space
+    More accurate than simple RGB distance
+    """
     r, g, b = rgb
     
-    # Define color ranges
+    # Convert RGB to HSV
+    rgb_normalized = np.array([[[r, g, b]]], dtype=np.uint8)
+    hsv = cv2.cvtColor(rgb_normalized, cv2.COLOR_RGB2HSV)[0][0]
+    h, s, v = hsv
+    
+    print(f"   RGB: ({r:.0f}, {g:.0f}, {b:.0f}) -> HSV: ({h}, {s}, {v})")
+    
+    # Check for achromatic colors (low saturation)
+    if s < 30:
+        if v < 50:
+            return 'black'
+        elif v > 200:
+            return 'white'
+        else:
+            return 'gray'
+    
+    # Check for very dark colors
+    if v < 60:
+        return 'black'
+    
+    # Check for very light colors
+    if v > 220 and s < 50:
+        return 'white'
+    
+    # Color detection based on hue
+    # HSV Hue ranges: 0-180 in OpenCV
+    if h < 10 or h > 170:
+        return 'red'
+    elif 10 <= h < 25:
+        if s > 100:
+            return 'orange'
+        else:
+            return 'brown'
+    elif 25 <= h < 35:
+        return 'yellow'
+    elif 35 <= h < 80:
+        return 'green'
+    elif 80 <= h < 130:
+        return 'blue'
+    elif 130 <= h < 150:
+        return 'purple'
+    elif 150 <= h < 170:
+        return 'pink'
+    
+    # Fallback - use RGB distance
     colors = {
-        'red': (200, 50, 50),
-        'blue': (50, 50, 200),
-        'green': (50, 200, 50),
-        'yellow': (200, 200, 50),
-        'black': (50, 50, 50),
-        'white': (200, 200, 200),
-        'orange': (200, 100, 50),
-        'purple': (150, 50, 150),
-        'pink': (200, 100, 150),
-        'brown': (100, 50, 50),
+        'red': (255, 0, 0),
+        'blue': (0, 0, 255),
+        'green': (0, 255, 0),
+        'yellow': (255, 255, 0),
+        'orange': (255, 165, 0),
+        'purple': (128, 0, 128),
+        'pink': (255, 192, 203),
+        'brown': (139, 69, 19),
         'gray': (128, 128, 128),
+        'black': (0, 0, 0),
+        'white': (255, 255, 255),
     }
     
-    # Find closest color
     min_distance = float('inf')
-    closest_color = 'unknown'
+    closest_color = 'gray'
     
     for color_name, color_rgb in colors.items():
         distance = np.sqrt(sum((a - b) ** 2 for a, b in zip(rgb, color_rgb)))
@@ -548,14 +687,12 @@ def view_product(identifier):
                          cart_count=len(app_state['cart_items']))
 
 
-# 🆕 NEW: Image Search Route
 @app.route('/search')
 def search_page():
     """Image search page"""
     return render_template('search.html', cart_count=len(app_state['cart_items']))
 
 
-# 🆕 NEW: Text-based search API
 @app.route('/api/search', methods=['POST'])
 def search_products():
     """Search products by text query"""
@@ -580,7 +717,6 @@ def search_products():
         return jsonify({'error': str(e)}), 500
 
 
-# 🆕 NEW: Image upload and search
 @app.route('/api/search/image', methods=['POST'])
 def search_by_image():
     """Search products by uploaded image"""
@@ -623,6 +759,8 @@ def search_by_image():
         
     except Exception as e:
         print(f"❌ Image search error: {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 
@@ -859,4 +997,6 @@ if __name__ == '__main__':
     print(f"\n🚀 Server starting...")
     print(f"   Main: http://localhost:5000/")
     print(f"   Search: http://localhost:5000/search")
+    print(f"\n💡 Install scikit-learn for better color detection:")
+    print(f"   pip install scikit-learn")
     app.run(debug=True, threaded=True)

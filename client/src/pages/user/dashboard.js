@@ -13,8 +13,9 @@ import {
   FiSettings,
   FiShoppingCart,
   FiTruck,
-  FiUser,
+  FiUser
 } from "react-icons/fi";
+import { LuPaintbrush } from "react-icons/lu";
 import { signOut } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 
@@ -78,6 +79,11 @@ const Dashboard = ({ title, description, children }) => {
       title: "My Account",
       href: "/user/add-shipping-address",
       icon: FiUser,
+    },
+    {
+      title: "Designer",
+      href: "http://localhost:3002/",
+      icon: LuPaintbrush,
     },
 
   
