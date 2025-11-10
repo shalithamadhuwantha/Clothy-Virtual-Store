@@ -11,7 +11,7 @@ const SwitchToggleChildCat = ({ title, handleProcess, processOption }) => {
             {title}
           </label>
 
-          <Switch
+          {/* <Switch
             onChange={handleProcess}
             checked={processOption}
             className="react-switch md:ml-0 ml-3"
@@ -54,7 +54,7 @@ const SwitchToggleChildCat = ({ title, handleProcess, processOption }) => {
                 {t("All")}
               </div>
             }
-          />
+          /> */}
         </div>
       </div>
     </>

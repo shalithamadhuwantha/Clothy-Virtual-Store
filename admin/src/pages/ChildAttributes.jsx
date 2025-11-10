@@ -132,7 +132,7 @@ const ChildAttributes = () => {
               </Button>
             </div>
 
-            <div className="w-full md:w-24 lg:w-24 xl:w-24">
+            {/* <div className="w-full md:w-24 lg:w-24 xl:w-24">
               <Button
                 disabled={isCheck.length < 1}
                 onClick={() => handleUpdateMany(isCheck)}
@@ -141,7 +141,7 @@ const ChildAttributes = () => {
                 <FiEdit />
                 Bulk Action
               </Button>
-            </div>
+            </div> */}
 
             <Button
               disabled={isCheck.length < 1}
