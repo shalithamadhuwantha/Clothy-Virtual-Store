@@ -224,7 +224,7 @@ export function SendToSellerDialog({ designImage, onSuccess }: SendToSellerDialo
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="+94 712345678"
                   value={userDetails.phone}
                   onChange={(e) => handleUserDetailsChange("phone", e.target.value)}
                   className="mt-1"
@@ -276,7 +276,7 @@ export function SendToSellerDialog({ designImage, onSuccess }: SendToSellerDialo
                   <Input
                     id="city"
                     type="text"
-                    placeholder="New York"
+                    placeholder="Mihinthale"
                     value={deliveryDetails.city}
                     onChange={(e) => handleDeliveryDetailsChange("city", e.target.value)}
                     className="mt-1"
@@ -291,7 +291,7 @@ export function SendToSellerDialog({ designImage, onSuccess }: SendToSellerDialo
                   <Input
                     id="state"
                     type="text"
-                    placeholder="NY"
+                    placeholder="NC"
                     value={deliveryDetails.state}
                     onChange={(e) => handleDeliveryDetailsChange("state", e.target.value)}
                     className="mt-1"
@@ -308,7 +308,7 @@ export function SendToSellerDialog({ designImage, onSuccess }: SendToSellerDialo
                   <Input
                     id="postalCode"
                     type="text"
-                    placeholder="10001"
+                    placeholder="12345"
                     value={deliveryDetails.postalCode}
                     onChange={(e) => handleDeliveryDetailsChange("postalCode", e.target.value)}
                     className="mt-1"
@@ -323,7 +323,7 @@ export function SendToSellerDialog({ designImage, onSuccess }: SendToSellerDialo
                   <Input
                     id="country"
                     type="text"
-                    placeholder="United States"
+                    placeholder="Sri Lanka"
                     value={deliveryDetails.country}
                     onChange={(e) => handleDeliveryDetailsChange("country", e.target.value)}
                     className="mt-1"
